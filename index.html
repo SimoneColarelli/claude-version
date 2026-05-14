@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yogis — Studio Yoga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:        #FFFFFF;
+    --cream:        #F7F2EA;
+    --cream-mid:    #EDE5D5;
+    --sand:         #C8B89A;
+    --sand-dark:    #A8926E;
+    --terracotta:   #B5714A;
+    --terra-light:  #C98B67;
+    --terra-pale:   #F0E0D4;
+    --charcoal:     #2A2520;
+    --black:       #000000;
+    --brown:        #6B5344;
+    --brown-light:  #9C7E6A;
+    --olive:        #7A8456;
+    --olive-pale:   #EAE9DF;
+    --font-display: /*'Cormorant Garamond', Georgia, serif;*/ 'Poppins', sans-serif;
+    --font-body:    /*'Jost', sans-serif;*/ 'Montserrat', sans-serif;
+    --pad:          clamp(4rem, 8vw, 7rem);
+    --gutter:       clamp(1.5rem, 6vw, 5rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--charcoal);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: rgba(253, 250, 245, 0.0);
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+
+  nav.scrolled {
+    background: var(--white);
+    box-shadow: 0 1px 0 rgba(42,37,32,0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  nav.scrolled .nav-logo {
+    background: url("Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: none;
+    mask: none;
+  }
+  nav.scrolled .nav-links a { color: var(--brown); }
+  nav.scrolled .nav-links a:hover { color: var(--terracotta); }
+  nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+  .nav-logo {
+    display: block;
+    width: clamp(58px, 7vw, 86px);
+    aspect-ratio: 467.82 / 353.09;
+    background: currentColor;
+    color: var(--white);
+    text-decoration: none;
+    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
+    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    transition: color 0.4s;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.85);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sand); }
+
+  .nav-cta-btn {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.3rem;
+    border: 1px solid currentColor;
+    color: rgba(253,250,245,0.75);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+  nav.scrolled .nav-cta-btn { color: var(--brown); border-color: var(--sand); }
+  nav.scrolled .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-style: italic;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--terracotta); }
+
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem; right: var(--gutter);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100dvh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(6rem, 12vw, 10rem) var(--gutter) clamp(3.5rem, 7vw, 5.5rem);
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(42, 37, 32, 0.72) 0%, rgba(42, 37, 32, 0.48) 42%, rgba(42, 37, 32, 0.2) 100%),
+      linear-gradient(0deg, rgba(42, 37, 32, 0.58) 0%, rgba(42, 37, 32, 0.08) 52%),
+      url("yoga hero image.png") center / cover no-repeat;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 22% 72%, rgba(253, 250, 245, 0.16), transparent 34%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.9);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.34);
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: rgba(253,250,245,0.78);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 9vw, 7.5rem);
+    font-weight: 800;
+    line-height: 1.02;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 3px 28px rgba(0,0,0,0.42);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--terra-light);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-scroll {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.76);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 32px;
+    background: rgba(253,250,245,0.54);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    background: var(--terracotta);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--terra-light); transform: translateY(-2px); }
+
+  .btn-ghost-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: rgba(253,250,245,0.88);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost-dark::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s;
+  }
+
+  .btn-ghost-dark:hover { color: var(--white); }
+  .btn-ghost-dark:hover::after { width: 44px; }
+
+  /* ─── INTRO STRIP ─── */
+  .intro-strip {
+    background: var(--terra-pale);
+    padding: 1.6rem var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px solid rgba(181,113,74,0.15);
+    border-bottom: 1px solid rgba(181,113,74,0.15);
+  }
+
+  .intro-strip p {
+    color: var(--brown);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .intro-strip p strong { color: var(--terracotta); font-weight: 400; }
+
+  /* ─── SHARED SECTION PARTS ─── */
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.9rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.18;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title em { font-style: italic; }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.88;
+    color: var(--brown);
+    margin-bottom: 1.4rem;
+    max-width: 44ch;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--sand);
+    margin: 1.4rem 0;
+  }
+
+  .btn-outline-dark {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--charcoal);
+    color: var(--charcoal);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .btn-outline-dark:hover { background: var(--charcoal); color: var(--white); }
+
+  .btn-outline-terra {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--terracotta);
+    color: var(--terracotta);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .btn-outline-terra:hover { background: var(--terracotta); color: var(--white); }
+
+  /* ─── ONLINE ─── */
+  .section-online {
+    padding: var(--pad) var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 6rem);
+    align-items: center;
+    background: var(--white);
+  }
+
+  .online-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .online-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ─── CORSI ─── */
+  .section-corsi {
+    padding: var(--pad) var(--gutter);
+    background: var(--cream);
+  }
+
+  .section-corsi-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .corsi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.5px;
+    background: var(--cream-mid);
+  }
+
+  .corso-card {
+    background: var(--cream);
+    padding: clamp(2rem, 4vw, 2.8rem) clamp(1.5rem, 3vw, 2rem);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .corso-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .corso-card:hover { background: var(--white); }
+  .corso-card:hover::after { transform: scaleX(1); }
+
+  .corso-card-vinyasa.is-in-view::after,
+  .corso-card-pregnancy.is-in-view::after,
+  .corso-card-mum-baby.is-in-view::after,
+  .corso-card-advanced.is-in-view::after {
+    transform: scaleX(1);
+  }
+
+  .corso-card-vinyasa,
+  .corso-card-pregnancy,
+  .corso-card-mum-baby,
+  .corso-card-advanced {
+    min-height: clamp(22rem, 38vw, 28rem);
+    background: var(--cream);
+  }
+
+  .corso-card-vinyasa::before,
+  .corso-card-pregnancy::before,
+  .corso-card-mum-baby::before,
+  .corso-card-advanced::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(249, 243, 235, 0.94) 0%, rgba(249, 243, 235, 0.78) 31%, rgba(249, 243, 235, 0.14) 58%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .corso-card-vinyasa::after,
+  .corso-card-pregnancy::after,
+  .corso-card-mum-baby::after,
+  .corso-card-advanced::after {
+    z-index: 3;
+  }
+
+  .corso-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    opacity: 1;
+    filter: saturate(0.78) brightness(0.88) contrast(0.94);
+    transition: filter 0.45s ease;
+    transform: scale(1.00);
+    z-index: 0;
+  }
+
+  .corso-card-vinyasa:hover .corso-media,
+  .corso-card-vinyasa:focus-visible .corso-media,
+  .corso-card-vinyasa.is-in-view .corso-media,
+  .corso-card-pregnancy:hover .corso-media,
+  .corso-card-pregnancy:focus-visible .corso-media,
+  .corso-card-pregnancy.is-in-view .corso-media,
+  .corso-card-mum-baby:hover .corso-media,
+  .corso-card-mum-baby:focus-visible .corso-media,
+  .corso-card-mum-baby.is-in-view .corso-media,
+  .corso-card-advanced:hover .corso-media,
+  .corso-card-advanced:focus-visible .corso-media,
+  .corso-card-advanced.is-in-view .corso-media {
+    filter: saturate(1.08) brightness(1.05) contrast(1.02);
+  }
+
+  .corso-card-vinyasa .corso-number,
+  .corso-card-vinyasa .corso-name,
+  .corso-card-vinyasa .corso-desc,
+  .corso-card-vinyasa .corso-arrow,
+  .corso-card-pregnancy .corso-number,
+  .corso-card-pregnancy .corso-name,
+  .corso-card-pregnancy .corso-desc,
+  .corso-card-pregnancy .corso-arrow,
+  .corso-card-mum-baby .corso-number,
+  .corso-card-mum-baby .corso-name,
+  .corso-card-mum-baby .corso-desc,
+  .corso-card-mum-baby .corso-arrow,
+  .corso-card-advanced .corso-number,
+  .corso-card-advanced .corso-name,
+  .corso-card-advanced .corso-desc,
+  .corso-card-advanced .corso-arrow {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .corso-card-vinyasa .corso-name,
+  .corso-card-vinyasa .corso-desc,
+  .corso-card-pregnancy .corso-name,
+  .corso-card-pregnancy .corso-desc,
+  .corso-card-mum-baby .corso-name,
+  .corso-card-mum-baby .corso-desc,
+  .corso-card-advanced .corso-name,
+  .corso-card-advanced .corso-desc {
+    max-width: 18rem;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  .corso-card-vinyasa .corso-desc,
+  .corso-card-pregnancy .corso-desc,
+  .corso-card-mum-baby .corso-desc,
+  .corso-card-advanced .corso-desc {
+    flex: 0;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .corso-card-vinyasa .corso-number,
+  .corso-card-pregnancy .corso-number,
+  .corso-card-mum-baby .corso-number,
+  .corso-card-advanced .corso-number {
+    color: var(--terracotta);
+    font-weight: 700;
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
+  }
+
+  .corso-card-vinyasa .corso-name,
+  .corso-card-pregnancy .corso-name,
+  .corso-card-mum-baby .corso-name,
+  .corso-card-advanced .corso-name {
+    color: var(--charcoal);
+    font-weight: 400;
+  }
+
+  .corso-card-vinyasa:hover .corso-number,
+  .corso-card-vinyasa:focus-visible .corso-number,
+  .corso-card-vinyasa.is-in-view .corso-number,
+  .corso-card-vinyasa:hover .corso-name,
+  .corso-card-vinyasa:focus-visible .corso-name,
+  .corso-card-vinyasa.is-in-view .corso-name,
+  .corso-card-pregnancy:hover .corso-number,
+  .corso-card-pregnancy:focus-visible .corso-number,
+  .corso-card-pregnancy.is-in-view .corso-number,
+  .corso-card-pregnancy:hover .corso-name,
+  .corso-card-pregnancy:focus-visible .corso-name,
+  .corso-card-pregnancy.is-in-view .corso-name,
+  .corso-card-mum-baby:hover .corso-number,
+  .corso-card-mum-baby:focus-visible .corso-number,
+  .corso-card-mum-baby.is-in-view .corso-number,
+  .corso-card-mum-baby:hover .corso-name,
+  .corso-card-mum-baby:focus-visible .corso-name,
+  .corso-card-mum-baby.is-in-view .corso-name,
+  .corso-card-advanced:hover .corso-number,
+  .corso-card-advanced:focus-visible .corso-number,
+  .corso-card-advanced.is-in-view .corso-number,
+  .corso-card-advanced:hover .corso-name,
+  .corso-card-advanced:focus-visible .corso-name,
+  .corso-card-advanced.is-in-view .corso-name {
+    color: var(--terracotta);
+  }
+
+  .corso-number {
+    font-size: 0.63rem;
+    letter-spacing: 0.3em;
+    color: var(--sand-dark);
+  }
+
+  .corso-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.15;
+  }
+
+  .corso-desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--brown-light);
+    flex: 1;
+  }
+
+  .corso-arrow {
+    font-size: 1.1rem;
+    color: var(--terracotta);
+    transition: transform 0.3s;
+    align-self: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .corso-card:hover .corso-arrow { opacity: 1; transform: translate(4px, -4px); }
+
+  /* ─── STUDIO ─── */
+  .section-studio {
+    padding: var(--pad) var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 6rem);
+    align-items: center;
+    background: var(--white);
+  }
+
+  .studio-text { order: 1; }
+  .studio-gallery { order: 2; }
+
+  .studio-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .studio-img {
+    overflow: hidden;
+    background: var(--cream-mid);
+  }
+
+  .studio-img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/7;
+  }
+
+  .studio-img:not(:first-child) { aspect-ratio: 1; }
+
+  .studio-img-fill {
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-style: italic;
+    transition: transform 0.6s ease;
+  }
+
+  .studio-img-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .studio-img:hover .studio-img-fill,
+  .studio-img:hover .studio-img-photo { transform: scale(1.04); }
+
+  .fill-1 { background: linear-gradient(135deg, var(--cream-mid) 0%, var(--sand) 100%); color: rgba(42,37,32,0.12); }
+  .fill-2 { background: linear-gradient(135deg, var(--olive-pale) 0%, #c8cba8 100%); color: rgba(42,37,32,0.12); }
+  .fill-3 { background: linear-gradient(135deg, var(--terra-pale) 0%, #ddb8a0 100%); color: rgba(42,37,32,0.12); }
+
+  /* ─── VALORI ─── */
+  .section-valori {
+    padding: var(--pad) var(--gutter);
+    background: var(--cream);
+  }
+
+  .valori-header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .valori-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 2rem 3rem;
+  }
+
+  .valore-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--cream-mid);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .valore-title {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.6rem;
+  }
+
+  .valore-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--brown);
+  }
+
+  /* ─── CTA PRENOTA ─── */
+  .section-cta {
+    padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
+    background: var(--cream-mid);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    border-top: 1px solid rgba(181,113,74,0.12);
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.18;
+  }
+
+  .cta-title em { font-style: italic; color: var(--terracotta); }
+
+  .cta-sub {
+    font-size: 0.82rem;
+    color: var(--brown-light);
+    margin-top: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .cta-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .cta-phone {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .cta-phone:hover { color: var(--terracotta); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter) 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .footer-logo {
+    display: block;
+    width: clamp(76px, 9vw, 112px);
+    aspect-ratio: 467.82 / 353.09;
+    background: currentColor;
+    color: var(--white);
+    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
+    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--white);
+    line-height: 1.7;
+    max-width: 28ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-social-link {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid var(--white);
+    padding: 0.45rem 1rem;
+    transition: all 0.2s;
+  }
+
+  .footer-social-link:hover { color: var(--sand); border-color: var(--sand-dark); }
+
+  .footer-col-title {
+    font-size: 0.63rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--terra-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta-btn { display: none; }
+    .nav-toggle { display: flex; }
+
+    .hero {
+      min-height: 82dvh;
+      align-items: center;
+      padding-top: clamp(5.5rem, 18vw, 7rem);
+      padding-bottom: clamp(2.5rem, 9vw, 4rem);
+      background:
+        linear-gradient(90deg, rgba(42, 37, 32, 0.74) 0%, rgba(42, 37, 32, 0.5) 100%),
+        linear-gradient(0deg, rgba(42, 37, 32, 0.64) 0%, rgba(42, 37, 32, 0.12) 56%),
+        url("yoga hero image.png") 58% 42% / cover no-repeat;
+    }
+
+    .section-online { grid-template-columns: 1fr; }
+    .section-studio { grid-template-columns: 1fr; }
+    .section-studio .studio-text { order: 2; }
+    .section-studio .studio-gallery { order: 1; }
+
+    .section-corsi-header { flex-direction: column; align-items: flex-start; }
+
+    .section-cta {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    .cta-side { align-items: flex-start; }
+
+    .footer-grid { grid-template-columns: 1fr; }
+
+    .online-visual { aspect-ratio: 3/2; }
+
+    .hero-scroll { display: none; }
+    .hero-bottom { justify-content: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 76dvh;
+      align-items: center;
+      padding-top: 5.25rem;
+      padding-bottom: 2.5rem;
+      background:
+        linear-gradient(90deg, rgba(42, 37, 32, 0.76) 0%, rgba(42, 37, 32, 0.52) 100%),
+        linear-gradient(0deg, rgba(42, 37, 32, 0.62) 0%, rgba(42, 37, 32, 0.1) 58%),
+        url("yoga hero image.png") 58% 38% / cover no-repeat;
+    }
+
+    .intro-strip { flex-direction: column; gap: 0.75rem; }
+    .intro-strip p { min-width: unset; }
+    .hero-cta { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag   { animation: fadeUp 0.9s ease 0.2s both; }
+  .hero-title { animation: fadeUp 0.9s ease 0.4s both; }
+  .hero-bottom{ animation: fadeUp 0.9s ease 0.6s both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
+  <ul class="nav-links">
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#corsi">Corsi</a></li>
+    <li><a href="#online">Online</a></li>
+    <li><a href="#orari">Orari &amp; Prezzi</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+  <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕ Chiudi</button>
+  <a href="#studio" class="mobile-link">Studio</a>
+  <a href="#corsi" class="mobile-link">Corsi</a>
+  <a href="#online" class="mobile-link">Online</a>
+  <a href="#orari" class="mobile-link">Orari &amp; Prezzi</a>
+  <a href="#contatti" class="mobile-link">Contatti</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-tag">Studio Yoga · L'Aquila</p>
+    <h1 class="hero-title">
+      Rendi il tuo corpo<br>
+      <em>il posto migliore</em><br>
+      in cui abitare
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-cta">
+        <a href="#corsi" class="btn-primary">Scopri i corsi</a>
+        <a href="#studio" class="btn-ghost-dark">Lo studio</a>
+      </div>
+      <span class="hero-scroll">Scorri</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy</p>
+  <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced</p>
+  <p>In studio &amp; <strong>Online</strong> · Su appuntamento</p>
+</div>
+
+<!-- ONLINE -->
+<section class="section-online" id="online">
+  <div>
+    <p class="section-label">Videolezioni</p>
+    <h2 class="section-title">Pratica con me<br><em style="color: var(--terra-light); font-weight: 400;">dove e quando vuoi</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Non è solo yoga online: ogni lezione ti guida con chiarezza come in presenza, in un percorso pensato per ogni livello ed ogni necessità. E per qualsiasi dubbio o consiglio ci sono io, a un messaggio di distanza.</p>
+    <p class="section-body">La piattaforma online è l'integrazione perfetta alle lezioni in studio, per mantenere continuità e decidere liberamente quanto e come allenarti.</p>
+    <a href="#contatti" class="btn-outline-dark">Più dettagli</a>
+  </div>
+  <div class="online-visual">
+    <img src="videolezioni image.png" alt="Videolezioni yoga online">
+  </div>
+</section>
+
+<!-- CORSI -->
+<section class="section-corsi" id="corsi">
+  <div class="section-corsi-header">
+    <div>
+      <p class="section-label">Discipline</p>
+      <h2 class="section-title">Corsi in studio</h2>
+    </div>
+    <a href="#orari" class="btn-ghost-dark">Orari e prezzi</a>
+  </div>
+
+  <div class="corsi-grid">
+    <a class="corso-card corso-card-vinyasa" href="#contatti">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="cane a testa in giù animation.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">01</span>
+      <h3 class="corso-name">Yogis Vinyasa</h3>
+      <p class="corso-desc">Flusso dinamico sincronizzato con il respiro. Una pratica che scalda il corpo, libera la mente e costruisce forza e flessibilità.</p>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card corso-card-pregnancy" href="#contatti">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="donna incinta video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">02</span>
+      <h3 class="corso-name">Yogis Pregnancy</h3>
+      <p class="corso-desc">Un percorso dolce e consapevole pensato per accompagnare il corpo e la mente durante la gravidanza, in sicurezza e armonia.</p>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card corso-card-mum-baby" href="#contatti">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="mum&baby video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">03</span>
+      <h3 class="corso-name">Yogis Mum &amp; Baby</h3>
+      <p class="corso-desc">Lezioni per neomamme e bambini. Un momento speciale di connessione e benessere condiviso nel rispetto dei tempi di ognuno.</p>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card corso-card-advanced" href="#contatti">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="advanced video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">04</span>
+      <h3 class="corso-name">Yogis Advanced</h3>
+      <p class="corso-desc">Per chi vuole approfondire la propria pratica con asana più complesse, pranayama e tecniche di meditazione avanzata.</p>
+      <span class="corso-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="section-studio" id="studio">
+  <div class="studio-text">
+    <p class="section-label">Il nostro spazio</p>
+    <h2 class="section-title">Lo Studio</h2>
+    <div class="divider"></div>
+    <p class="section-body">Da Yogis troverai un luogo accogliente e riservato, dove prenderti cura del tuo corpo e della tua mente sarà un piacere. Insegnanti preparati ti guideranno in una pratica adatta alle esigenze fisiche di ognuno.</p>
+    <p class="section-body">Lo studio è aperto solo in orario di lezione ed è visitabile su appuntamento.</p>
+    <a href="#contatti" class="btn-outline-dark">Più dettagli</a>
+  </div>
+  <div class="studio-gallery">
+    <div class="studio-img">
+      <img class="studio-img-photo" src="studio image panoramic.png" alt="Sala panoramica dello studio Yogis con tappetini e luci soffuse">
+    </div>
+    <div class="studio-img">
+      <img class="studio-img-photo" src="studio image 2.png" alt="Sala panoramica dello studio Yogis">
+    </div>
+    <div class="studio-img">
+      <img class="studio-img-photo" src="ingresso studio image.png" alt="Ingresso dello studio Yogis">
+    </div>
+  </div>
+</section>
+
+<!-- VALORI -->
+<section class="section-valori">
+  <div class="valori-header">
+    <p class="section-label">Perché sceglierci</p>
+    <h2 class="section-title">Una pratica <em>per ogni persona</em></h2>
+  </div>
+  <div class="valori-grid">
+    <div class="valore-item">
+      <div class="valore-num">01</div>
+      <p class="valore-title">Personalizzato</p>
+      <p class="valore-desc">Ogni lezione è pensata per adattarsi al livello e alle esigenze fisiche di chi pratica, nessuno escluso.</p>
+    </div>
+    <div class="valore-item">
+      <div class="valore-num">02</div>
+      <p class="valore-title">Continuità</p>
+      <p class="valore-desc">Pratica in studio o da casa con le videolezioni: la tua routine non si interrompe mai.</p>
+    </div>
+    <div class="valore-item">
+      <div class="valore-num">03</div>
+      <p class="valore-title">Presenza</p>
+      <p class="valore-desc">Insegnanti sempre disponibili, a un messaggio di distanza per dubbi, consigli e supporto.</p>
+    </div>
+    <div class="valore-item">
+      <div class="valore-num">04</div>
+      <p class="valore-title">Armonia</p>
+      <p class="valore-desc">Un ambiente accogliente e riservato dove mente e corpo trovano il loro equilibrio naturale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PRENOTA -->
+<section class="section-cta" id="orari">
+  <div>
+    <h2 class="cta-title">Sei pronto a iniziare?<br><em>Prenota il tuo posto.</em></h2>
+    <p class="cta-sub">Contattaci su WhatsApp indicando nome e cognome</p>
+  </div>
+  <div class="cta-side">
+    <a href="tel:+393452233737" class="cta-phone">+39 345 2233737</a>
+    <a href="https://wa.me/3452233737" class="btn-primary">Scrivici su WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contatti">
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo" role="img" aria-label="Yogis Studio Yoga"></span>
+      <p class="footer-tagline">Uno spazio di cura per il corpo e la mente, a L'Aquila.</p>
+      <div class="footer-social-row">
+        <a href="https://www.instagram.com/yogis_studio_yoga/" class="footer-social-link">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=100085167757778" class="footer-social-link">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigazione</p>
+      <ul class="footer-links">
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#corsi">Corsi</a></li>
+        <li><a href="#online">Online</a></li>
+        <li><a href="#orari">Orari &amp; Prezzi</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contatti</p>
+      <ul class="footer-links">
+        <li><a href="tel:+393452233737">+39 345 2233737</a></li>
+        <li><a href="https://wa.me/3452233737">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/yogis_studio_yoga/">Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100085167757778">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Yogis Studio Yoga · Tutti i diritti riservati</p>
+    <p>L'Aquila, Abruzzo</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('mobileClose');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  toggle.addEventListener('click', () => menu.classList.add('open'));
+  closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('open'));
+  });
+
+  const courseVideoCards = document.querySelectorAll('.corso-card-vinyasa, .corso-card-pregnancy, .corso-card-mum-baby, .corso-card-advanced');
+
+  courseVideoCards.forEach(card => {
+    const media = card.querySelector('.corso-media');
+    if (!media) return;
+
+    media.load();
+
+    const playMedia = () => {
+      media.currentTime = 0;
+      media.play().catch(() => {});
+    };
+
+    const resetMedia = () => {
+      media.pause();
+      media.currentTime = 0;
+    };
+
+    card.addEventListener('mouseenter', playMedia);
+    card.addEventListener('mouseleave', resetMedia);
+    card.addEventListener('focusin', playMedia);
+    card.addEventListener('focusout', resetMedia);
+  });
+
+  const shouldUseScrollHighlight = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (shouldUseScrollHighlight && 'IntersectionObserver' in window) {
+    let activeScrollCard = null;
+    let scrollFrame = null;
+
+    const resetCardMedia = card => {
+      const media = card.querySelector('.corso-media');
+      if (!media || card.matches(':hover')) return;
+
+      media.pause();
+      media.currentTime = 0;
+    };
+
+    const getCenteredCourseCard = () => {
+      const viewportCenter = window.innerHeight / 2;
+      let centeredCard = null;
+      let bestDistance = Infinity;
+
+      courseVideoCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const visibleTop = Math.max(rect.top, 0);
+        const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibleRatio = visibleHeight / rect.height;
+
+        if (visibleRatio < 0.48) return;
+
+        const cardCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          centeredCard = card;
+        }
+      });
+
+      return centeredCard;
+    };
+
+    const updateScrollHighlight = () => {
+      scrollFrame = null;
+      const nextActiveCard = getCenteredCourseCard();
+
+      if (nextActiveCard === activeScrollCard) return;
+
+      if (activeScrollCard) {
+        activeScrollCard.classList.remove('is-in-view');
+        resetCardMedia(activeScrollCard);
+      }
+
+      activeScrollCard = nextActiveCard;
+
+      courseVideoCards.forEach(card => {
+        if (card !== activeScrollCard) {
+          card.classList.remove('is-in-view');
+          resetCardMedia(card);
+        }
+      });
+
+      if (!activeScrollCard) return;
+
+      activeScrollCard.classList.add('is-in-view');
+      const media = activeScrollCard.querySelector('.corso-media');
+      if (!media) return;
+
+      media.currentTime = 0;
+      media.play().catch(() => {});
+    };
+
+    const scheduleScrollHighlight = () => {
+      if (scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(updateScrollHighlight);
+    };
+
+    const courseObserver = new IntersectionObserver(scheduleScrollHighlight, {
+      threshold: [0, 0.25, 0.48, 0.75, 1]
+    });
+
+    courseVideoCards.forEach(card => courseObserver.observe(card));
+    window.addEventListener('scroll', scheduleScrollHighlight, { passive: true });
+    window.addEventListener('resize', scheduleScrollHighlight);
+    scheduleScrollHighlight();
+  }
+</script>
+</body>
+</html>
