@@ -50,12 +50,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem var(--gutter);
-    background: rgba(42, 37, 32, 0.0);
+    background: var(--white);
     transition: background 0.4s, box-shadow 0.4s;
   }
 
   nav.scrolled {
-    background: var(--white);
     box-shadow: 0 1px 0 rgba(42,37,32,0.08);
     backdrop-filter: blur(10px);
   }
@@ -69,11 +68,11 @@
     display: block;
     width: clamp(58px, 7vw, 86px);
     aspect-ratio: 467.82 / 353.09;
-    background: currentColor;
-    color: var(--white);
+    background: url("Yogis Logo.svg") center / contain no-repeat;
+    color: var(--charcoal);
     text-decoration: none;
-    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
-    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: none;
+    mask: none;
     transition: color 0.4s;
   }
 
@@ -83,12 +82,12 @@
     font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(253,250,245,0.85);
+    color: var(--brown);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .nav-links a:hover, .nav-links a.active { color: var(--sand); }
+  .nav-links a:hover, .nav-links a.active { color: var(--terracotta); }
 
   .nav-cta-btn {
     font-size: 0.7rem;
@@ -96,7 +95,7 @@
     text-transform: uppercase;
     padding: 0.55rem 1.3rem;
     border: 1px solid currentColor;
-    color: rgba(253,250,245,0.75);
+    color: var(--brown);
     text-decoration: none;
     font-family: var(--font-body);
     transition: all 0.2s;
@@ -107,7 +106,7 @@
   nav.scrolled .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
 
   .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
 
   .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: var(--cream); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
   .mobile-menu.open { display: flex; }
@@ -115,54 +114,36 @@
   .mobile-menu a:hover { color: var(--terracotta); }
   .mobile-close { position: absolute; top: 1.5rem; right: var(--gutter); font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-light); background: none; border: none; cursor: pointer; }
 
-  /* ─── PAGE HERO ─── */
-  .page-hero {
-    min-height: 62dvh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: clamp(6rem, 12vw, 10rem) var(--gutter) clamp(3.5rem, 7vw, 5rem);
-    overflow: hidden;
-    background:
-      linear-gradient(90deg, rgba(42,37,32,0.76) 0%, rgba(42,37,32,0.5) 50%, rgba(42,37,32,0.22) 100%),
-      linear-gradient(0deg, rgba(42,37,32,0.62) 0%, rgba(42,37,32,0.1) 55%),
-      url("yoga hero image.png") center 40% / cover no-repeat;
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: clamp(8rem, 14vw, 10rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
+    background: var(--white);
   }
 
-  .page-hero-content { position: relative; z-index: 1; max-width: 640px; }
-
-  .page-breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 0.66rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(253,250,245,0.72);
-    margin-bottom: 1.6rem;
-    text-decoration: none;
+  .page-header-content {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
   }
 
-  .page-breadcrumb::before { content: ''; display: block; width: 22px; height: 1px; background: rgba(253,250,245,0.54); }
-
-  .page-hero-title {
+  .page-title {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 800;
     line-height: 1.02;
-    color: var(--white);
+    color: var(--charcoal);
     letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 3px 28px rgba(0,0,0,0.42);
+    margin-bottom: clamp(1.9rem, 3vw, 2.4rem);
   }
 
-  .page-hero-title em { font-style: italic; color: var(--terra-light); }
+  .page-title em { font-style: italic; color: var(--terracotta); }
 
-  .page-hero-sub {
+  .page-intro {
     font-size: clamp(0.9rem, 1.8vw, 1.05rem);
     line-height: 1.75;
-    color: rgba(253,250,245,0.78);
+    color: var(--brown);
     max-width: 46ch;
+    margin-inline: auto;
   }
 
   /* ─── SHARED ─── */
@@ -352,8 +333,9 @@
     padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
     background: var(--cream-mid);
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 16rem;
     align-items: center;
     border-top: 1px solid rgba(181,113,74,0.12);
   }
@@ -397,9 +379,8 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .page-breadcrumb { animation: fadeUp 0.9s ease 0.2s both; }
-  .page-hero-title  { animation: fadeUp 0.9s ease 0.4s both; }
-  .page-hero-sub    { animation: fadeUp 0.9s ease 0.6s both; }
+  .page-title       { animation: fadeUp 0.9s ease 0.2s both; }
+  .page-intro       { animation: fadeUp 0.9s ease 0.4s both; }
 </style>
 </head>
 <body>
@@ -429,12 +410,11 @@
   <a href="index.html#contatti" class="mobile-link">Contatti</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-content">
-    <a href="index.html" class="page-breadcrumb">Home</a>
-    <h1 class="page-hero-title">Corsi <em>in Studio</em></h1>
-    <p class="page-hero-sub">Quattro discipline, un unico spazio. Scegli il percorso che fa per te e inizia a praticare con noi.</p>
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1 class="page-title">Corsi <em>in Studio</em></h1>
+    <p class="page-intro">Quattro discipline, un unico spazio. Scegli il percorso che fa per te e inizia a praticare con noi.</p>
   </div>
 </section>
 
@@ -443,7 +423,7 @@
   <div class="corsi-header">
     <div>
       <p class="section-label">Discipline</p>
-      <h2 class="section-title">Trova il tuo <em>percorso</em></h2>
+      <h2 class="section-title">Scegli il tuo <em style="color: var(--terra-light); font-weight: 400;">percorso</em></h2>
     </div>
     <a href="orari.html" class="btn-ghost-dark">Orari e prezzi</a>
   </div>
@@ -499,7 +479,7 @@
   </div>
   <div class="corso-detail-text">
     <p class="section-label">01 · Vinyasa</p>
-    <h2 class="section-title">Yogis <em>Vinyasa</em></h2>
+    <h2 class="section-title">Yogis <em style="color: var(--terra-light); font-weight: 400;">Vinyasa</em></h2>
     <div class="divider"></div>
     <p class="section-body">Un flusso dinamico in cui il movimento è sincronizzato con il respiro. Ogni sequenza fluisce dall'una all'altra in modo armonico, riscaldando il corpo progressivamente e liberando la mente dai pensieri quotidiani.</p>
     <p class="section-body">Il Vinyasa sviluppa forza e flessibilità in modo equilibrato, adattandosi al livello di ogni partecipante grazie alle indicazioni personalizzate dell'insegnante.</p>
@@ -520,7 +500,7 @@
   </div>
   <div class="corso-detail-text">
     <p class="section-label">02 · Gravidanza</p>
-    <h2 class="section-title">Yogis <em>Pregnancy</em></h2>
+    <h2 class="section-title">Yogis <em style="color: var(--terra-light); font-weight: 400;">Pregnancy</em></h2>
     <div class="divider"></div>
     <p class="section-body">Un percorso dolce e consapevole pensato per accompagnare il corpo e la mente durante tutta la gravidanza. Le posizioni vengono adattate settimana dopo settimana, in sicurezza e armonia con i cambiamenti del corpo.</p>
     <p class="section-body">Tecniche di respirazione, posture di alleggerimento e momenti di rilassamento profondo per vivere la gravidanza con serenità e connessione con il bambino.</p>
@@ -541,7 +521,7 @@
   </div>
   <div class="corso-detail-text">
     <p class="section-label">03 · Mum &amp; Baby</p>
-    <h2 class="section-title">Yogis <em>Mum &amp; Baby</em></h2>
+    <h2 class="section-title">Yogis <em style="color: var(--terra-light); font-weight: 400;">Mum &amp; Baby</em></h2>
     <div class="divider"></div>
     <p class="section-body">Lezioni speciali per neomamme e bambini, uno spazio dove ritrovare il proprio corpo dopo il parto e vivere un momento di connessione profonda con il proprio piccolo.</p>
     <p class="section-body">Un ambiente accogliente e non giudicante dove ogni momento è rispettato. La pratica si adatta ai ritmi del bambino, rendendo ogni lezione un'esperienza autentica di benessere condiviso.</p>
@@ -562,7 +542,7 @@
   </div>
   <div class="corso-detail-text">
     <p class="section-label">04 · Avanzato</p>
-    <h2 class="section-title">Yogis <em>Advanced</em></h2>
+    <h2 class="section-title">Yogis <em style="color: var(--terra-light); font-weight: 400;">Advanced</em></h2>
     <div class="divider"></div>
     <p class="section-body">Per chi vuole approfondire la propria pratica con asana più complesse, pranayama e tecniche di meditazione avanzata. Un percorso di crescita personale che sfida i limiti del corpo e della mente.</p>
     <p class="section-body">Richiesta esperienza pregressa con lo yoga. Le classi lavorano su equilibrio, inversioni, backbend profondi e pratiche di controllo del respiro.</p>

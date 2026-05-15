@@ -50,12 +50,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem var(--gutter);
-    background: rgba(42, 37, 32, 0.0);
+    background: var(--white);
     transition: background 0.4s, box-shadow 0.4s;
   }
 
   nav.scrolled {
-    background: var(--white);
     box-shadow: 0 1px 0 rgba(42,37,32,0.08);
     backdrop-filter: blur(10px);
   }
@@ -72,11 +71,11 @@
     display: block;
     width: clamp(58px, 7vw, 86px);
     aspect-ratio: 467.82 / 353.09;
-    background: currentColor;
-    color: var(--white);
+    background: url("Yogis Logo.svg") center / contain no-repeat;
+    color: var(--charcoal);
     text-decoration: none;
-    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
-    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: none;
+    mask: none;
     transition: color 0.4s;
   }
 
@@ -90,13 +89,13 @@
     font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(253,250,245,0.85);
+    color: var(--brown);
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .nav-links a:hover,
-  .nav-links a.active { color: var(--sand); }
+  .nav-links a.active { color: var(--terracotta); }
 
   .nav-cta-btn {
     font-size: 0.7rem;
@@ -104,7 +103,7 @@
     text-transform: uppercase;
     padding: 0.55rem 1.3rem;
     border: 1px solid currentColor;
-    color: rgba(253,250,245,0.75);
+    color: var(--brown);
     text-decoration: none;
     transition: all 0.2s;
     font-family: var(--font-body);
@@ -128,7 +127,7 @@
     display: block;
     width: 24px;
     height: 1.5px;
-    background: var(--white);
+    background: var(--charcoal);
     transition: all 0.3s;
   }
 
@@ -171,67 +170,39 @@
     cursor: pointer;
   }
 
-  /* ─── PAGE HERO ─── */
-  .page-hero {
-    min-height: 68dvh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: clamp(6rem, 12vw, 10rem) var(--gutter) clamp(3.5rem, 7vw, 5rem);
-    overflow: hidden;
-    background:
-      linear-gradient(90deg, rgba(42,37,32,0.76) 0%, rgba(42,37,32,0.5) 50%, rgba(42,37,32,0.22) 100%),
-      linear-gradient(0deg, rgba(42,37,32,0.62) 0%, rgba(42,37,32,0.1) 55%),
-      url("studio image panoramic.png") center 35% / cover no-repeat;
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: clamp(8rem, 14vw, 10rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
+    background: var(--white);
   }
 
-  .page-hero-content {
-    position: relative;
-    z-index: 1;
+  .page-header-content {
     max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
   }
 
-  .page-breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 0.66rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(253,250,245,0.72);
-    margin-bottom: 1.6rem;
-    text-decoration: none;
-  }
-
-  .page-breadcrumb::before {
-    content: '';
-    display: block;
-    width: 22px;
-    height: 1px;
-    background: rgba(253,250,245,0.54);
-  }
-
-  .page-hero-title {
+  .page-title {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 800;
     line-height: 1.02;
-    color: var(--white);
+    color: var(--charcoal);
     letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 3px 28px rgba(0,0,0,0.42);
+    margin-bottom: clamp(1.9rem, 3vw, 2.4rem);
   }
 
-  .page-hero-title em {
+  .page-title em {
     font-style: italic;
-    color: var(--terra-light);
+    color: var(--terracotta);
   }
 
-  .page-hero-sub {
+  .page-intro {
     font-size: clamp(0.9rem, 1.8vw, 1.05rem);
     line-height: 1.75;
-    color: rgba(253,250,245,0.78);
+    color: var(--brown);
     max-width: 46ch;
+    margin-inline: auto;
   }
 
   /* ─── SHARED BITS ─── */
@@ -326,8 +297,9 @@
 
   /* ─── QUOTE STRIP ─── */
   .quote-strip {
-    background: var(--terracotta);
+    background: var(--terra-light);
     padding: 3rem var(--gutter);
+    margin-top: 42px;
     text-align: center;
   }
 
@@ -409,20 +381,19 @@
 
   .values-header {
     max-width: 52ch;
+    margin-inline: auto;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
   }
 
   .values-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 0px;
-    border-top: 1px solid var(--cream-mid);
   }
 
   .value-item {
     padding: 2.4rem 2rem 2.4rem 0;
-    border-bottom: 1px solid var(--cream-mid);
-    border-right: 1px solid var(--cream-mid);
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
@@ -517,8 +488,9 @@
     padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
     background: var(--cream-mid);
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 16rem;
     align-items: center;
     border-top: 1px solid rgba(181,113,74,0.12);
   }
@@ -665,9 +637,8 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .page-breadcrumb { animation: fadeUp 0.9s ease 0.2s both; }
-  .page-hero-title  { animation: fadeUp 0.9s ease 0.4s both; }
-  .page-hero-sub    { animation: fadeUp 0.9s ease 0.6s both; }
+  .page-title       { animation: fadeUp 0.9s ease 0.2s both; }
+  .page-intro       { animation: fadeUp 0.9s ease 0.4s both; }
 </style>
 </head>
 <body>
@@ -698,12 +669,11 @@
   <a href="index.html#contatti" class="mobile-link">Contatti</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-content">
-    <a href="index.html" class="page-breadcrumb">Home</a>
-    <h1 class="page-hero-title">Lo <em>Studio</em></h1>
-    <p class="page-hero-sub">Un luogo accogliente e riservato, pensato per prenderti cura del corpo e della mente. Ogni dettaglio è stato scelto per farti sentire a casa.</p>
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1 class="page-title">Lo <em>Studio</em></h1>
+    <p class="page-intro">Un luogo accogliente e riservato, pensato per prenderti cura del corpo e della mente. Ogni dettaglio è stato scelto per farti sentire a casa.</p>
   </div>
 </section>
 
@@ -716,7 +686,7 @@
 <section class="section-studio-intro">
   <div>
     <p class="section-label">Il nostro spazio</p>
-    <h2 class="section-title">Un luogo di <em>pace e serenità</em></h2>
+    <h2 class="section-title">Un luogo di <em style="color: var(--terra-light); font-weight: 400;">pace e serenità</em></h2>
     <div class="divider"></div>
     <p class="section-body">Yogis non è soltanto uno studio di yoga, ma un luogo dove trascorrere del tempo in compagnia di persone stupende e di un'insegnante capace e attenta alle esigenze di ognuna/o.</p>
     <p class="section-body">Tutte le lezioni prevedono gruppi di massimo 8–9 partecipanti, per garantire ad ognuno di essere seguito e corretto con attenzione. L'attenzione non è rivolta a seguire rigorosamente le antiche tradizioni, ma al benessere fisico di ciascuno.</p>
@@ -740,7 +710,7 @@
 <section class="section-values">
   <div class="values-header">
     <p class="section-label">Perché sceglierci</p>
-    <h2 class="section-title">Uno studio <em>estrema&shy;mente pulito, accogliente ed intimo</em></h2>
+    <h2 class="section-title">"Uno studio <em style="color: var(--terra-light); font-weight: 400;">estremamente pulito, accogliente ed intimo"</em></h2>
   </div>
   <div class="values-list">
     <div class="value-item">

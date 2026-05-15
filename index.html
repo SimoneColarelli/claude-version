@@ -310,27 +310,43 @@
 
   /* ─── INTRO STRIP ─── */
   .intro-strip {
-    background: var(--terra-pale);
-    padding: 1.6rem var(--gutter);
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    background: var(--terra-light);
+    padding: 1.6rem 0;
+    overflow: hidden;
     border-top: 1px solid rgba(181,113,74,0.15);
     border-bottom: 1px solid rgba(181,113,74,0.15);
   }
 
+  .intro-strip-track {
+    display: flex;
+    width: max-content;
+    animation: introMarquee 38s linear infinite;
+  }
+
+  .intro-strip-group {
+    display: flex;
+    flex-shrink: 0;
+  }
+
   .intro-strip p {
-    color: var(--brown);
+    color: var(--white);
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    flex: 1;
-    min-width: 180px;
+    flex: none;
+    white-space: nowrap;
   }
 
-  .intro-strip p strong { color: var(--terracotta); font-weight: 400; }
+  .intro-strip p strong { color: var(--white); font-weight: 400; }
+
+  @keyframes introMarquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro-strip-track { animation: none; }
+  }
 
   /* ─── SHARED SECTION PARTS ─── */
   .section-label {
@@ -756,8 +772,9 @@
     padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
     background: var(--cream-mid);
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 16rem;
     align-items: center;
     border-top: 1px solid rgba(181,113,74,0.12);
   }
@@ -938,8 +955,6 @@
         url("yoga hero image.png") 58% 38% / cover no-repeat;
     }
 
-    .intro-strip { flex-direction: column; gap: 0.75rem; }
-    .intro-strip p { min-width: unset; }
     .hero-cta { flex-direction: column; align-items: flex-start; gap: 1rem; }
   }
 
@@ -1003,9 +1018,24 @@
 
 <!-- INTRO STRIP -->
 <div class="intro-strip">
-  <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy</p>
-  <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced</p>
-  <p>In studio &amp; <strong>Online</strong> · Su appuntamento</p>
+  <div class="intro-strip-track">
+    <div class="intro-strip-group">
+      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
+      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
+      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
+      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
+      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+    </div>
+    <div class="intro-strip-group" aria-hidden="true">
+      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
+      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
+      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
+      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
+      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+    </div>
+  </div>
 </div>
 
 <!-- ONLINE -->
@@ -1100,7 +1130,7 @@
 <section class="section-valori">
   <div class="valori-header">
     <p class="section-label">Perché sceglierci</p>
-    <h2 class="section-title">Una pratica <em>per ogni persona</em></h2>
+    <h2 class="section-title">Una pratica <em style="color: var(--terra-light); font-weight: 400;">per ogni persona</em></h2>
   </div>
   <div class="valori-grid">
     <div class="valore-item">

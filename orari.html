@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orari &amp; Prezzi — Yogis Studio Yoga</title>
+<title>Orario &amp; Prezzi — Yogis Studio Yoga</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -33,47 +33,34 @@
   body { font-family: var(--font-body); background: var(--white); color: var(--charcoal); font-weight: 300; overflow-x: hidden; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem var(--gutter); background: rgba(42,37,32,0); transition: background 0.4s, box-shadow 0.4s; }
-  nav.scrolled { background: var(--white); box-shadow: 0 1px 0 rgba(42,37,32,0.08); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem var(--gutter); background: var(--white); transition: background 0.4s, box-shadow 0.4s; }
+  nav.scrolled { box-shadow: 0 1px 0 rgba(42,37,32,0.08); backdrop-filter: blur(10px); }
   nav.scrolled .nav-logo { background: url("Yogis Logo.svg") center / contain no-repeat; -webkit-mask: none; mask: none; }
   nav.scrolled .nav-links a { color: var(--brown); }
   nav.scrolled .nav-links a:hover { color: var(--terracotta); }
   nav.scrolled .nav-toggle span { background: var(--charcoal); }
-  .nav-logo { display: block; width: clamp(58px,7vw,86px); aspect-ratio: 467.82/353.09; background: currentColor; color: var(--white); text-decoration: none; -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat; mask: url("Yogis Logo.svg") center / contain no-repeat; transition: color 0.4s; }
+  .nav-logo { display: block; width: clamp(58px,7vw,86px); aspect-ratio: 467.82/353.09; background: url("Yogis Logo.svg") center / contain no-repeat; color: var(--charcoal); text-decoration: none; -webkit-mask: none; mask: none; transition: color 0.4s; }
   .nav-links { display: flex; gap: clamp(1.2rem,3vw,2.5rem); list-style: none; }
-  .nav-links a { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,250,245,0.85); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--sand); }
-  .nav-cta-btn { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.55rem 1.3rem; border: 1px solid currentColor; color: rgba(253,250,245,0.75); text-decoration: none; font-family: var(--font-body); transition: all 0.2s; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--terracotta); }
+  .nav-cta-btn { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.55rem 1.3rem; border: 1px solid currentColor; color: var(--brown); text-decoration: none; font-family: var(--font-body); transition: all 0.2s; }
   .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
   nav.scrolled .nav-cta-btn { color: var(--brown); border-color: var(--sand); }
   nav.scrolled .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
   .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
   .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: var(--cream); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
   .mobile-menu.open { display: flex; }
   .mobile-menu a { font-family: var(--font-display); font-size: clamp(2rem,7vw,3rem); font-style: italic; color: var(--charcoal); text-decoration: none; transition: color 0.2s; }
   .mobile-menu a:hover { color: var(--terracotta); }
   .mobile-close { position: absolute; top: 1.5rem; right: var(--gutter); font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-light); background: none; border: none; cursor: pointer; }
 
-  /* PAGE HERO */
-  .page-hero {
-    min-height: 52dvh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: clamp(6rem,12vw,10rem) var(--gutter) clamp(3.5rem,7vw,5rem);
-    overflow: hidden;
-    background:
-      linear-gradient(180deg, rgba(42,37,32,0.56) 0%, rgba(42,37,32,0.82) 100%),
-      var(--charcoal);
-  }
-
-  .page-hero-content { position: relative; z-index: 1; max-width: 640px; }
-  .page-breadcrumb { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(253,250,245,0.72); margin-bottom: 1.6rem; text-decoration: none; }
-  .page-breadcrumb::before { content: ''; display: block; width: 22px; height: 1px; background: rgba(253,250,245,0.54); }
-  .page-hero-title { font-family: var(--font-display); font-size: clamp(3rem,8vw,6rem); font-weight: 800; line-height: 1.02; color: var(--white); letter-spacing: -0.01em; margin-bottom: 1.5rem; }
-  .page-hero-title em { font-style: italic; color: var(--terra-light); }
-  .page-hero-sub { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: rgba(253,250,245,0.72); max-width: 50ch; }
+  /* PAGE HEADER */
+  .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); background: var(--white); }
+  .page-header-content { max-width: 640px; margin-inline: auto; text-align: center; }
+  .page-title { font-family: var(--font-display); font-size: clamp(3rem,8vw,6rem); font-weight: 800; line-height: 1.02; color: var(--charcoal); letter-spacing: -0.01em; margin-bottom: clamp(1.9rem,3vw,2.4rem); }
+  .page-title em { font-style: italic; color: var(--terracotta); }
+  .page-intro { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: var(--brown); max-width: 50ch; margin-inline: auto; }
 
   /* SHARED */
   .section-label { font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.9rem; }
@@ -89,7 +76,7 @@
 
   /* ORARIO SECTION */
   .section-orario {
-    padding: var(--pad) var(--gutter);
+    padding: 80px var(--gutter) var(--pad);
     background: var(--white);
   }
 
@@ -153,10 +140,10 @@
   .prezzo-card:hover { background: var(--cream); }
 
   .prezzo-card.featured {
-    background: var(--charcoal);
+    background: var(--terra-light);
   }
 
-  .prezzo-card.featured:hover { background: #3a322c; }
+  .prezzo-card.featured:hover { background: var(--terracotta); }
 
   .prezzo-tipo {
     font-size: 0.65rem;
@@ -165,7 +152,7 @@
     color: var(--terracotta);
   }
 
-  .prezzo-card.featured .prezzo-tipo { color: var(--terra-light); }
+  .prezzo-card.featured .prezzo-tipo { color: rgba(255,255,255,0.82); }
 
   .prezzo-nome {
     font-family: var(--font-display);
@@ -186,7 +173,7 @@
     margin-top: 0.5rem;
   }
 
-  .prezzo-card.featured .prezzo-importo { color: var(--terra-light); }
+  .prezzo-card.featured .prezzo-importo { color: var(--white); }
 
   .prezzo-periodo {
     font-size: 0.72rem;
@@ -194,10 +181,10 @@
     letter-spacing: 0.1em;
   }
 
-  .prezzo-card.featured .prezzo-periodo { color: rgba(253,250,245,0.5); }
+  .prezzo-card.featured .prezzo-periodo { color: rgba(255,255,255,0.72); }
 
   .prezzo-divider { height: 1px; background: var(--cream-mid); margin: 0.5rem 0; }
-  .prezzo-card.featured .prezzo-divider { background: rgba(255,255,255,0.1); }
+  .prezzo-card.featured .prezzo-divider { background: rgba(255,255,255,0.24); }
 
   .prezzo-dettagli {
     list-style: none;
@@ -221,8 +208,8 @@
     flex-shrink: 0;
   }
 
-  .prezzo-card.featured .prezzo-dettagli li { color: rgba(253,250,245,0.72); }
-  .prezzo-card.featured .prezzo-dettagli li::before { color: var(--terracotta); }
+  .prezzo-card.featured .prezzo-dettagli li { color: rgba(255,255,255,0.88); }
+  .prezzo-card.featured .prezzo-dettagli li::before { color: rgba(255,255,255,0.72); }
 
   /* REGOLAMENTO */
   .section-regolamento {
@@ -268,7 +255,7 @@
   .regola-text strong { color: var(--charcoal); font-weight: 500; }
 
   /* CTA */
-  .section-cta { padding: clamp(4rem,8vw,6.5rem) var(--gutter); background: var(--cream-mid); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-top: 1px solid rgba(181,113,74,0.12); }
+  .section-cta { padding: clamp(4rem,8vw,6.5rem) var(--gutter); background: var(--cream-mid); display: grid; grid-template-columns: auto auto; justify-content: center; gap: 16rem; align-items: center; border-top: 1px solid rgba(181,113,74,0.12); }
   .cta-title { font-family: var(--font-display); font-size: clamp(1.9rem,4.5vw,3.2rem); font-weight: 300; color: var(--charcoal); line-height: 1.18; }
   .cta-title em { font-style: italic; color: var(--terracotta); }
   .cta-sub { font-size: 0.82rem; color: var(--brown-light); margin-top: 0.75rem; letter-spacing: 0.04em; }
@@ -303,9 +290,8 @@
   }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-  .page-breadcrumb { animation: fadeUp 0.9s ease 0.2s both; }
-  .page-hero-title  { animation: fadeUp 0.9s ease 0.4s both; }
-  .page-hero-sub    { animation: fadeUp 0.9s ease 0.6s both; }
+  .page-title       { animation: fadeUp 0.9s ease 0.2s both; }
+  .page-intro       { animation: fadeUp 0.9s ease 0.4s both; }
 </style>
 </head>
 <body>
@@ -317,7 +303,7 @@
     <li><a href="studio.html">Studio</a></li>
     <li><a href="corsi.html">Corsi</a></li>
     <li><a href="online.html">Online</a></li>
-    <li><a href="orari.html" class="active">Orari &amp; Prezzi</a></li>
+    <li><a href="orari.html" class="active">Orario &amp; Prezzi</a></li>
     <li><a href="index.html#contatti">Contatti</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
@@ -333,12 +319,11 @@
   <a href="index.html#contatti" class="mobile-link">Contatti</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-content">
-    <a href="index.html" class="page-breadcrumb">Home</a>
-    <h1 class="page-hero-title">Orari<br><em>&amp; Prezzi</em></h1>
-    <p class="page-hero-sub">Scegli il piano più adatto a te. In studio, online o entrambi: la tua pratica non si ferma mai.</p>
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-content">
+    <h1 class="page-title">Orario<br><em>&amp; Prezzi</em></h1>
+    <p class="page-intro">Scegli il piano più adatto a te. In studio, online o entrambi: la tua pratica non si ferma mai.</p>
   </div>
 </section>
 
@@ -347,7 +332,7 @@
   <div class="orario-header">
     <div>
       <p class="section-label">Calendario settimanale</p>
-      <h2 class="section-title">Orario <em>delle lezioni</em></h2>
+      <h2 class="section-title">Orario <em style="color: var(--terra-light); font-weight: 400;">delle lezioni</em></h2>
     </div>
     <a href="https://wa.me/3452233737" class="btn-ghost-dark">Prenota il posto</a>
   </div>
@@ -363,7 +348,7 @@
 <section class="section-prezzi" id="prezzi">
   <div class="prezzi-header">
     <p class="section-label">Abbonamenti</p>
-    <h2 class="section-title">Piani <em>flessibili</em></h2>
+    <h2 class="section-title">Piani <em style="color: var(--terra-light); font-weight: 400;">flessibili</em></h2>
     <div class="divider" style="background:var(--sand)"></div>
   </div>
 
@@ -438,7 +423,7 @@
 <section class="section-regolamento" id="regolamento">
   <div>
     <p class="section-label">Informazioni utili</p>
-    <h2 class="section-title">Nota <em>bene</em></h2>
+    <h2 class="section-title">Nota <em style="color: var(--terra-light); font-weight: 400;">bene</em></h2>
     <div class="divider"></div>
     <p style="font-size:0.95rem;line-height:1.88;color:var(--brown);max-width:42ch">Tutto quello che devi sapere prima di iniziare. Siamo qui per rendere la tua esperienza il più semplice e piacevole possibile.</p>
     <br>
