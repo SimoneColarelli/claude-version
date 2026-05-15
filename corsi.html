@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corsi — Yogis Studio Yoga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:        #FFFFFF;
+    --cream:        #F7F2EA;
+    --cream-mid:    #EDE5D5;
+    --sand:         #C8B89A;
+    --sand-dark:    #A8926E;
+    --terracotta:   #B5714A;
+    --terra-light:  #C98B67;
+    --terra-pale:   #F0E0D4;
+    --charcoal:     #2A2520;
+    --black:        #000000;
+    --brown:        #6B5344;
+    --brown-light:  #9C7E6A;
+    --olive:        #7A8456;
+    --olive-pale:   #EAE9DF;
+    --font-display: 'Poppins', sans-serif;
+    --font-body:    'Montserrat', sans-serif;
+    --pad:          clamp(4rem, 8vw, 7rem);
+    --gutter:       clamp(1.5rem, 6vw, 5rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--charcoal);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: rgba(42, 37, 32, 0.0);
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+
+  nav.scrolled {
+    background: var(--white);
+    box-shadow: 0 1px 0 rgba(42,37,32,0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  nav.scrolled .nav-logo { background: url("Yogis Logo.svg") center / contain no-repeat; -webkit-mask: none; mask: none; }
+  nav.scrolled .nav-links a { color: var(--brown); }
+  nav.scrolled .nav-links a:hover { color: var(--terracotta); }
+  nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+  .nav-logo {
+    display: block;
+    width: clamp(58px, 7vw, 86px);
+    aspect-ratio: 467.82 / 353.09;
+    background: currentColor;
+    color: var(--white);
+    text-decoration: none;
+    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
+    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    transition: color 0.4s;
+  }
+
+  .nav-links { display: flex; gap: clamp(1.2rem, 3vw, 2.5rem); list-style: none; }
+
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.85);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--sand); }
+
+  .nav-cta-btn {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.3rem;
+    border: 1px solid currentColor;
+    color: rgba(253,250,245,0.75);
+    text-decoration: none;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+  }
+
+  .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+  nav.scrolled .nav-cta-btn { color: var(--brown); border-color: var(--sand); }
+  nav.scrolled .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: var(--cream); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: var(--font-display); font-size: clamp(2rem, 7vw, 3rem); font-style: italic; color: var(--charcoal); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--terracotta); }
+  .mobile-close { position: absolute; top: 1.5rem; right: var(--gutter); font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-light); background: none; border: none; cursor: pointer; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero {
+    min-height: 62dvh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(6rem, 12vw, 10rem) var(--gutter) clamp(3.5rem, 7vw, 5rem);
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(42,37,32,0.76) 0%, rgba(42,37,32,0.5) 50%, rgba(42,37,32,0.22) 100%),
+      linear-gradient(0deg, rgba(42,37,32,0.62) 0%, rgba(42,37,32,0.1) 55%),
+      url("yoga hero image.png") center 40% / cover no-repeat;
+  }
+
+  .page-hero-content { position: relative; z-index: 1; max-width: 640px; }
+
+  .page-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.72);
+    margin-bottom: 1.6rem;
+    text-decoration: none;
+  }
+
+  .page-breadcrumb::before { content: ''; display: block; width: 22px; height: 1px; background: rgba(253,250,245,0.54); }
+
+  .page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.02;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 3px 28px rgba(0,0,0,0.42);
+  }
+
+  .page-hero-title em { font-style: italic; color: var(--terra-light); }
+
+  .page-hero-sub {
+    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+    line-height: 1.75;
+    color: rgba(253,250,245,0.78);
+    max-width: 46ch;
+  }
+
+  /* ─── SHARED ─── */
+  .section-label { font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.9rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; line-height: 1.18; color: var(--charcoal); margin-bottom: 1.2rem; }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+  .divider { width: 40px; height: 1px; background: var(--sand); margin: 1.4rem 0; }
+
+  .btn-primary { display: inline-block; padding: 0.9rem 2.4rem; background: var(--terracotta); color: var(--white); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-body); transition: background 0.3s, transform 0.2s; }
+  .btn-primary:hover { background: var(--terra-light); transform: translateY(-2px); }
+
+  .btn-ghost-dark { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--brown); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: var(--font-body); transition: color 0.2s; }
+  .btn-ghost-dark::after { content: ''; display: block; width: 28px; height: 1px; background: currentColor; transition: width 0.3s; }
+  .btn-ghost-dark:hover { color: var(--terracotta); }
+  .btn-ghost-dark:hover::after { width: 44px; }
+
+  /* ─── CORSI GRID ─── */
+  .section-corsi {
+    padding: var(--pad) var(--gutter);
+    background: var(--cream);
+  }
+
+  .corsi-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .corsi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.5px;
+    background: var(--cream-mid);
+  }
+
+  .corso-card {
+    background: var(--cream);
+    padding: clamp(2rem, 4vw, 2.8rem) clamp(1.5rem, 3vw, 2rem);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(22rem, 38vw, 28rem);
+  }
+
+  .corso-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+    z-index: 3;
+  }
+
+  .corso-card:hover { background: var(--white); }
+  .corso-card:hover::after { transform: scaleX(1); }
+
+  .corso-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(249,243,235,0.94) 0%, rgba(249,243,235,0.78) 31%, rgba(249,243,235,0.14) 58%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .corso-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    filter: saturate(0.78) brightness(0.88) contrast(0.94);
+    transition: filter 0.45s ease;
+    z-index: 0;
+  }
+
+  .corso-card:hover .corso-media { filter: saturate(1.08) brightness(1.05) contrast(1.02); }
+
+  .corso-number, .corso-name, .corso-desc, .corso-arrow, .corso-detail { position: relative; z-index: 2; transition: color 0.3s ease; }
+
+  .corso-number { font-size: 0.63rem; letter-spacing: 0.3em; color: var(--terracotta); font-weight: 700; text-shadow: 0 1px 10px rgba(255,255,255,0.9); }
+  .corso-name { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 400; color: var(--charcoal); line-height: 1.15; text-shadow: 0 1px 12px rgba(255,255,255,0.9); max-width: 18rem; }
+  .corso-desc { font-size: 0.85rem; line-height: 1.75; color: var(--charcoal); font-weight: 500; text-shadow: 0 1px 12px rgba(255,255,255,0.9); max-width: 18rem; flex: 1; }
+
+  .corso-detail {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(168,146,110,0.4);
+    align-self: flex-start;
+    background: rgba(247,242,234,0.7);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .corso-card:hover .corso-detail { background: var(--terracotta); color: var(--white); border-color: var(--terracotta); }
+
+  .corso-arrow { font-size: 1.1rem; color: var(--terracotta); align-self: flex-start; opacity: 0; transition: opacity 0.3s, transform 0.3s; }
+  .corso-card:hover .corso-arrow { opacity: 1; transform: translate(4px, -4px); }
+  .corso-card:hover .corso-name { color: var(--terracotta); }
+
+  /* ─── CORSO DETAIL (singolo corso orizzontale) ─── */
+  .section-corso-detail {
+    padding: var(--pad) var(--gutter);
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: center;
+  }
+
+  .section-corso-detail:nth-child(even) {
+    background: var(--cream);
+    direction: rtl;
+  }
+
+  .section-corso-detail:nth-child(even) > * { direction: ltr; }
+
+  .corso-detail-visual {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--cream-mid);
+  }
+
+  .corso-detail-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 0.6s ease; }
+  .corso-detail-visual:hover img { transform: scale(1.04); }
+
+  .corso-detail-visual-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-style: italic;
+  }
+
+  .cdvp-1 { background: linear-gradient(135deg, var(--cream-mid) 0%, var(--sand) 100%); color: rgba(42,37,32,0.08); }
+  .cdvp-2 { background: linear-gradient(135deg, var(--olive-pale) 0%, #c8cba8 100%); color: rgba(42,37,32,0.08); }
+  .cdvp-3 { background: linear-gradient(135deg, var(--terra-pale) 0%, #ddb8a0 100%); color: rgba(42,37,32,0.08); }
+  .cdvp-4 { background: linear-gradient(135deg, var(--cream) 0%, var(--cream-mid) 100%); color: rgba(42,37,32,0.08); }
+
+  .corso-detail-text {}
+
+  .corso-detail-text .section-body {
+    font-size: 0.95rem;
+    line-height: 1.88;
+    color: var(--brown);
+    margin-bottom: 1.4rem;
+    max-width: 46ch;
+  }
+
+  .corso-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .corso-tag {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    padding: 0.38rem 0.85rem;
+    border: 1px solid var(--cream-mid);
+    background: var(--cream);
+  }
+
+  /* ─── CTA ─── */
+  .section-cta {
+    padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
+    background: var(--cream-mid);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    border-top: 1px solid rgba(181,113,74,0.12);
+  }
+
+  .cta-title { font-family: var(--font-display); font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 300; color: var(--charcoal); line-height: 1.18; }
+  .cta-title em { font-style: italic; color: var(--terracotta); }
+  .cta-sub { font-size: 0.82rem; color: var(--brown-light); margin-top: 0.75rem; letter-spacing: 0.04em; }
+  .cta-side { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
+  .cta-phone { font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--charcoal); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+  .cta-phone:hover { color: var(--terracotta); }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--black); padding: clamp(3rem, 6vw, 5rem) var(--gutter) 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .footer-logo { display: block; width: clamp(76px, 9vw, 112px); aspect-ratio: 467.82 / 353.09; background: currentColor; color: var(--white); -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat; mask: url("Yogis Logo.svg") center / contain no-repeat; margin-bottom: 1rem; }
+  .footer-tagline { font-size: 0.85rem; color: var(--white); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
+  .footer-social-row { display: flex; gap: 1rem; }
+  .footer-social-link { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--white); padding: 0.45rem 1rem; font-family: var(--font-body); transition: all 0.2s; }
+  .footer-social-link:hover { color: var(--sand); border-color: var(--sand-dark); }
+  .footer-col-title { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 1.2rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.9rem; color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.85); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta-btn { display: none; }
+    .nav-toggle { display: flex; }
+    .section-corso-detail { grid-template-columns: 1fr; direction: ltr; }
+    .section-corso-detail:nth-child(even) { direction: ltr; }
+    .section-cta { grid-template-columns: 1fr; text-align: left; }
+    .cta-side { align-items: flex-start; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .corsi-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-breadcrumb { animation: fadeUp 0.9s ease 0.2s both; }
+  .page-hero-title  { animation: fadeUp 0.9s ease 0.4s both; }
+  .page-hero-sub    { animation: fadeUp 0.9s ease 0.6s both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
+  <ul class="nav-links">
+    <li><a href="studio.html">Studio</a></li>
+    <li><a href="corsi.html" class="active">Corsi</a></li>
+    <li><a href="online.html">Online</a></li>
+    <li><a href="orari.html">Orari &amp; Prezzi</a></li>
+    <li><a href="index.html#contatti">Contatti</a></li>
+  </ul>
+  <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕ Chiudi</button>
+  <a href="studio.html" class="mobile-link">Studio</a>
+  <a href="corsi.html" class="mobile-link">Corsi</a>
+  <a href="online.html" class="mobile-link">Online</a>
+  <a href="orari.html" class="mobile-link">Orari &amp; Prezzi</a>
+  <a href="index.html#contatti" class="mobile-link">Contatti</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="page-breadcrumb">Home</a>
+    <h1 class="page-hero-title">Corsi <em>in Studio</em></h1>
+    <p class="page-hero-sub">Quattro discipline, un unico spazio. Scegli il percorso che fa per te e inizia a praticare con noi.</p>
+  </div>
+</section>
+
+<!-- CORSI OVERVIEW GRID -->
+<section class="section-corsi">
+  <div class="corsi-header">
+    <div>
+      <p class="section-label">Discipline</p>
+      <h2 class="section-title">Trova il tuo <em>percorso</em></h2>
+    </div>
+    <a href="orari.html" class="btn-ghost-dark">Orari e prezzi</a>
+  </div>
+
+  <div class="corsi-grid">
+    <a class="corso-card" href="#vinyasa">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="cane a testa in giù animation.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">01</span>
+      <h3 class="corso-name">Yogis Vinyasa</h3>
+      <p class="corso-desc">Flusso dinamico sincronizzato con il respiro. Forza, flessibilità e liberazione della mente.</p>
+      <span class="corso-detail">Tutti i livelli</span>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card" href="#pregnancy">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="donna incinta video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">02</span>
+      <h3 class="corso-name">Yogis Pregnancy</h3>
+      <p class="corso-desc">Un percorso dolce e consapevole per accompagnare corpo e mente durante la gravidanza.</p>
+      <span class="corso-detail">Gestanti</span>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card" href="#mum-baby">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="mum&baby video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">03</span>
+      <h3 class="corso-name">Yogis Mum &amp; Baby</h3>
+      <p class="corso-desc">Lezioni per neomamme e bambini. Connessione, benessere e momenti speciali da condividere.</p>
+      <span class="corso-detail">Neomamme</span>
+      <span class="corso-arrow">↗</span>
+    </a>
+    <a class="corso-card" href="#advanced">
+      <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
+        <source src="advanced video.mp4" type="video/mp4">
+      </video>
+      <span class="corso-number">04</span>
+      <h3 class="corso-name">Yogis Advanced</h3>
+      <p class="corso-desc">Asana complesse, pranayama e meditazione avanzata per chi vuole approfondire la propria pratica.</p>
+      <span class="corso-detail">Praticanti avanzati</span>
+      <span class="corso-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- VINYASA DETAIL -->
+<section class="section-corso-detail" id="vinyasa">
+  <div class="corso-detail-visual">
+    <div class="corso-detail-visual-placeholder cdvp-1">🧘</div>
+  </div>
+  <div class="corso-detail-text">
+    <p class="section-label">01 · Vinyasa</p>
+    <h2 class="section-title">Yogis <em>Vinyasa</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Un flusso dinamico in cui il movimento è sincronizzato con il respiro. Ogni sequenza fluisce dall'una all'altra in modo armonico, riscaldando il corpo progressivamente e liberando la mente dai pensieri quotidiani.</p>
+    <p class="section-body">Il Vinyasa sviluppa forza e flessibilità in modo equilibrato, adattandosi al livello di ogni partecipante grazie alle indicazioni personalizzate dell'insegnante.</p>
+    <div class="corso-tags">
+      <span class="corso-tag">Tutti i livelli</span>
+      <span class="corso-tag">Forza</span>
+      <span class="corso-tag">Flessibilità</span>
+      <span class="corso-tag">Respiro</span>
+    </div>
+    <a href="https://wa.me/3452233737" class="btn-primary">Prenota una lezione</a>
+  </div>
+</section>
+
+<!-- PREGNANCY DETAIL -->
+<section class="section-corso-detail" id="pregnancy">
+  <div class="corso-detail-visual">
+    <div class="corso-detail-visual-placeholder cdvp-2">🌿</div>
+  </div>
+  <div class="corso-detail-text">
+    <p class="section-label">02 · Gravidanza</p>
+    <h2 class="section-title">Yogis <em>Pregnancy</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Un percorso dolce e consapevole pensato per accompagnare il corpo e la mente durante tutta la gravidanza. Le posizioni vengono adattate settimana dopo settimana, in sicurezza e armonia con i cambiamenti del corpo.</p>
+    <p class="section-body">Tecniche di respirazione, posture di alleggerimento e momenti di rilassamento profondo per vivere la gravidanza con serenità e connessione con il bambino.</p>
+    <div class="corso-tags">
+      <span class="corso-tag">Gestanti</span>
+      <span class="corso-tag">Dolce</span>
+      <span class="corso-tag">Sicuro</span>
+      <span class="corso-tag">Rilassamento</span>
+    </div>
+    <a href="https://wa.me/3452233737" class="btn-primary">Prenota una lezione</a>
+  </div>
+</section>
+
+<!-- MUM & BABY DETAIL -->
+<section class="section-corso-detail" id="mum-baby">
+  <div class="corso-detail-visual">
+    <div class="corso-detail-visual-placeholder cdvp-3">💛</div>
+  </div>
+  <div class="corso-detail-text">
+    <p class="section-label">03 · Mum &amp; Baby</p>
+    <h2 class="section-title">Yogis <em>Mum &amp; Baby</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Lezioni speciali per neomamme e bambini, uno spazio dove ritrovare il proprio corpo dopo il parto e vivere un momento di connessione profonda con il proprio piccolo.</p>
+    <p class="section-body">Un ambiente accogliente e non giudicante dove ogni momento è rispettato. La pratica si adatta ai ritmi del bambino, rendendo ogni lezione un'esperienza autentica di benessere condiviso.</p>
+    <div class="corso-tags">
+      <span class="corso-tag">Neomamme</span>
+      <span class="corso-tag">Con bambini</span>
+      <span class="corso-tag">Post-parto</span>
+      <span class="corso-tag">Benessere</span>
+    </div>
+    <a href="https://wa.me/3452233737" class="btn-primary">Prenota una lezione</a>
+  </div>
+</section>
+
+<!-- ADVANCED DETAIL -->
+<section class="section-corso-detail" id="advanced">
+  <div class="corso-detail-visual">
+    <div class="corso-detail-visual-placeholder cdvp-4">🔥</div>
+  </div>
+  <div class="corso-detail-text">
+    <p class="section-label">04 · Avanzato</p>
+    <h2 class="section-title">Yogis <em>Advanced</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Per chi vuole approfondire la propria pratica con asana più complesse, pranayama e tecniche di meditazione avanzata. Un percorso di crescita personale che sfida i limiti del corpo e della mente.</p>
+    <p class="section-body">Richiesta esperienza pregressa con lo yoga. Le classi lavorano su equilibrio, inversioni, backbend profondi e pratiche di controllo del respiro.</p>
+    <div class="corso-tags">
+      <span class="corso-tag">Avanzato</span>
+      <span class="corso-tag">Inversioni</span>
+      <span class="corso-tag">Pranayama</span>
+      <span class="corso-tag">Meditazione</span>
+    </div>
+    <a href="https://wa.me/3452233737" class="btn-primary">Prenota una lezione</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta">
+  <div>
+    <h2 class="cta-title">Sei pronto a iniziare?<br><em>Prenota il tuo posto.</em></h2>
+    <p class="cta-sub">Contattaci su WhatsApp indicando nome e cognome</p>
+  </div>
+  <div class="cta-side">
+    <a href="tel:+393452233737" class="cta-phone">+39 345 2233737</a>
+    <a href="https://wa.me/3452233737" class="btn-primary">Scrivici su WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo" role="img" aria-label="Yogis Studio Yoga"></span>
+      <p class="footer-tagline">Uno spazio di cura per il corpo e la mente, a L'Aquila.</p>
+      <div class="footer-social-row">
+        <a href="https://www.instagram.com/yogis_studio_yoga/" class="footer-social-link">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=100085167757778" class="footer-social-link">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigazione</p>
+      <ul class="footer-links">
+        <li><a href="studio.html">Studio</a></li>
+        <li><a href="corsi.html">Corsi</a></li>
+        <li><a href="online.html">Online</a></li>
+        <li><a href="orari.html">Orari &amp; Prezzi</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contatti</p>
+      <ul class="footer-links">
+        <li><a href="tel:+393452233737">+39 345 2233737</a></li>
+        <li><a href="https://wa.me/3452233737">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/yogis_studio_yoga/">Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100085167757778">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Yogis Studio Yoga · Tutti i diritti riservati</p>
+    <p>L'Aquila, Abruzzo</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('mobileClose');
+
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+  toggle.addEventListener('click', () => menu.classList.add('open'));
+  closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => menu.classList.remove('open')));
+
+  const courseCards = document.querySelectorAll('.corso-card');
+  courseCards.forEach(card => {
+    const media = card.querySelector('.corso-media');
+    if (!media) return;
+    media.load();
+    card.addEventListener('mouseenter', () => { media.currentTime = 0; media.play().catch(() => {}); });
+    card.addEventListener('mouseleave', () => { media.pause(); media.currentTime = 0; });
+  });
+
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches && 'IntersectionObserver' in window) {
+    let active = null;
+    const update = () => {
+      const center = window.innerHeight / 2;
+      let best = null, bestDist = Infinity;
+      courseCards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        const vis = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0)) / r.height;
+        if (vis < 0.48) return;
+        const dist = Math.abs(r.top + r.height / 2 - center);
+        if (dist < bestDist) { bestDist = dist; best = card; }
+      });
+      if (best === active) return;
+      if (active) { const m = active.querySelector('.corso-media'); if (m) { m.pause(); m.currentTime = 0; } }
+      active = best;
+      if (!active) return;
+      const m = active.querySelector('.corso-media');
+      if (m) { m.currentTime = 0; m.play().catch(() => {}); }
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>
+</body>
+</html>
