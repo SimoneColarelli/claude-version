@@ -308,6 +308,24 @@
   .btn-ghost-dark:hover { color: var(--white); }
   .btn-ghost-dark:hover::after { width: 44px; }
 
+  .btn-orari {
+    color: var(--terracotta);
+  }
+
+  .btn-orari::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--terracotta);
+    transition: width 0.3s;
+  }
+
+  .btn-orari:hover { 
+    color: var(--terra-light); 
+  }
+
+
   /* ─── INTRO STRIP ─── */
   .intro-strip {
     background: var(--terra-light);
@@ -1065,7 +1083,7 @@
       <p class="section-label">Discipline</p>
       <h2 class="section-title">Corsi in studio</h2>
     </div>
-    <a href="orari.html" class="btn-ghost-dark">Orari e prezzi</a>
+    <a href="orari.html" class="btn-ghost-dark btn-orari">Orari e prezzi</a>
   </div>
 
   <div class="corsi-grid">
