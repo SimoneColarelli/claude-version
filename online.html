@@ -56,13 +56,20 @@
   .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
   nav.scrolled .nav-cta-btn { color: var(--brown); border-color: var(--sand); }
   nav.scrolled .nav-cta-btn:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
-  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transition: all 0.3s; }
-  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: var(--cream); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-family: var(--font-display); font-size: clamp(2rem,7vw,3rem); font-style: italic; color: var(--charcoal); text-decoration: none; transition: color 0.2s; }
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; position: relative; z-index: 101; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transform-origin: center; transition: background 0.3s, opacity 0.3s, transform 0.3s; }
+  .nav-toggle.is-open span { background: var(--charcoal); }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { position: fixed; inset: 0; z-index: 99; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 1.35rem; padding-block: clamp(5.5rem,18vw,7rem); background: rgba(42,37,32,0.18); backdrop-filter: blur(10px); opacity: 0; pointer-events: none; transition: opacity 0.28s ease; }
+  .mobile-menu::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 50vw; background: var(--cream); box-shadow: -24px 0 60px rgba(42,37,32,0.18); transform: translateX(100%); transition: transform 0.34s ease; }
+  .mobile-menu.open { opacity: 1; pointer-events: auto; }
+  .mobile-menu.open::before { transform: translateX(0); }
+  .mobile-menu a { position: relative; z-index: 1; width: 50vw; padding: 0 clamp(1rem,3.5vw,2.25rem); font-family: var(--font-display); font-size: clamp(1.15rem,3.4vw,2.25rem); font-style: italic; color: var(--charcoal); text-decoration: none; text-align: left; opacity: 0; transform: translateX(1.25rem); transition: color 0.2s, opacity 0.28s ease, transform 0.34s ease; }
+  .mobile-menu.open a { opacity: 1; transform: translateX(0); }
   .mobile-menu a:hover { color: var(--terracotta); }
-  .mobile-close { position: absolute; top: 1.5rem; right: var(--gutter); font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-light); background: none; border: none; cursor: pointer; }
+  .mobile-close { display: none; }
 
   /* PAGE HEADER */
   .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); background: var(--white); }
@@ -70,6 +77,7 @@
   .page-title { font-family: var(--font-display); font-size: clamp(3rem,8vw,6rem); font-weight: 800; line-height: 1.02; color: var(--charcoal); letter-spacing: -0.01em; margin-bottom: clamp(1.9rem,3vw,2.4rem); }
   .page-title em { font-style: italic; color: var(--terracotta); }
   .page-intro { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: var(--brown); max-width: 46ch; margin-inline: auto; }
+  .page-cta-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: clamp(1.8rem,3vw,2.4rem); }
 
   /* SHARED */
   .section-label { font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.9rem; }
@@ -314,7 +322,7 @@
     <li><a href="index.html#contatti">Contatti</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -329,20 +337,24 @@
 <!-- PAGE HEADER -->
 <section class="page-header">
   <div class="page-header-content">
-    <h1 class="page-title">Pratica <em style="font-weight: 800;">Online</em></h1>
-    <p class="page-intro">La tua pratica, i tuoi tempi, il tuo spazio. Videolezioni guidate come in studio, disponibili quando vuoi.</p>
+    <h1 class="page-title">Yogis <em style="font-weight: 800;">Online</em></h1>
+    <p class="page-intro">L'area clienti riservata alle allieve dello studio: videolezioni e percorsi per continuare a praticare anche quando non sei in sala.</p>
+    <div class="page-cta-row">
+      <a href="https://online.studioyogis.it" class="btn-primary" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
+      <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20vorrei%20informazioni%20sull%27accesso%20a%20Yogis%20Online." class="btn-outline-dark" target="_blank" rel="noopener noreferrer">Richiedi accesso</a>
+    </div>
   </div>
 </section>
 
 <!-- INTRO -->
 <section class="section-online-intro">
   <div>
-    <p class="section-label">Videolezioni</p>
-    <h2 class="section-title">La tua pratica.<br><em>Dove e quando vuoi.</em></h2>
+    <p class="section-label">Area clienti</p>
+    <h2 class="section-title">La continuità dello studio,<br><em>anche da casa.</em></h2>
     <div class="divider"></div>
-    <p class="section-body">Hai una giornata piena, mille cose da fare, ma senti il bisogno di prenderti un momento per te? Con la piattaforma di yoga online puoi farlo quando vuoi, dove vuoi, anche tutti i giorni.</p>
-    <p class="section-body">Che tu abbia 15 minuti al mattino o un'ora la sera, troverai la lezione giusta per il tuo corpo, la tua mente e il tempo che hai a disposizione.</p>
-    <a href="orari.html" class="btn-outline-dark">Consulta i prezzi</a>
+    <p class="section-body">Yogis Online nasce per accompagnare chi pratica già con noi in studio: uno spazio riservato dove ritrovare sequenze, lezioni guidate e contenuti utili tra un incontro in presenza e l'altro.</p>
+    <p class="section-body">Non sostituisce la pratica in sala: la completa. Ti aiuta a mantenere continuità, recuperare quando salti una lezione e prenderti cura del corpo nei giorni in cui resti a casa.</p>
+    <a href="https://online.studioyogis.it" class="btn-outline-dark" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a>
   </div>
   <div class="online-visual">
     <img src="videolezioni image.png" alt="Videolezioni yoga online Yogis">
@@ -352,39 +364,39 @@
 <!-- FEATURES -->
 <section class="section-features">
   <div class="features-header">
-    <p class="section-label">Perché sceglierlo</p>
-    <h2 class="section-title">Comodità senza <em>rinunciare alla qualità</em></h2>
+    <p class="section-label">A cosa serve</p>
+    <h2 class="section-title">Un supporto online <em>per la pratica in studio</em></h2>
   </div>
   <div class="features-grid">
     <div class="feature-item">
       <div class="feature-num">01</div>
-      <p class="feature-label">Come in studio</p>
-      <p class="feature-desc">Non è solo yoga registrato. Ogni videolezione è guidata con spiegazioni chiare e dettagliate, proprio come in presenza.</p>
+      <p class="feature-label">Riservato alle allieve</p>
+      <p class="feature-desc">L'accesso è pensato per chi frequenta o ha un percorso con Yogis Studio, così la pratica online resta collegata al lavoro fatto insieme.</p>
     </div>
     <div class="feature-item">
       <div class="feature-num">02</div>
-      <p class="feature-label">Tutti i livelli</p>
-      <p class="feature-desc">Lezioni divise per livelli, adatte sia a chi si avvicina per la prima volta che a praticanti più avanzati.</p>
+      <p class="feature-label">Continuità</p>
+      <p class="feature-desc">Puoi mantenere il ritmo anche quando non riesci a venire in studio, scegliendo lezioni coerenti con il tuo livello e le tue esigenze.</p>
     </div>
     <div class="feature-item">
       <div class="feature-num">03</div>
-      <p class="feature-label">Sempre aggiornato</p>
-      <p class="feature-desc">La piattaforma viene integrata ogni mese con nuove videolezioni. C'è sempre qualcosa di nuovo da scoprire.</p>
+      <p class="feature-label">Recupero lezioni</p>
+      <p class="feature-desc">Quando salti una lezione in presenza, puoi recuperare movimento e respirazione con contenuti guidati e facili da seguire.</p>
     </div>
     <div class="feature-item">
       <div class="feature-num">04</div>
-      <p class="feature-label">Supporto reale</p>
-      <p class="feature-desc">Dubbi su una lezione? Non sai da dove iniziare? Rispondo comodamente su WhatsApp per aiutarti in ogni momento.</p>
+      <p class="feature-label">Guida reale</p>
+      <p class="feature-desc">Se hai dubbi su cosa praticare o su come adattare una lezione, puoi scriverci: il supporto resta quello dello studio.</p>
     </div>
     <div class="feature-item">
       <div class="feature-num">05</div>
       <p class="feature-label">Integrazione perfetta</p>
-      <p class="feature-desc">Il complemento ideale alle lezioni in studio. Mantieni continuità e recupera le lezioni perse in piena autonomia.</p>
+      <p class="feature-desc">I contenuti online sono pensati per dialogare con le lezioni in sala, non per creare un percorso separato o impersonale.</p>
     </div>
     <div class="feature-item">
       <div class="feature-num">06</div>
-      <p class="feature-label">Flessibilità totale</p>
-      <p class="feature-desc">Da casa, in viaggio, in pausa pranzo. La tua routine non si interrompe mai, ovunque tu sia.</p>
+      <p class="feature-label">Più autonomia</p>
+      <p class="feature-desc">Puoi praticare nei tuoi tempi, con sequenze brevi o complete, senza perdere il riferimento del metodo Yogis.</p>
     </div>
   </div>
 </section>
@@ -394,34 +406,34 @@
   <div class="contenuti-header">
     <div>
       <p class="section-label">Cosa trovi</p>
-      <h2 class="section-title">Contenuti <em>pensati per te</em></h2>
+      <h2 class="section-title">Contenuti <em>per accompagnarti</em></h2>
     </div>
-    <a href="orari.html" class="btn-ghost-dark">Prezzi e abbonamenti</a>
+    <a href="https://online.studioyogis.it" class="btn-ghost-dark" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
   </div>
 
   <div class="contenuti-list">
     <div class="contenuto-item">
       <div class="contenuto-icon">🌊</div>
       <p class="contenuto-title">Vinyasa &amp; Power Yoga</p>
-      <p class="contenuto-desc">Le lezioni più numerose, in linea con lo stile del nostro studio. Flusso, forza, energia.</p>
+      <p class="contenuto-desc">Lezioni in linea con lo stile praticato in sala: flusso, forza ed energia per mantenere continuità tra gli incontri.</p>
       <p class="contenuto-note">Livelli variabili</p>
     </div>
     <div class="contenuto-item">
       <div class="contenuto-icon">🌿</div>
       <p class="contenuto-title">Hatha Yoga Soft</p>
-      <p class="contenuto-desc">Per i giorni in cui hai bisogno di coccolarti con una lezione più lenta, profonda e rilassante.</p>
+      <p class="contenuto-desc">Pratiche più lente e dolci, utili nei giorni in cui vuoi alleggerire il corpo e restare in ascolto.</p>
       <p class="contenuto-note">Tutti i livelli</p>
     </div>
     <div class="contenuto-item">
       <div class="contenuto-icon">💪</div>
       <p class="contenuto-title">Flessibilità &amp; Tonificazione</p>
-      <p class="contenuto-desc">Per lavorare in modo più approfondito dove ne hai più bisogno. Mirato e preciso.</p>
+      <p class="contenuto-desc">Sequenze mirate per approfondire il lavoro fatto in studio, con attenzione a mobilità, forza e controllo.</p>
       <p class="contenuto-note">Livelli variabili</p>
     </div>
     <div class="contenuto-item">
       <div class="contenuto-icon">☀️</div>
       <p class="contenuto-title">Pratiche brevi</p>
-      <p class="contenuto-desc">Per la mattina, la sera, durante il lavoro. Per staccare la mente e ritrovare il tuo centro.</p>
+      <p class="contenuto-desc">Contenuti rapidi per inserire la pratica nella giornata, anche quando hai poco tempo ma vuoi restare costante.</p>
       <p class="contenuto-note">10–20 minuti</p>
     </div>
   </div>
@@ -430,15 +442,15 @@
 <!-- SUPPORT SECTION -->
 <section class="section-support">
   <div class="support-text">
-    <p class="section-label">Non sei sol*</p>
+    <p class="section-label">Supporto Yogis</p>
     <h2 class="section-title">La piattaforma è online,<br><em style="color: var(--terra-dark)">il supporto è reale.</em></h2>
     <div class="divider"></div>
-    <p class="section-body" style="color: rgba(253,250,245,0.72)">In qualunque modo scegli di praticare, lo studio Yogis ti seguirà con flessibilità e continuità. Non sarai mai ferm* e non sarai mai sol*.</p>
-    <p class="section-body" style="color: rgba(253,250,245,0.72)">Come abbonarsi? Consulta i prezzi nella pagina dedicata e scrivimi su WhatsApp per tutte le indicazioni.</p>
-    <a href="https://wa.me/3452233737" class="btn-primary">Scrivici su WhatsApp</a>
+    <p class="section-body" style="color: rgba(253,250,245,0.72)">Yogis Online resta collegata allo studio fisico: se non sai quale lezione scegliere o vuoi un consiglio, puoi parlarne con noi come faresti dopo una classe.</p>
+    <p class="section-body" style="color: rgba(253,250,245,0.72)">Per attivare o recuperare l'accesso, scrivici su WhatsApp: ti guideremo in base al tuo abbonamento e al tuo percorso.</p>
+    <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20vorrei%20informazioni%20sull%27accesso%20a%20Yogis%20Online." class="btn-primary" target="_blank" rel="noopener noreferrer">Richiedi accesso</a>
   </div>
   <div class="support-visual">
-    <p class="support-quote">L'online è il completamento ideale delle lezioni in presenza. Puoi recuperare, approfondire, non fermarti mai.</p>
+    <p class="support-quote">L'online è il completamento delle lezioni in presenza: recuperi, approfondisci e mantieni continuità nel tuo percorso.</p>
     <p class="support-attr">— Studio Yogis</p>
   </div>
 </section>
@@ -446,12 +458,12 @@
 <!-- CTA -->
 <section class="section-cta">
   <div>
-    <h2 class="cta-title">Inizia quando vuoi.<br><em>Abbonati adesso.</em></h2>
-    <p class="cta-sub">Scrivici su WhatsApp per tutte le informazioni sull'abbonamento online</p>
+    <h2 class="cta-title">Hai già accesso?<br><em>Entra in Yogis Online.</em></h2>
+    <p class="cta-sub">Area riservata alle allieve e agli abbonamenti attivi dello studio</p>
   </div>
   <div class="cta-side">
-    <a href="orari.html" class="btn-ghost-dark" style="color: var(--brown)">Vedi i prezzi</a>
-    <a href="https://wa.me/3452233737" class="btn-primary">Scrivici su WhatsApp</a>
+    <a href="https://online.studioyogis.it" class="btn-primary" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
+    <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20ho%20bisogno%20di%20assistenza%20per%20accedere%20a%20Yogis%20Online." class="btn-ghost-dark" style="color: var(--brown)" target="_blank" rel="noopener noreferrer">Assistenza accesso</a>
   </div>
 </section>
 
@@ -502,8 +514,8 @@
     </section>
 
     <div class="footer__legal">
-      <!-- TODO: inserire denominazione legale, P.IVA, CF, sede legale, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
-      <p>Yogis Studio - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
+      <!-- TODO: inserire CF, sede legale se diversa dalla sede operativa, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
+      <p>Studio Yogis di Michela Ettorre - P.IVA 02143220669 - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
       <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
       <nav class="footer__nav" aria-label="Link studio">
         <ul class="footer__legal-links">
@@ -522,9 +534,17 @@
   const menu = document.getElementById('mobileMenu');
   const closeBtn = document.getElementById('mobileClose');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-  toggle.addEventListener('click', () => menu.classList.add('open'));
-  closeBtn.addEventListener('click', () => menu.classList.remove('open'));
-  document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => menu.classList.remove('open')));
+  const setMobileMenu = isOpen => {
+    menu.classList.toggle('open', isOpen);
+    toggle.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  };
+  toggle.addEventListener('click', () => setMobileMenu(!menu.classList.contains('open')));
+  closeBtn.addEventListener('click', () => setMobileMenu(false));
+  menu.addEventListener('click', event => {
+    if (event.target === menu && event.clientX < window.innerWidth / 2) setMobileMenu(false);
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
 </script>
 </body>
 </html>

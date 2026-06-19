@@ -122,6 +122,8 @@
     padding: 4px;
     background: none;
     border: none;
+    position: relative;
+    z-index: 101;
   }
 
   .nav-toggle span {
@@ -129,47 +131,79 @@
     width: 24px;
     height: 1.5px;
     background: var(--white);
-    transition: all 0.3s;
+    transform-origin: center;
+    transition: background 0.3s, opacity 0.3s, transform 0.3s;
   }
+
+  .nav-toggle.is-open span { background: var(--charcoal); }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   /* Mobile menu */
   .mobile-menu {
-    display: none;
     position: fixed;
     inset: 0;
     z-index: 99;
-    background: var(--cream);
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.35rem;
+    padding-block: clamp(5.5rem, 18vw, 7rem);
+    background: rgba(42, 37, 32, 0.18);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
   }
 
-  .mobile-menu.open { display: flex; }
+  .mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50vw;
+    background: var(--white);
+    box-shadow: -24px 0 60px rgba(42,37,32,0.18);
+    transform: translateX(100%);
+    transition: transform 0.34s ease;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu.open::before { transform: translateX(0); }
 
   .mobile-menu a {
+    position: relative;
+    z-index: 1;
+    width: 50vw;
+    padding: 0 clamp(1rem, 3.5vw, 2.25rem);
     font-family: var(--font-display);
-    font-size: clamp(2rem, 7vw, 3rem);
+    font-size: clamp(1.15rem, 3.4vw, 2.25rem);
     font-style: italic;
     color: var(--charcoal);
     text-decoration: none;
     letter-spacing: 0.03em;
-    transition: color 0.2s;
+    text-align: left;
+    opacity: 0;
+    transform: translateX(1.25rem);
+    transition: color 0.2s, opacity 0.28s ease, transform 0.34s ease;
+  }
+
+  .mobile-menu.open a {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .mobile-menu a:hover { color: var(--terracotta); }
 
   .mobile-close {
-    position: absolute;
-    top: 1.5rem; right: var(--gutter);
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brown-light);
-    background: none;
-    border: none;
-    cursor: pointer;
+    display: none;
   }
 
   /* ─── HERO ─── */
@@ -222,7 +256,7 @@
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(3.2rem, 9vw, 7.5rem);
+    font-size: clamp(3.2rem, 6vw, 7.5rem);
     font-weight: 800;
     line-height: 1.02;
     color: var(--white);
@@ -249,25 +283,6 @@
     align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-  }
-
-  .hero-scroll {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(253,250,245,0.76);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
-  }
-
-  .hero-scroll::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 32px;
-    background: rgba(253,250,245,0.54);
   }
 
   .btn-primary {
@@ -344,18 +359,21 @@
   .intro-strip-group {
     display: flex;
     flex-shrink: 0;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-right: clamp(1.5rem, 4vw, 3rem);
   }
 
   .intro-strip p {
     color: var(--white);
     font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     flex: none;
     white-space: nowrap;
   }
 
-  .intro-strip p strong { color: var(--white); font-weight: 400; }
+  .intro-strip p strong { color: var(--white); font-weight: inherit; }
 
   @keyframes introMarquee {
     from { transform: translateX(0); }
@@ -435,19 +453,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 5vw, 6rem);
-    align-items: center;
+    align-items: stretch;
     background: var(--white);
   }
 
   .online-visual {
     position: relative;
-    aspect-ratio: 4/5;
+    min-height: 0;
     overflow: hidden;
     background: var(--cream);
   }
 
   .online-visual img {
-    display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -472,8 +491,7 @@
   .corsi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-    gap: 1.5px;
-    background: var(--cream-mid);
+    gap: 20px;
   }
 
   .corso-card {
@@ -1058,7 +1076,6 @@
 
     .online-visual { aspect-ratio: 3/2; }
 
-    .hero-scroll { display: none; }
     .hero-bottom { justify-content: flex-start; }
   }
 
@@ -1101,7 +1118,7 @@
     <li><a href="index.html#contatti">Contatti</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -1130,7 +1147,6 @@
         <a href="corsi.html" class="btn-primary">Scopri i corsi</a>
         <a href="studio.html" class="btn-ghost-dark">Lo studio</a>
       </div>
-      <span class="hero-scroll">Scorri</span>
     </div>
   </div>
 </section>
@@ -1139,20 +1155,29 @@
 <div class="intro-strip">
   <div class="intro-strip-track">
     <div class="intro-strip-group">
-      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
-      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
-      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
-      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
-      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
-      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+      <p><strong>Yogis Vinyasa</strong></p>
+      <p>Yogis Pregnancy</p>
+      <p><strong>Yogis Mum &amp; Baby</strong></p>
+      <p>Yogis Advanced</p>
+      <p><strong>Online</strong></p>
+      <p><strong>Yogis Vinyasa</strong></p>
+      <p>Yogis Pregnancy</p>
+      <p><strong>Yogis Mum &amp; Baby</strong></p>
+      <p>Yogis Advanced</p>
+      <p><strong>Online</strong></p>
     </div>
     <div class="intro-strip-group" aria-hidden="true">
-      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
-      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
-      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
-      <p><strong>Yogis Vinyasa</strong> · Yogis Pregnancy ·</p>
-      <p><strong>Yogis Mum &amp; Baby</strong> · Yogis Advanced ·</p>
-      <p>In studio &amp; <strong>Online</strong> · Su appuntamento ·</p>
+      <p><strong>Yogis Vinyasa</strong></p>
+      <p>Yogis Pregnancy</p>
+      <p><strong>Yogis Mum &amp; Baby</strong></p>
+      <p>Yogis Advanced</p>
+      <p><strong>Online</strong></p>
+      <p><strong>Yogis Vinyasa</strong></p>
+      <p>Yogis Pregnancy</p>
+      <p><strong>Yogis Mum &amp; Baby</strong></p>
+      <p>Yogis Advanced</p>
+      <p><strong>Online</strong></p>
+
     </div>
   </div>
 </div>
@@ -1334,8 +1359,8 @@
     </section>
 
     <div class="footer__legal">
-      <!-- TODO: inserire denominazione legale, P.IVA, CF, sede legale, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
-      <p>Yogis Studio - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
+      <!-- TODO: inserire CF, sede legale se diversa dalla sede operativa, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
+      <p>Studio Yogis di Michela Ettorre - P.IVA 02143220669 - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
       <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
       <nav class="footer__nav" aria-label="Link studio">
         <ul class="footer__legal-links">
@@ -1358,11 +1383,20 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  toggle.addEventListener('click', () => menu.classList.add('open'));
-  closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+  const setMobileMenu = isOpen => {
+    menu.classList.toggle('open', isOpen);
+    toggle.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  };
+
+  toggle.addEventListener('click', () => setMobileMenu(!menu.classList.contains('open')));
+  closeBtn.addEventListener('click', () => setMobileMenu(false));
+  menu.addEventListener('click', event => {
+    if (event.target === menu && event.clientX < window.innerWidth / 2) setMobileMenu(false);
+  });
 
   document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => menu.classList.remove('open'));
+    link.addEventListener('click', () => setMobileMenu(false));
   });
 
   const courseVideoCards = document.querySelectorAll('.corso-card-vinyasa, .corso-card-pregnancy, .corso-card-mum-baby, .corso-card-advanced');
