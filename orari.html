@@ -83,7 +83,7 @@
 
   /* ORARIO SECTION */
   .section-orario {
-    padding: 80px var(--gutter) var(--pad);
+    padding: 40px var(--gutter) var(--pad);
     background: var(--white);
   }
 
@@ -96,26 +96,114 @@
     margin-bottom: clamp(2.5rem,5vw,4rem);
   }
 
-  .orario-img {
-    width: 100%;
-    max-width: 900px;
-    border: 1px solid var(--cream-mid);
-    display: block;
-    margin-bottom: 2rem;
+  .orario-board {
+    width: min(100%, 900px);
+    background: var(--white);
+    margin: 0 auto 1.5rem;
   }
 
-  .orario-placeholder {
-    background: var(--cream);
-    border: 1px solid var(--cream-mid);
-    padding: 3rem var(--gutter);
-    text-align: center;
-    margin-bottom: 2rem;
+  .orario-board-head {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    font-size: 1.64rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--terracotta);
   }
 
-  .orario-placeholder p {
-    font-size: 0.85rem;
+
+  .orario-day {
+    display: grid;
+    grid-template-columns: clamp(8rem, 16vw, 12rem) 1fr;
+    min-height: 4.25rem;
+    margin: 4px;
+  }
+
+  .orario-day:last-child { border-bottom: 0; }
+
+  .orario-day:nth-child(odd) { background: var(--cream); }
+
+  .orario-day-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.7rem clamp(0.75rem, 1.5vw, 1.25rem);
+    border-right: 1px solid var(--cream-mid);
+  }
+
+  .orario-day-name span {
+    margin-bottom: 0.2rem;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--terracotta);
+  }
+
+  .orario-day-name h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--brown);
+  }
+
+  .orario-slots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+  }
+
+  .orario-day--single .orario-slots { grid-template-columns: minmax(0, 1fr); }
+
+  .orario-slot {
+    display: grid;
+    grid-template-columns: minmax(3.5rem, auto) 1fr auto;
+    align-items: center;
+    gap: clamp(0.45rem, 1vw, 0.75rem);
+    padding: 0.75rem clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .orario-slot + .orario-slot { border-left: 1px solid var(--cream-mid); }
+
+  .orario-time {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    color: var(--terracotta);
+  }
+
+  .orario-course {
+    font-family: var(--font-display);
+    font-size: clamp(0.78rem, 1vw, 0.92rem);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--brown);
+  }
+
+  .orario-teacher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--sand);
+    font-size: 0.54rem;
+    font-weight: 700;
+    color: var(--brown);
+  }
+
+  .orario-note {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    font-size: 0.82rem;
+    line-height: 1.6;
     color: var(--brown-light);
-    margin-bottom: 1rem;
+  }
+
+  .orario-note a {
+    color: var(--terracotta);
+    text-decoration: none;
   }
 
   /* PREZZI GRID */
@@ -314,6 +402,30 @@
     .footer__online { order: 4; }
     .footer__legal { order: 5; }
     .orario-header { flex-direction: column; align-items: flex-start; }
+    .orario-board-head { align-items: flex-start; }
+    .orario-day { grid-template-columns: 7rem 1fr; }
+    .orario-slots { grid-template-columns: 1fr; }
+    .orario-slot + .orario-slot { border-top: 1px solid var(--cream-mid); border-left: 0; }
+  }
+
+  @media (max-width: 520px) {
+    .orario-board-head { flex-direction: column; gap: 0.25rem; }
+    .orario-board-head p:last-child { text-align: left; }
+    .orario-day { grid-template-columns: 1fr; }
+    .orario-day-name {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      padding-block: 0.65rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--cream-mid);
+    }
+    .orario-day-name span { margin-bottom: 0; }
+    .orario-day-name h3 { font-size: 1.3rem; }
+    .orario-slot { grid-template-columns: 3.4rem 1fr auto; padding-block: 0.8rem; }
+    .orario-time { font-size: 0.95rem; }
+    .orario-course { font-size: 0.8rem; }
   }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
@@ -363,12 +475,95 @@
     </div>
     <a href="https://wa.me/3452233737" class="btn-ghost-dark">Prenota il posto</a>
   </div>
-  <img src="LUN.png" alt="Orario settimanale lezioni Yogis" class="orario-img" onerror="this.style.display='none'; document.getElementById('orario-placeholder').style.display='block'">
-  <div class="orario-placeholder" id="orario-placeholder" style="display:none">
-    <p>L'orario aggiornato è disponibile tramite WhatsApp.</p>
-    <a href="https://wa.me/3452233737" class="btn-primary">Richiedi l'orario</a>
+  <p class="orario-board-head">Settimana in studio</p>
+  <div class="orario-board" aria-label="Orario settimanale delle lezioni in studio">
+
+    <article class="orario-day">
+      <div class="orario-day-name">
+        <h3>LUN</h3>
+      </div>
+      <ul class="orario-slots">
+        <li class="orario-slot">
+          <time class="orario-time" datetime="18:00">18:00</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+        <li class="orario-slot">
+          <time class="orario-time" datetime="19:30">19:30</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="orario-day">
+      <div class="orario-day-name">
+        <h3>MAR</h3>
+      </div>
+      <ul class="orario-slots">
+        <li class="orario-slot">
+          <time class="orario-time" datetime="14:00">14:00</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+        <li class="orario-slot">
+          <time class="orario-time" datetime="19:30">19:30</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante D">D</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="orario-day">
+      <div class="orario-day-name">
+        <h3>MER</h3>
+      </div>
+      <ul class="orario-slots">
+        <li class="orario-slot">
+          <time class="orario-time" datetime="18:00">18:00</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+        <li class="orario-slot">
+          <time class="orario-time" datetime="19:30">19:30</time>
+          <span class="orario-course">Yoga avanzato</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="orario-day">
+      <div class="orario-day-name">
+        <h3>GIO</h3>
+      </div>
+      <ul class="orario-slots">
+        <li class="orario-slot">
+          <time class="orario-time" datetime="14:00">14:00</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+        <li class="orario-slot">
+          <time class="orario-time" datetime="19:30">19:30</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante M">M</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="orario-day orario-day--single">
+      <div class="orario-day-name">
+        <h3>VEN</h3>
+      </div>
+      <ul class="orario-slots">
+        <li class="orario-slot">
+          <time class="orario-time" datetime="19:00">19:00</time>
+          <span class="orario-course">Vinyasa yoga</span>
+          <span class="orario-teacher" aria-label="Insegnante D">D</span>
+        </li>
+      </ul>
+    </article>
   </div>
-  <p style="font-size:0.82rem; color:var(--brown-light); margin-top:0.5rem;">L'orario può variare. Per la versione più aggiornata scrivi su WhatsApp.</p>
+  <p class="orario-note">L'orario può variare. Per la versione più aggiornata <a href="https://wa.me/3452233737">scrivi su WhatsApp</a>.</p>
 </section>
 
 <!-- PREZZI -->
