@@ -833,21 +833,24 @@
   .cta-phone:hover { color: var(--terracotta); }
 
   /* ─── FOOTER ─── */
-  footer {
+  .footer {
     background: var(--black);
-    padding: clamp(3rem, 6vw, 5rem) var(--gutter) 2rem;
+    color: var(--white);
+    padding: clamp(3.5rem, 7vw, 5.5rem) var(--gutter) 2rem;
   }
 
-  .footer-grid {
+  .footer__inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .footer-logo {
+  .footer__brand,
+  .footer__column { min-width: 0; }
+
+  .footer__logo {
     display: block;
     width: clamp(76px, 9vw, 112px);
     aspect-ratio: 467.82 / 353.09;
@@ -858,33 +861,7 @@
     margin-bottom: 1rem;
   }
 
-  .footer-tagline {
-    font-size: 0.85rem;
-    color: var(--white);
-    line-height: 1.7;
-    max-width: 28ch;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-social-row {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .footer-social-link {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    border: 1px solid var(--white);
-    padding: 0.45rem 1rem;
-    transition: all 0.2s;
-  }
-
-  .footer-social-link:hover { color: var(--sand); border-color: var(--sand-dark); }
-
-  .footer-col-title {
+  .footer__title {
     font-size: 0.63rem;
     font-weight: 500;
     letter-spacing: 0.32em;
@@ -893,34 +870,149 @@
     margin-bottom: 1.2rem;
   }
 
-  .footer-links {
+  .footer__brand .footer__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.16;
+    text-transform: none;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+
+  .footer__text,
+  .footer__address,
+  .footer__legal p {
+    font-size: 0.86rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.72);
+  }
+
+  .footer__address p { padding-bottom: 4px;}
+
+  .footer__text {
+    max-width: 34ch;
+    margin-bottom: 1.4rem;
+  }
+
+  .footer__cta-row,
+  .footer__social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .footer__social-row { margin-top: 1.1rem; }
+
+  .footer__cta,
+  .footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.68rem 1rem;
+    border: 1px solid rgba(255,255,255,0.34);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.66rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+
+  .footer__cta--primary {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  .footer__cta--primary:hover {
+    background: var(--terra-light);
+    border-color: var(--terra-light);
+    transform: translateY(-2px);
+  }
+
+  .footer__cta--secondary:hover,
+  .footer__social-link:hover {
+    border-color: var(--sand);
+    color: var(--sand);
+  }
+
+  .footer__nav {
+    position: static;
+    inset: auto;
+    z-index: auto;
+    display: block;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .footer__links,
+  .footer__legal-links {
     list-style: none;
     display: flex;
+  }
+
+  .footer__links {
     flex-direction: column;
     gap: 0.65rem;
   }
 
-  .footer-links a {
-    font-size: 0.9rem;
-    color: var(--white);
+  .footer__legal-links {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.7rem;
+  }
+
+  .footer__link,
+  .footer__legal a,
+  .footer__link-button {
+    color: rgba(255,255,255,0.78);
     text-decoration: none;
+    font-size: 0.88rem;
     transition: color 0.2s;
   }
 
-  .footer-links a:hover { color: rgba(255,255,255,0.85); }
+  .footer__link:hover,
+  .footer__legal a:hover,
+  .footer__link-button:hover { color: var(--white); }
 
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  .footer__address {
+    font-style: normal;
+    margin-bottom: 0.9rem;
   }
 
-  .footer-bottom p {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.04em;
+  .footer__address strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .footer__legal {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.35rem;
+  }
+
+  .footer__legal p,
+  .footer__legal a,
+  .footer__link-button { font-size: 0.74rem; }
+
+  .footer__copyright { margin-top: 0.6rem; }
+
+  .footer a:focus-visible,
+  .footer button:focus-visible {
+    outline: 2px solid var(--terra-light);
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 769px) {
+    .footer__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer__legal { grid-column: 1 / -1; }
+  }
+
+  @media (min-width: 980px) {
+    .footer__inner { grid-template-columns: 1.35fr 0.95fr 1.05fr 1fr; }
   }
 
   /* ─── RESPONSIVE ─── */
@@ -958,7 +1050,11 @@
 
     .cta-side { align-items: flex-start; }
 
-    .footer-grid { grid-template-columns: 1fr; }
+    .footer__brand { order: 1; }
+    .footer__contact { order: 2; }
+    .footer__studio-nav { order: 3; }
+    .footer__online { order: 4; }
+    .footer__legal { order: 5; }
 
     .online-visual { aspect-ratio: 3/2; }
 
@@ -1192,38 +1288,63 @@
 </section>
 
 <!-- FOOTER -->
-<footer id="contatti">
-  <div class="footer-grid">
-    <div>
-      <span class="footer-logo" role="img" aria-label="Yogis Studio Yoga"></span>
-      <p class="footer-tagline">Uno spazio di cura per il corpo e la mente, a L'Aquila.</p>
-      <div class="footer-social-row">
-        <a href="https://www.instagram.com/yogis_studio_yoga/" class="footer-social-link">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=100085167757778" class="footer-social-link">Facebook</a>
+<footer class="footer" id="contatti" aria-labelledby="footer-title">
+  <div class="footer__inner">
+    <section class="footer__brand" aria-labelledby="footer-title">
+      <span class="footer__logo" role="img" aria-label="Yogis Studio Yoga"></span>
+      <p class="footer__text">Uno spazio di cura per il corpo e la mente, a L'Aquila.</p>
+      <div class="footer__social-row" aria-label="Social Yogis">
+        <a class="footer__social-link" href="https://www.instagram.com/yogis_studio_yoga/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="footer__social-link" href="https://www.facebook.com/profile.php?id=100085167757778" target="_blank" rel="noopener noreferrer">Facebook</a>
       </div>
-    </div>
-    <div>
-      <p class="footer-col-title">Navigazione</p>
-      <ul class="footer-links">
-        <li><a href="studio.html">Studio</a></li>
-        <li><a href="corsi.html">Corsi</a></li>
-        <li><a href="online.html">Online</a></li>
-        <li><a href="orari.html">Orari &amp; Prezzi</a></li>
+    </section>
+
+    <nav class="footer__column footer__studio-nav footer__nav" aria-label="Navigazione studio">
+      <h3 class="footer__title">Studio Yogis</h3>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="studio.html">Lo studio</a></li>
+        <li><a class="footer__link" href="corsi.html">Corsi in presenza</a></li>
+        <li><a class="footer__link" href="corsi.html#vinyasa">Vinyasa yoga</a></li>
+        <li><a class="footer__link" href="corsi.html#pregnancy">Yoga in gravidanza</a></li>
+        <li><a class="footer__link" href="corsi.html#mum-baby">Yogis Mum &amp; Baby</a></li>
+        <li><a class="footer__link" href="orari.html">Prezzi e abbonamenti</a></li>
       </ul>
-    </div>
-    <div>
-      <p class="footer-col-title">Contatti</p>
-      <ul class="footer-links">
-        <li><a href="tel:+393452233737">+39 345 2233737</a></li>
-        <li><a href="https://wa.me/3452233737">WhatsApp</a></li>
-        <li><a href="https://www.instagram.com/yogis_studio_yoga/">Instagram</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=100085167757778">Facebook</a></li>
+    </nav>
+
+    <section class="footer__column footer__contact" aria-labelledby="footer-contatti-title">
+      <h3 id="footer-contatti-title" class="footer__title">Vieni a trovarci</h3>
+      <address class="footer__address">
+        <p><strong>Studio Yogis</strong></p>
+        <p>Viale Aldo Moro </p>
+        <p>67100 L'Aquila (AQ)</p>
+        <p><a class="footer__link" href="tel:+393452233737">WhatsApp: +39 345 2233737</a></p>
+        <p><a class="footer__link" href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
+      </address>
+      <a class="footer__link" href="https://www.google.com/maps/search/?api=1&amp;query=Viale%20Aldo%20Moro%2C%2067100%20L%27Aquila%20AQ" target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+    </section>
+
+    <section class="footer__column footer__online" aria-labelledby="footer-online-title">
+      <h3 id="footer-online-title" class="footer__title">Area clienti</h3>
+      <p class="footer__text">Yogis Online &egrave; la piattaforma riservata alle clienti dello studio per continuare la pratica anche da casa.</p>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="https://online.studioyogis.it" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a></li>
+        <li><a class="footer__link" href="online.html">Cos'&egrave; Yogis Online</a></li>
+        <li><a class="footer__link" href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20ho%20bisogno%20di%20assistenza%20per%20accedere%20a%20Yogis%20Online." target="_blank" rel="noopener noreferrer">Assistenza accesso</a></li>
       </ul>
+    </section>
+
+    <div class="footer__legal">
+      <!-- TODO: inserire denominazione legale, P.IVA, CF, sede legale, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
+      <p>Yogis Studio - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
+      <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
+      <nav class="footer__nav" aria-label="Link studio">
+        <ul class="footer__legal-links">
+          <li><a href="orari.html#regolamento">Regolamento studio</a></li>
+          <li><a href="studio.html#dove">Dove siamo</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copyright">&copy; 2026 Yogis Studio. Tutti i diritti riservati.</p>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Yogis Studio Yoga · Tutti i diritti riservati</p>
-    <p>L'Aquila, Abruzzo</p>
   </div>
 </footer>
 
