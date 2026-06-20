@@ -62,7 +62,7 @@
   }
 
   nav.scrolled .nav-logo {
-    background: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
+    background: url("/assets/images/Yogis Logo.svg") center / contain no-repeat;
     -webkit-mask: none;
     mask: none;
   }
@@ -77,8 +77,8 @@
     background: currentColor;
     color: var(--white);
     text-decoration: none;
-    -webkit-mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
-    mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat;
+    mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat;
     transition: color 0.4s;
   }
 
@@ -217,7 +217,7 @@
     background:
       linear-gradient(90deg, rgba(42, 37, 32, 0.72) 0%, rgba(42, 37, 32, 0.48) 42%, rgba(42, 37, 32, 0.2) 100%),
       linear-gradient(0deg, rgba(42, 37, 32, 0.58) 0%, rgba(42, 37, 32, 0.08) 52%),
-      url("assets/images/yoga hero image.png") center / cover no-repeat;
+      url("/assets/images/yoga hero image.png") center / cover no-repeat;
   }
 
   .hero::after {
@@ -939,8 +939,8 @@
     aspect-ratio: 467.82 / 353.09;
     background: currentColor;
     color: var(--white);
-    -webkit-mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
-    mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat;
+    mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat;
     margin-bottom: 1rem;
   }
 
@@ -1111,7 +1111,7 @@
       background:
         linear-gradient(90deg, rgba(42, 37, 32, 0.74) 0%, rgba(42, 37, 32, 0.5) 100%),
         linear-gradient(0deg, rgba(42, 37, 32, 0.64) 0%, rgba(42, 37, 32, 0.12) 56%),
-        url("assets/images/yoga hero image.png") 58% 42% / cover no-repeat;
+        url("/assets/images/yoga hero image.png") 58% 42% / cover no-repeat;
     }
 
     .section-online { grid-template-columns: 1fr; }
@@ -1153,7 +1153,7 @@
       background:
         linear-gradient(90deg, rgba(42, 37, 32, 0.76) 0%, rgba(42, 37, 32, 0.52) 100%),
         linear-gradient(0deg, rgba(42, 37, 32, 0.62) 0%, rgba(42, 37, 32, 0.1) 58%),
-        url("assets/images/yoga hero image.png") 58% 38% / cover no-repeat;
+        url("/assets/images/yoga hero image.png") 58% 38% / cover no-repeat;
     }
 
     .hero-cta { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -1174,13 +1174,13 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
+  <a href="/" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
   <ul class="nav-links">
-    <li><a href="studio.html">Studio</a></li>
-    <li><a href="corsi.html">Corsi</a></li>
-    <li><a href="online.html">Online</a></li>
-    <li><a href="orari.html">Orari &amp; Prezzi</a></li>
-    <li><a href="index.html#contatti">Contatti</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/corsi/">Corsi</a></li>
+    <li><a href="/online/">Online</a></li>
+    <li><a href="/orari/">Orari &amp; Prezzi</a></li>
+    <li><a href="/#contatti">Contatti</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1191,11 +1191,11 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">✕ Chiudi</button>
-  <a href="studio.html" class="mobile-link">Studio</a>
-  <a href="corsi.html" class="mobile-link">Corsi</a>
-  <a href="online.html" class="mobile-link">Online</a>
-  <a href="orari.html" class="mobile-link">Orari &amp; Prezzi</a>
-  <a href="index.html#contatti" class="mobile-link">Contatti</a>
+  <a href="/studio/" class="mobile-link">Studio</a>
+  <a href="/corsi/" class="mobile-link">Corsi</a>
+  <a href="/online/" class="mobile-link">Online</a>
+  <a href="/orari/" class="mobile-link">Orari &amp; Prezzi</a>
+  <a href="/#contatti" class="mobile-link">Contatti</a>
 </div>
 
 <!-- HERO -->
@@ -1209,8 +1209,8 @@
     </h1>
     <div class="hero-bottom">
       <div class="hero-cta">
-        <a href="corsi.html" class="btn-primary">Scopri i corsi</a>
-        <a href="studio.html" class="btn-ghost-dark">Lo studio</a>
+        <a href="/corsi/" class="btn-primary">Scopri i corsi</a>
+        <a href="/studio/" class="btn-ghost-dark">Lo studio</a>
       </div>
     </div>
   </div>
@@ -1255,10 +1255,10 @@
     <div class="divider"></div>
     <p class="section-body">Non è solo yoga online: ogni lezione ti guida con chiarezza come in presenza, in un percorso pensato per ogni livello ed ogni necessità. E per qualsiasi dubbio o consiglio ci sono io, a un messaggio di distanza.</p>
     <p class="section-body">La piattaforma online è l'integrazione perfetta alle lezioni in studio, per mantenere continuità e decidere liberamente quanto e come allenarti.</p>
-    <a href="online.html" class="btn-outline-dark">Più dettagli</a>
+    <a href="/online/" class="btn-outline-dark">Più dettagli</a>
   </div>
   <div class="online-visual">
-    <img src="assets/images/videolezioni image.png" alt="Videolezioni yoga online">
+    <img src="/assets/images/videolezioni image.png" alt="Videolezioni yoga online">
   </div>
 </section>
 
@@ -1269,40 +1269,40 @@
       <p class="section-label">Discipline</p>
       <h2 class="section-title">Corsi in studio</h2>
     </div>
-    <a href="orari.html" class="btn-ghost-dark btn-orari">Orari e prezzi</a>
+    <a href="/orari/" class="btn-ghost-dark btn-orari">Orari e prezzi</a>
   </div>
 
   <div class="corsi-grid">
-    <a class="corso-card corso-card-vinyasa" href="corsi.html#vinyasa">
+    <a class="corso-card corso-card-vinyasa" href="/corsi/#vinyasa">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="assets/videos/cane a testa in giù animation.mp4" type="video/mp4">
+        <source src="/assets/videos/cane a testa in giù animation.mp4" type="video/mp4">
       </video>
       <span class="corso-number">01</span>
       <h3 class="corso-name">Yogis Vinyasa</h3>
       <p class="corso-desc">Flusso dinamico sincronizzato con il respiro. Una pratica che scalda il corpo, libera la mente e costruisce forza e flessibilità.</p>
       <span class="corso-arrow">↗</span>
     </a>
-    <a class="corso-card corso-card-pregnancy" href="corsi.html#pregnancy">
+    <a class="corso-card corso-card-pregnancy" href="/corsi/#pregnancy">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="assets/videos/donna incinta video.mp4" type="video/mp4">
+        <source src="/assets/videos/donna incinta video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">02</span>
       <h3 class="corso-name">Yogis Pregnancy</h3>
       <p class="corso-desc">Un percorso dolce e consapevole pensato per accompagnare il corpo e la mente durante la gravidanza, in sicurezza e armonia.</p>
       <span class="corso-arrow">↗</span>
     </a>
-    <a class="corso-card corso-card-mum-baby" href="corsi.html#mum-baby">
+    <a class="corso-card corso-card-mum-baby" href="/corsi/#mum-baby">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="assets/videos/mum&baby video.mp4" type="video/mp4">
+        <source src="/assets/videos/mum&baby video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">03</span>
       <h3 class="corso-name">Yogis Mum &amp; Baby</h3>
       <p class="corso-desc">Lezioni per neomamme e bambini. Un momento speciale di connessione e benessere condiviso nel rispetto dei tempi di ognuno.</p>
       <span class="corso-arrow">↗</span>
     </a>
-    <a class="corso-card corso-card-advanced" href="corsi.html#advanced">
+    <a class="corso-card corso-card-advanced" href="/corsi/#advanced">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="assets/videos/advanced video.mp4" type="video/mp4">
+        <source src="/assets/videos/advanced video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">04</span>
       <h3 class="corso-name">Yogis Advanced</h3>
@@ -1320,17 +1320,17 @@
     <div class="divider"></div>
     <p class="section-body">Da Yogis troverai un luogo accogliente e riservato, dove prenderti cura del tuo corpo e della tua mente sarà un piacere. Insegnanti preparati ti guideranno in una pratica adatta alle esigenze fisiche di ognuno.</p>
     <p class="section-body">Lo studio è aperto solo in orario di lezione ed è visitabile su appuntamento.</p>
-    <a href="studio.html" class="btn-outline-dark">Più dettagli</a>
+    <a href="/studio/" class="btn-outline-dark">Più dettagli</a>
   </div>
   <div class="studio-gallery">
     <div class="studio-img">
-      <img class="studio-img-photo" src="assets/images/studio image panoramic.png" alt="Sala panoramica dello studio Yogis con tappetini e luci soffuse">
+      <img class="studio-img-photo" src="/assets/images/studio image panoramic.png" alt="Sala panoramica dello studio Yogis con tappetini e luci soffuse">
     </div>
     <div class="studio-img">
-      <img class="studio-img-photo" src="assets/images/studio image 2.png" alt="Sala panoramica dello studio Yogis">
+      <img class="studio-img-photo" src="/assets/images/studio image 2.png" alt="Sala panoramica dello studio Yogis">
     </div>
     <div class="studio-img">
-      <img class="studio-img-photo" src="assets/images/ingresso studio image.png" alt="Ingresso dello studio Yogis">
+      <img class="studio-img-photo" src="/assets/images/ingresso studio image.png" alt="Ingresso dello studio Yogis">
     </div>
   </div>
 </section>
@@ -1392,12 +1392,12 @@
     <nav class="footer__column footer__studio-nav footer__nav" aria-label="Navigazione studio">
       <h3 class="footer__title">Studio Yogis</h3>
       <ul class="footer__links">
-        <li><a class="footer__link" href="studio.html">Lo studio</a></li>
-        <li><a class="footer__link" href="corsi.html">Corsi in presenza</a></li>
-        <li><a class="footer__link" href="corsi.html#vinyasa">Vinyasa yoga</a></li>
-        <li><a class="footer__link" href="corsi.html#pregnancy">Yoga in gravidanza</a></li>
-        <li><a class="footer__link" href="corsi.html#mum-baby">Yogis Mum &amp; Baby</a></li>
-        <li><a class="footer__link" href="orari.html">Prezzi e abbonamenti</a></li>
+        <li><a class="footer__link" href="/studio/">Lo studio</a></li>
+        <li><a class="footer__link" href="/corsi/">Corsi in presenza</a></li>
+        <li><a class="footer__link" href="/corsi/#vinyasa">Vinyasa yoga</a></li>
+        <li><a class="footer__link" href="/corsi/#pregnancy">Yoga in gravidanza</a></li>
+        <li><a class="footer__link" href="/corsi/#mum-baby">Yogis Mum &amp; Baby</a></li>
+        <li><a class="footer__link" href="/orari/">Prezzi e abbonamenti</a></li>
       </ul>
     </nav>
 
@@ -1418,7 +1418,7 @@
       <p class="footer__text">Yogis Online &egrave; la piattaforma riservata alle clienti dello studio per continuare la pratica anche da casa.</p>
       <ul class="footer__links">
         <li><a class="footer__link" href="https://online.studioyogis.it" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a></li>
-        <li><a class="footer__link" href="online.html">Cos'&egrave; Yogis Online</a></li>
+        <li><a class="footer__link" href="/online/">Cos'&egrave; Yogis Online</a></li>
         <li><a class="footer__link" href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20ho%20bisogno%20di%20assistenza%20per%20accedere%20a%20Yogis%20Online." target="_blank" rel="noopener noreferrer">Assistenza accesso</a></li>
       </ul>
     </section>
@@ -1429,8 +1429,8 @@
       <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
       <nav class="footer__nav" aria-label="Link studio">
         <ul class="footer__legal-links">
-          <li><a href="orari.html#regolamento">Regolamento studio</a></li>
-          <li><a href="studio.html#dove">Dove siamo</a></li>
+          <li><a href="/orari/#regolamento">Regolamento studio</a></li>
+          <li><a href="/studio/#dove">Dove siamo</a></li>
         </ul>
       </nav>
       <p class="footer__copyright">&copy; 2026 Yogis Studio. Tutti i diritti riservati.</p>
@@ -1573,7 +1573,7 @@
     scheduleScrollHighlight();
   }
 </script>
-<script src="assets/js/content-model.js"></script>
-<script src="assets/js/content-cms.js"></script>
+<script src="/assets/js/content-model.js"></script>
+<script src="/assets/js/content-cms.js"></script>
 </body>
 </html>

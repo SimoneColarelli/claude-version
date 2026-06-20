@@ -44,11 +44,11 @@
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem var(--gutter); background: var(--white); transition: background 0.4s, box-shadow 0.4s; }
   nav.scrolled { box-shadow: 0 1px 0 rgba(42,37,32,0.08); backdrop-filter: blur(10px); }
-  nav.scrolled .nav-logo { background: url("assets/images/Yogis Logo.svg") center / contain no-repeat; -webkit-mask: none; mask: none; }
+  nav.scrolled .nav-logo { background: url("/assets/images/Yogis Logo.svg") center / contain no-repeat; -webkit-mask: none; mask: none; }
   nav.scrolled .nav-links a { color: var(--brown); }
   nav.scrolled .nav-links a:hover { color: var(--terracotta); }
   nav.scrolled .nav-toggle span { background: var(--charcoal); }
-  .nav-logo { display: block; width: clamp(58px,7vw,86px); aspect-ratio: 467.82/353.09; background: url("assets/images/Yogis Logo.svg") center / contain no-repeat; color: var(--charcoal); text-decoration: none; -webkit-mask: none; mask: none; transition: color 0.4s; }
+  .nav-logo { display: block; width: clamp(58px,7vw,86px); aspect-ratio: 467.82/353.09; background: url("/assets/images/Yogis Logo.svg") center / contain no-repeat; color: var(--charcoal); text-decoration: none; -webkit-mask: none; mask: none; transition: color 0.4s; }
   .nav-links { display: flex; gap: clamp(1.2rem,3vw,2.5rem); list-style: none; }
   .nav-links a { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--terracotta); }
@@ -257,7 +257,7 @@
   .footer { background: var(--black); color: var(--white); padding: clamp(3.5rem, 7vw, 5.5rem) var(--gutter) 2rem; }
   .footer__inner { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); max-width: 1200px; margin: 0 auto; }
   .footer__brand, .footer__column { min-width: 0; }
-  .footer__logo { display: block; width: clamp(76px, 9vw, 112px); aspect-ratio: 467.82 / 353.09; background: currentColor; color: var(--white); -webkit-mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat; mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat; margin-bottom: 1rem; }
+  .footer__logo { display: block; width: clamp(76px, 9vw, 112px); aspect-ratio: 467.82 / 353.09; background: currentColor; color: var(--white); -webkit-mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat; mask: url("/assets/images/Yogis Logo.svg") center / contain no-repeat; margin-bottom: 1rem; }
   .footer__title { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 1.2rem; }
   .footer__brand .footer__title { font-family: var(--font-display); font-size: clamp(1.45rem, 2.4vw, 1.85rem); font-weight: 600; letter-spacing: 0; line-height: 1.16; text-transform: none; color: var(--white); margin-bottom: 0.8rem; }
   .footer__text, .footer__address, .footer__legal p { font-size: 0.86rem; line-height: 1.75; color: rgba(255,255,255,0.72); }
@@ -313,13 +313,13 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="index.html" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
+  <a href="/" class="nav-logo" aria-label="Yogis Studio Yoga"></a>
   <ul class="nav-links">
-    <li><a href="studio.html">Studio</a></li>
-    <li><a href="corsi.html">Corsi</a></li>
-    <li><a href="online.html" class="active">Online</a></li>
-    <li><a href="orari.html">Orari &amp; Prezzi</a></li>
-    <li><a href="index.html#contatti">Contatti</a></li>
+    <li><a href="/studio/">Studio</a></li>
+    <li><a href="/corsi/">Corsi</a></li>
+    <li><a href="/online/" class="active">Online</a></li>
+    <li><a href="/orari/">Orari &amp; Prezzi</a></li>
+    <li><a href="/#contatti">Contatti</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
@@ -327,11 +327,11 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">✕ Chiudi</button>
-  <a href="studio.html" class="mobile-link">Studio</a>
-  <a href="corsi.html" class="mobile-link">Corsi</a>
-  <a href="online.html" class="mobile-link">Online</a>
-  <a href="orari.html" class="mobile-link">Orari &amp; Prezzi</a>
-  <a href="index.html#contatti" class="mobile-link">Contatti</a>
+  <a href="/studio/" class="mobile-link">Studio</a>
+  <a href="/corsi/" class="mobile-link">Corsi</a>
+  <a href="/online/" class="mobile-link">Online</a>
+  <a href="/orari/" class="mobile-link">Orari &amp; Prezzi</a>
+  <a href="/#contatti" class="mobile-link">Contatti</a>
 </div>
 
 <!-- PAGE HEADER -->
@@ -357,7 +357,7 @@
     <a href="https://online.studioyogis.it" class="btn-outline-dark" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a>
   </div>
   <div class="online-visual">
-    <img src="assets/images/videolezioni image.png" alt="Videolezioni yoga online Yogis">
+    <img src="/assets/images/videolezioni image.png" alt="Videolezioni yoga online Yogis">
   </div>
 </section>
 
@@ -482,12 +482,12 @@
     <nav class="footer__column footer__studio-nav footer__nav" aria-label="Navigazione studio">
       <h3 class="footer__title">Studio Yogis</h3>
       <ul class="footer__links">
-        <li><a class="footer__link" href="studio.html">Lo studio</a></li>
-        <li><a class="footer__link" href="corsi.html">Corsi in presenza</a></li>
-        <li><a class="footer__link" href="corsi.html#vinyasa">Vinyasa yoga</a></li>
-        <li><a class="footer__link" href="corsi.html#pregnancy">Yoga in gravidanza</a></li>
-        <li><a class="footer__link" href="corsi.html#mum-baby">Yogis Mum &amp; Baby</a></li>
-        <li><a class="footer__link" href="orari.html">Prezzi e abbonamenti</a></li>
+        <li><a class="footer__link" href="/studio/">Lo studio</a></li>
+        <li><a class="footer__link" href="/corsi/">Corsi in presenza</a></li>
+        <li><a class="footer__link" href="/corsi/#vinyasa">Vinyasa yoga</a></li>
+        <li><a class="footer__link" href="/corsi/#pregnancy">Yoga in gravidanza</a></li>
+        <li><a class="footer__link" href="/corsi/#mum-baby">Yogis Mum &amp; Baby</a></li>
+        <li><a class="footer__link" href="/orari/">Prezzi e abbonamenti</a></li>
       </ul>
     </nav>
 
@@ -508,7 +508,7 @@
       <p class="footer__text">Yogis Online &egrave; la piattaforma riservata alle clienti dello studio per continuare la pratica anche da casa.</p>
       <ul class="footer__links">
         <li><a class="footer__link" href="https://online.studioyogis.it" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a></li>
-        <li><a class="footer__link" href="online.html">Cos'&egrave; Yogis Online</a></li>
+        <li><a class="footer__link" href="/online/">Cos'&egrave; Yogis Online</a></li>
         <li><a class="footer__link" href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20ho%20bisogno%20di%20assistenza%20per%20accedere%20a%20Yogis%20Online." target="_blank" rel="noopener noreferrer">Assistenza accesso</a></li>
       </ul>
     </section>
@@ -519,8 +519,8 @@
       <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
       <nav class="footer__nav" aria-label="Link studio">
         <ul class="footer__legal-links">
-          <li><a href="orari.html#regolamento">Regolamento studio</a></li>
-          <li><a href="studio.html#dove">Dove siamo</a></li>
+          <li><a href="/orari/#regolamento">Regolamento studio</a></li>
+          <li><a href="/studio/#dove">Dove siamo</a></li>
         </ul>
       </nav>
       <p class="footer__copyright">&copy; 2026 Yogis Studio. Tutti i diritti riservati.</p>

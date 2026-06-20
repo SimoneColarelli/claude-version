@@ -8,9 +8,9 @@
   }
 
   const CONTENT_PATHS = {
-    courses: 'content/corsi.json',
-    schedule: 'content/orari.json',
-    plans: 'content/abbonamenti.json'
+    courses: '/content/corsi.json',
+    schedule: '/content/orari.json',
+    plans: '/content/abbonamenti.json'
   };
 
   function element(tagName, className, text) {
@@ -21,7 +21,8 @@
   }
 
   function siteUrl(path) {
-    return new URL(path, document.baseURI).href;
+    const rootPath = path.startsWith('/') ? path : `/${path}`;
+    return new URL(rootPath, window.location.origin).href;
   }
 
   function hasMediaSource(media) {
@@ -272,7 +273,7 @@
     const ticker = document.querySelector('.intro-strip-track');
     if (!grid || !ticker) throw new Error('contenitori corsi della homepage non trovati');
 
-    const courseCards = createCourseCards(data.corsi, 'corsi.html', false);
+    const courseCards = createCourseCards(data.corsi, '/corsi/', false);
     const tickerGroups = document.createDocumentFragment();
     tickerGroups.append(createTickerGroup(data.corsi, false), createTickerGroup(data.corsi, true));
 

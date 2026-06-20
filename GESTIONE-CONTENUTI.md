@@ -67,8 +67,12 @@ I giorni ammessi sono `lunedi`, `martedi`, `mercoledi`, `giovedi`, `venerdi`, `s
 ## Pubblicazione via FTP
 
 1. Eseguire la validazione locale.
-2. Caricare prima le eventuali nuove immagini o i nuovi video mantenendo gli stessi percorsi indicati nel JSON.
-3. Caricare per ultimi i file JSON modificati nella cartella `content` del sito online.
-4. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
+2. Caricare le directory `studio`, `corsi`, `online` e `orari`, ciascuna con il proprio `index.html`.
+3. Caricare anche il file nascosto `.htaccess` nella root del dominio: gestisce la home e i redirect 301 dai vecchi URL `.html`.
+4. Caricare le eventuali nuove immagini o i nuovi video mantenendo gli stessi percorsi indicati nel JSON.
+5. Caricare per ultimi i file JSON modificati nella cartella `content` del sito online.
+6. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
+
+Gli URL pubblici del sito sono `/`, `/studio/`, `/corsi/`, `/online/` e `/orari/`. Non caricare nuovamente i vecchi file `studio.html`, `corsi.html`, `online.html` e `orari.html` nella root.
 
 Se un JSON è irraggiungibile o non valido, il sito conserva il contenuto HTML precedente come fallback e registra il motivo nella console del browser. Gli altri archivi validi continuano a funzionare in modo indipendente.
