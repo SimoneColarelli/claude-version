@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "insegnanti": [
+    { "id": "insegnante-m", "nome": "M", "sigla": "M" },
+    { "id": "insegnante-d", "nome": "D", "sigla": "D" }
+  ],
+  "giorni": [
+    {
+      "giorno": "lunedi",
+      "lezioni": [
+        { "ora": "18:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
+        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" }
+      ]
+    },
+    {
+      "giorno": "martedi",
+      "lezioni": [
+        { "ora": "14:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
+        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-d" }
+      ]
+    },
+    {
+      "giorno": "mercoledi",
+      "lezioni": [
+        { "ora": "18:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
+        { "ora": "19:30", "corsoId": "advanced", "insegnanteId": "insegnante-m" }
+      ]
+    },
+    {
+      "giorno": "giovedi",
+      "lezioni": [
+        { "ora": "14:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
+        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" }
+      ]
+    },
+    {
+      "giorno": "venerdi",
+      "lezioni": [
+        { "ora": "19:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-d" }
+      ]
+    }
+  ]
+}

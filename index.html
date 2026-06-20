@@ -62,7 +62,7 @@
   }
 
   nav.scrolled .nav-logo {
-    background: url("Yogis Logo.svg") center / contain no-repeat;
+    background: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
     -webkit-mask: none;
     mask: none;
   }
@@ -77,8 +77,8 @@
     background: currentColor;
     color: var(--white);
     text-decoration: none;
-    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
-    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
+    mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
     transition: color 0.4s;
   }
 
@@ -217,7 +217,7 @@
     background:
       linear-gradient(90deg, rgba(42, 37, 32, 0.72) 0%, rgba(42, 37, 32, 0.48) 42%, rgba(42, 37, 32, 0.2) 100%),
       linear-gradient(0deg, rgba(42, 37, 32, 0.58) 0%, rgba(42, 37, 32, 0.08) 52%),
-      url("yoga hero image.png") center / cover no-repeat;
+      url("assets/images/yoga hero image.png") center / cover no-repeat;
   }
 
   .hero::after {
@@ -671,6 +671,71 @@
     color: var(--terracotta);
   }
 
+  /* Regole generiche per mantenere lo stile anche sui corsi aggiunti dal CMS. */
+  #corsi .corso-card {
+    min-height: clamp(22rem, 38vw, 28rem);
+    background: var(--cream);
+  }
+
+  #corsi .corso-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(249, 243, 235, 0.94) 0%, rgba(249, 243, 235, 0.78) 31%, rgba(249, 243, 235, 0.14) 58%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #corsi .corso-card::after { z-index: 3; }
+  #corsi .corso-card.is-in-view::after { transform: scaleX(1); }
+
+  #corsi .corso-card:hover .corso-media,
+  #corsi .corso-card:focus-visible .corso-media,
+  #corsi .corso-card.is-in-view .corso-media {
+    filter: saturate(1.08) brightness(1.05) contrast(1.02);
+  }
+
+  #corsi .corso-card .corso-number,
+  #corsi .corso-card .corso-name,
+  #corsi .corso-card .corso-desc,
+  #corsi .corso-card .corso-arrow {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  #corsi .corso-card .corso-name,
+  #corsi .corso-card .corso-desc {
+    max-width: 18rem;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  #corsi .corso-card .corso-desc {
+    flex: 0;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  #corsi .corso-card .corso-number {
+    color: var(--terracotta);
+    font-weight: 700;
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
+  }
+
+  #corsi .corso-card .corso-name {
+    color: var(--charcoal);
+    font-weight: 400;
+  }
+
+  #corsi .corso-card:hover .corso-number,
+  #corsi .corso-card:focus-visible .corso-number,
+  #corsi .corso-card.is-in-view .corso-number,
+  #corsi .corso-card:hover .corso-name,
+  #corsi .corso-card:focus-visible .corso-name,
+  #corsi .corso-card.is-in-view .corso-name {
+    color: var(--terracotta);
+  }
+
   .corso-number {
     font-size: 0.63rem;
     letter-spacing: 0.3em;
@@ -874,8 +939,8 @@
     aspect-ratio: 467.82 / 353.09;
     background: currentColor;
     color: var(--white);
-    -webkit-mask: url("Yogis Logo.svg") center / contain no-repeat;
-    mask: url("Yogis Logo.svg") center / contain no-repeat;
+    -webkit-mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
+    mask: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
     margin-bottom: 1rem;
   }
 
@@ -1046,7 +1111,7 @@
       background:
         linear-gradient(90deg, rgba(42, 37, 32, 0.74) 0%, rgba(42, 37, 32, 0.5) 100%),
         linear-gradient(0deg, rgba(42, 37, 32, 0.64) 0%, rgba(42, 37, 32, 0.12) 56%),
-        url("yoga hero image.png") 58% 42% / cover no-repeat;
+        url("assets/images/yoga hero image.png") 58% 42% / cover no-repeat;
     }
 
     .section-online { grid-template-columns: 1fr; }
@@ -1088,7 +1153,7 @@
       background:
         linear-gradient(90deg, rgba(42, 37, 32, 0.76) 0%, rgba(42, 37, 32, 0.52) 100%),
         linear-gradient(0deg, rgba(42, 37, 32, 0.62) 0%, rgba(42, 37, 32, 0.1) 58%),
-        url("yoga hero image.png") 58% 38% / cover no-repeat;
+        url("assets/images/yoga hero image.png") 58% 38% / cover no-repeat;
     }
 
     .hero-cta { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -1105,7 +1170,7 @@
   .hero-bottom{ animation: fadeUp 0.9s ease 0.6s both; }
 </style>
 </head>
-<body>
+<body data-cms-page="home">
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -1193,7 +1258,7 @@
     <a href="online.html" class="btn-outline-dark">Più dettagli</a>
   </div>
   <div class="online-visual">
-    <img src="videolezioni image.png" alt="Videolezioni yoga online">
+    <img src="assets/images/videolezioni image.png" alt="Videolezioni yoga online">
   </div>
 </section>
 
@@ -1210,7 +1275,7 @@
   <div class="corsi-grid">
     <a class="corso-card corso-card-vinyasa" href="corsi.html#vinyasa">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="cane a testa in giù animation.mp4" type="video/mp4">
+        <source src="assets/videos/cane a testa in giù animation.mp4" type="video/mp4">
       </video>
       <span class="corso-number">01</span>
       <h3 class="corso-name">Yogis Vinyasa</h3>
@@ -1219,7 +1284,7 @@
     </a>
     <a class="corso-card corso-card-pregnancy" href="corsi.html#pregnancy">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="donna incinta video.mp4" type="video/mp4">
+        <source src="assets/videos/donna incinta video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">02</span>
       <h3 class="corso-name">Yogis Pregnancy</h3>
@@ -1228,7 +1293,7 @@
     </a>
     <a class="corso-card corso-card-mum-baby" href="corsi.html#mum-baby">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="mum&baby video.mp4" type="video/mp4">
+        <source src="assets/videos/mum&baby video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">03</span>
       <h3 class="corso-name">Yogis Mum &amp; Baby</h3>
@@ -1237,7 +1302,7 @@
     </a>
     <a class="corso-card corso-card-advanced" href="corsi.html#advanced">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
-        <source src="advanced video.mp4" type="video/mp4">
+        <source src="assets/videos/advanced video.mp4" type="video/mp4">
       </video>
       <span class="corso-number">04</span>
       <h3 class="corso-name">Yogis Advanced</h3>
@@ -1259,13 +1324,13 @@
   </div>
   <div class="studio-gallery">
     <div class="studio-img">
-      <img class="studio-img-photo" src="studio image panoramic.png" alt="Sala panoramica dello studio Yogis con tappetini e luci soffuse">
+      <img class="studio-img-photo" src="assets/images/studio image panoramic.png" alt="Sala panoramica dello studio Yogis con tappetini e luci soffuse">
     </div>
     <div class="studio-img">
-      <img class="studio-img-photo" src="studio image 2.png" alt="Sala panoramica dello studio Yogis">
+      <img class="studio-img-photo" src="assets/images/studio image 2.png" alt="Sala panoramica dello studio Yogis">
     </div>
     <div class="studio-img">
-      <img class="studio-img-photo" src="ingresso studio image.png" alt="Ingresso dello studio Yogis">
+      <img class="studio-img-photo" src="assets/images/ingresso studio image.png" alt="Ingresso dello studio Yogis">
     </div>
   </div>
 </section>
@@ -1508,5 +1573,7 @@
     scheduleScrollHighlight();
   }
 </script>
+<script src="assets/js/content-model.js"></script>
+<script src="assets/js/content-cms.js"></script>
 </body>
 </html>

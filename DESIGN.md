@@ -202,7 +202,7 @@ nav.scrolled {
   display: block;
   width: clamp(58px, 7vw, 86px);
   aspect-ratio: 467.82 / 353.09;
-  background: url("Yogis Logo.svg") center / contain no-repeat;
+  background: url("assets/images/Yogis Logo.svg") center / contain no-repeat;
 }
 
 .nav-links {
@@ -822,10 +822,11 @@ Regole:
 
 Nel sito originale sono usati:
 
-- `Yogis Logo.svg`: logo, spesso come background o mask.
-- `yoga hero image.png`: hero homepage.
-- `videolezioni image.png`: visual sezione online.
-- `studio image panoramic.png`, `studio image 2.png`, `ingresso studio image.png`: gallery studio.
+- `assets/images/Yogis Logo.svg`: logo, spesso come background o mask.
+- `assets/images/yoga hero image.png`: hero homepage.
+- `assets/images/videolezioni image.png`: visual sezione online.
+- `assets/images/studio image panoramic.png`, `assets/images/studio image 2.png`, `assets/images/ingresso studio image.png`: gallery studio.
+- `assets/videos/`: video di anteprima delle card corso.
 - Video corsi: Vinyasa, Pregnancy, Mum & Baby, Advanced.
 
 Se gli asset non sono disponibili nel nuovo progetto, sostituiscili con immagini equivalenti: studio yoga reale, luce naturale, colori caldi, pelle/tessuti/legno/crema, inquadrature pulite. Non sostituire con illustrazioni astratte.
@@ -866,4 +867,3 @@ Se gli asset non sono disponibili nel nuovo progetto, sostituiscili con immagini
   </div>
 </section>
 ```
-

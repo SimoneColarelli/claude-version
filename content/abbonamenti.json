@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "abbonamenti": [
+    {
+      "id": "studio-una-volta",
+      "tipo": "Solo Studio",
+      "nome": "Mensile Studio",
+      "prezzo": "40€",
+      "periodo": "al mese",
+      "frequenza": "1 lezione/settimana in studio",
+      "descrizione": [
+        "Lezioni in presenza a cadenza settimanale",
+        "Gruppi di massimo 8–9 persone",
+        "Tappetino e attrezzatura inclusi",
+        "Insegnante dedicata e attenta"
+      ],
+      "inEvidenza": false
+    },
+    {
+      "id": "studio-due-volte",
+      "tipo": "Solo Studio",
+      "nome": "Mensile Studio",
+      "prezzo": "75€",
+      "periodo": "al mese",
+      "frequenza": "2 lezioni/settimana in studio",
+      "descrizione": [
+        "Lezioni in presenza 2 volte a settimana",
+        "Maggiore continuità nella pratica",
+        "Progresso più rapido e costante",
+        "Tappetino e attrezzatura inclusi"
+      ],
+      "inEvidenza": false
+    },
+    {
+      "id": "studio-online",
+      "tipo": "Combo - Consigliato",
+      "nome": "1 Studio + Online",
+      "prezzo": "50€",
+      "periodo": "al mese",
+      "frequenza": "1 lezione/settimana in studio + online illimitato",
+      "descrizione": [
+        "Lezioni in presenza + accesso illimitato online",
+        "Recupera le lezioni perse in autonomia",
+        "Nuove videolezioni ogni mese",
+        "Supporto diretto su WhatsApp",
+        "La scelta più completa e flessibile"
+      ],
+      "inEvidenza": true
+    },
+    {
+      "id": "studio-due-volte-online",
+      "tipo": "Combo",
+      "nome": "2 Studio + Online",
+      "prezzo": "80€",
+      "periodo": "al mese",
+      "frequenza": "2 lezioni/settimana in studio + online illimitato",
+      "descrizione": [
+        "Lezioni in presenza + accesso illimitato online",
+        "Recupera le lezioni perse in autonomia",
+        "Nuove videolezioni ogni mese",
+        "Supporto diretto su WhatsApp",
+        "La scelta più completa e flessibile"
+      ],
+      "inEvidenza": false
+    },
+    {
+      "id": "solo-online",
+      "tipo": "Solo Online",
+      "nome": "Solo Videolezioni",
+      "prezzo": "20€",
+      "periodo": "al mese",
+      "frequenza": "accesso illimitato",
+      "descrizione": [
+        "Accesso illimitato alla piattaforma online",
+        "Lezioni per ogni livello e necessità",
+        "Aggiornamenti mensili con nuovi contenuti",
+        "Supporto via WhatsApp incluso"
+      ],
+      "inEvidenza": false
+    },
+    {
+      "id": "studio-ingresso",
+      "tipo": "Solo studio",
+      "nome": "Ingresso singolo",
+      "prezzo": "15€",
+      "periodo": "a lezione",
+      "frequenza": "ingresso singolo in studio",
+      "descrizione": [
+        "Lezioni in presenza + accesso illimitato online",
+        "Recupera le lezioni perse in autonomia",
+        "Nuove videolezioni ogni mese",
+        "Supporto diretto su WhatsApp",
+        "La scelta più completa e flessibile"
+      ],
+      "inEvidenza": false
+    }
+  ]
+}
