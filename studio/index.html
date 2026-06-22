@@ -207,7 +207,12 @@
   /* ─── PAGE HEADER ─── */
   .page-header {
     padding: clamp(8rem, 14vw, 10rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
-    background: var(--white);
+    min-height: clamp(30rem, 68svh, 46rem);
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(90deg, rgba(36, 29, 23, 0.62), rgba(74, 53, 38, 0.32)),
+      url("/assets/images/studio image panoramic.png") center 58% / cover no-repeat;
   }
 
   .page-header-content {
@@ -218,25 +223,27 @@
 
   .page-title {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(3.2rem, 6vw, 7.5rem);
     font-weight: 800;
     line-height: 1.02;
-    color: var(--charcoal);
+    color: var(--white);
     letter-spacing: -0.01em;
     margin-bottom: clamp(1.9rem, 3vw, 2.4rem);
+    white-space: nowrap;
   }
 
   .page-title em {
     font-style: italic;
-    color: var(--terracotta);
+    color: var(--terra-pale);
   }
 
   .page-intro {
     font-size: clamp(0.9rem, 1.8vw, 1.05rem);
     line-height: 1.75;
-    color: var(--brown);
-    max-width: 46ch;
+    color: var(--white);
+    max-width: 70vw;
     margin-inline: auto;
+    text-shadow: 0 1px 18px rgba(20, 14, 10, 0.38);
   }
 
   /* ─── SHARED BITS ─── */
@@ -816,9 +823,10 @@
 </section>
 
 <!-- QUOTE STRIP -->
-<div class="quote-strip">
+<!--<div class="quote-strip">
   <p class="quote-text">Il momento giusto per rilassarti è quando non hai tempo per farlo.</p>
 </div>
+-->
 
 <!-- STUDIO INTRO -->
 <section class="section-studio-intro">

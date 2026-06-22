@@ -63,11 +63,11 @@
   .mobile-close { display: none; }
 
   /* PAGE HEADER */
-  .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); background: var(--white); }
+  .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); min-height: clamp(30rem,68svh,46rem); display: grid; place-items: center; background: linear-gradient(90deg,rgba(36,29,23,0.62),rgba(74,53,38,0.32)), url("/assets/images/orari-hero-image.png") center 58% / cover no-repeat; }
   .page-header-content { max-width: 640px; margin-inline: auto; text-align: center; }
-  .page-title { font-family: var(--font-display); font-size: clamp(3rem,8vw,6rem); font-weight: 800; line-height: 1.02; color: var(--charcoal); letter-spacing: -0.01em; margin-bottom: clamp(1.9rem,3vw,2.4rem); }
-  .page-title em { font-style: italic; color: var(--terracotta); }
-  .page-intro { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: var(--brown); max-width: 50ch; margin-inline: auto; }
+  .page-title { font-family: var(--font-display); font-size: clamp(3.2rem,6vw,7.5rem); font-weight: 800; line-height: 1.02; color: var(--white); letter-spacing: -0.01em; margin-bottom: clamp(1.9rem,3vw,2.4rem); white-space: nowrap; }
+  .page-title em { font-style: italic; color: var(--terra-pale); }
+  .page-intro { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: var(--white); max-width: 70vw; margin-inline: auto; text-shadow: 0 1px 18px rgba(20,14,10,0.38); }
 
   /* SHARED */
   .section-label { font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.9rem; }
@@ -474,7 +474,7 @@
 <!-- PAGE HEADER -->
 <section class="page-header">
   <div class="page-header-content">
-    <h1 class="page-title">Orario<br><em>&amp; Prezzi</em></h1>
+    <h1 class="page-title">Orari&amp;<em>Prezzi</em></h1>
     <p class="page-intro">Scegli il piano più adatto a te. In studio, online o entrambi: la tua pratica non si ferma mai.</p>
   </div>
 </section>
@@ -488,7 +488,6 @@
     </div>
     <a href="https://wa.me/3452233737" class="btn-ghost-dark">Prenota il posto</a>
   </div>
-  <p class="orario-board-head">Settimana in studio</p>
   <div class="orario-board" aria-label="Orario settimanale delle lezioni in studio">
 
     <article class="orario-day">
