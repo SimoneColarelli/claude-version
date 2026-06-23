@@ -423,6 +423,7 @@
   .page-title       { animation: fadeUp 0.9s ease 0.2s both; }
   .page-intro       { animation: fadeUp 0.9s ease 0.4s both; }
 </style>
+<link rel="stylesheet" href="/assets/css/course-carousel.css?v=20260623-1">
 </head>
 <body data-cms-page="courses">
 
@@ -434,7 +435,7 @@
     <li><a href="/corsi/" class="active">Corsi</a></li>
     <li><a href="/online/">Online</a></li>
     <li><a href="/orari/">Orari &amp; Prezzi</a></li>
-    <li><a href="/#contatti">Contatti</a></li>
+    <li><a href="/regolamento/">Regolamento</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -448,7 +449,7 @@
   <a href="/corsi/" class="mobile-link">Corsi</a>
   <a href="/online/" class="mobile-link">Online</a>
   <a href="/orari/" class="mobile-link">Orari &amp; Prezzi</a>
-  <a href="/#contatti" class="mobile-link">Contatti</a>
+  <a href="/regolamento/" class="mobile-link">Regolamento</a>
 </div>
 
 <!-- PAGE HEADER -->
@@ -469,7 +470,9 @@
     <a href="/orari/" class="btn-ghost-dark">Orari e prezzi</a>
   </div>
 
-  <div class="corsi-grid">
+  <div class="corsi-carousel" data-courses-carousel>
+    <button class="corsi-carousel-nav corsi-carousel-prev" data-courses-prev type="button" aria-label="Corsi precedenti" hidden>&lsaquo;</button>
+    <div class="corsi-grid" aria-label="Carosello dei corsi">
     <a class="corso-card" href="#vinyasa">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
         <source src="/assets/videos/cane a testa in giù animation.mp4" type="video/mp4">
@@ -510,6 +513,8 @@
       <span class="corso-detail">Praticanti avanzati</span>
       <span class="corso-arrow">↗</span>
     </a>
+    </div>
+    <button class="corsi-carousel-nav corsi-carousel-next" data-courses-next type="button" aria-label="Corsi successivi" hidden>&rsaquo;</button>
   </div>
 </section>
 
@@ -658,10 +663,12 @@
     <div class="footer__legal">
       <!-- TODO: inserire CF, sede legale se diversa dalla sede operativa, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
       <p>Studio Yogis di Michela Ettorre - P.IVA 02143220669 - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
-      <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
-      <nav class="footer__nav" aria-label="Link studio">
+      <nav class="footer__nav" aria-label="Informazioni legali">
         <ul class="footer__legal-links">
-          <li><a href="/orari/#regolamento">Regolamento studio</a></li>
+          <li><a href="/note-legali/">Note legali</a></li>
+          <li><a href="/privacy-policy/">Privacy policy</a></li>
+          <li><a href="/cookie-policy/">Cookie policy</a></li>
+          <li><a href="/regolamento/">Regolamento studio</a></li>
           <li><a href="/studio/#dove">Dove siamo</a></li>
         </ul>
       </nav>
@@ -723,5 +730,6 @@
 </script>
 <script src="/assets/js/content-model.js"></script>
 <script src="/assets/js/content-cms.js"></script>
+<script src="/assets/js/course-carousel.js?v=20260623-1"></script>
 </body>
 </html>

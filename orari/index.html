@@ -358,7 +358,7 @@
     color: var(--brown);
   }
 
-  .regola-text strong { color: var(--charcoal); font-weight: 500; }
+  .regola-text strong { color: var(--terracotta); font-weight: 700; }
 
   /* CTA */
   .section-cta { padding: clamp(4rem,8vw,6.5rem) var(--gutter); background: var(--cream-mid); display: grid; grid-template-columns: auto auto; justify-content: center; gap: 16rem; align-items: center; border-top: 1px solid rgba(181,113,74,0.12); }
@@ -455,8 +455,8 @@
     <li><a href="/studio/">Studio</a></li>
     <li><a href="/corsi/">Corsi</a></li>
     <li><a href="/online/">Online</a></li>
-    <li><a href="/orari/" class="active">Orario &amp; Prezzi</a></li>
-    <li><a href="/#contatti">Contatti</a></li>
+    <li><a href="/orari/" class="active">Orari &amp; Prezzi</a></li>
+    <li><a href="/regolamento/">Regolamento</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
@@ -468,7 +468,7 @@
   <a href="/corsi/" class="mobile-link">Corsi</a>
   <a href="/online/" class="mobile-link">Online</a>
   <a href="/orari/" class="mobile-link">Orari &amp; Prezzi</a>
-  <a href="/#contatti" class="mobile-link">Contatti</a>
+  <a href="/regolamento/" class="mobile-link">Regolamento</a>
 </div>
 
 <!-- PAGE HEADER -->
@@ -651,44 +651,10 @@
 
   <div class="page-cta-row">
     <a href="https://wa.me/3452233737" class="btn-primary">Prenota il tuo posto</a>
+    <a href="/regolamento/" class="btn-ghost-dark">Leggi il regolamento</a>
   </div>
 </section>
 
-<!-- REGOLAMENTO -->
-<section class="section-regolamento" id="regolamento">
-  <div>
-    <p class="section-label">Informazioni utili</p>
-    <h2 class="section-title">Nota <em style="color: var(--terra-light); font-weight: 400;">bene</em></h2>
-    <div class="divider"></div>
-    <p style="font-size:0.95rem;line-height:1.88;color:var(--brown);max-width:42ch">Tutto quello che devi sapere prima di iniziare. Siamo qui per rendere la tua esperienza il più semplice e piacevole possibile.</p>
-    <br>
-    <a href="https://wa.me/3452233737" class="btn-ghost-dark">Hai domande? Scrivici</a>
-  </div>
-  <div>
-    <div class="regola-list">
-      <div class="regola-item">
-        <span class="regola-num">01</span>
-        <p class="regola-text">In ogni gruppo è previsto un <strong>massimo di 8–9 partecipanti</strong> per garantire attenzione personalizzata.</p>
-      </div>
-      <div class="regola-item">
-        <span class="regola-num">02</span>
-        <p class="regola-text">Le lezioni <strong>iniziano puntuali</strong> e durano 50 minuti. Si prega di arrivare 5 minuti prima per non interrompere.</p>
-      </div>
-      <div class="regola-item">
-        <span class="regola-num">03</span>
-        <p class="regola-text">Il mensile va dall'1 al 31 del mese. Se si inizia nel corso del mese, <strong>il prezzo viene riproporzionato</strong> in base alle lezioni restanti.</p>
-      </div>
-      <div class="regola-item">
-        <span class="regola-num">04</span>
-        <p class="regola-text">Le <strong>lezioni perse non possono essere recuperate</strong>. Consigliamo il pacchetto Studio + Online per mantenere la continuità.</p>
-      </div>
-      <div class="regola-item">
-        <span class="regola-num">05</span>
-        <p class="regola-text">Il mensile deve essere saldato <strong>entro la prima settimana del mese</strong>, anche a mezzo bonifico.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CTA -->
 <section class="section-cta">
@@ -751,10 +717,12 @@
     <div class="footer__legal">
       <!-- TODO: inserire CF, sede legale se diversa dalla sede operativa, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
       <p>Studio Yogis di Michela Ettorre - P.IVA 02143220669 - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
-      <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
-      <nav class="footer__nav" aria-label="Link studio">
+      <nav class="footer__nav" aria-label="Informazioni legali">
         <ul class="footer__legal-links">
-          <li><a href="/orari/#regolamento">Regolamento studio</a></li>
+          <li><a href="/note-legali/">Note legali</a></li>
+          <li><a href="/privacy-policy/">Privacy policy</a></li>
+          <li><a href="/cookie-policy/">Cookie policy</a></li>
+          <li><a href="/regolamento/">Regolamento studio</a></li>
           <li><a href="/studio/#dove">Dove siamo</a></li>
         </ul>
       </nav>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online — Yogis Studio Yoga</title>
+<title>Regolamento — Yogis Studio Yoga</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -17,15 +17,12 @@
     --sand:         #C8B89A;
     --sand-dark:    #A8926E;
     --terracotta:   #B5714A;
-    --terra-dark:  #8C5A36;
     --terra-light:  #C98B67;
     --terra-pale:   #F0E0D4;
     --charcoal:     #2A2520;
     --black:        #000000;
     --brown:        #6B5344;
     --brown-light:  #9C7E6A;
-    --olive:        #7A8456;
-    --olive-pale:   #EAE9DF;
     --font-display: 'Poppins', sans-serif;
     --font-body:    'Montserrat', sans-serif;
     --pad:          clamp(4rem, 8vw, 7rem);
@@ -34,12 +31,6 @@
 
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--white); color: var(--charcoal); font-weight: 500; overflow-x: hidden; }
-
-  em {
-    font-style: italic;
-    color: var(--terra-light);
-    font-weight: 400;
-  }
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem var(--gutter); background: var(--white); transition: background 0.4s, box-shadow 0.4s; }
@@ -72,179 +63,302 @@
   .mobile-close { display: none; }
 
   /* PAGE HEADER */
-  .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); min-height: clamp(30rem,68svh,46rem); display: grid; place-items: center; background: linear-gradient(90deg,rgba(36,29,23,0.62),rgba(74,53,38,0.32)), url("/assets/images/yogis-online-hero-image.png") center 58% / cover no-repeat; }
+  .page-header { padding: clamp(8rem,14vw,10rem) var(--gutter) clamp(3rem,6vw,4.5rem); min-height: clamp(30rem,68svh,46rem); display: grid; place-items: center; background: linear-gradient(90deg,rgba(36,29,23,0.62),rgba(74,53,38,0.32)), url("/assets/images/orari-hero-image.png") center 58% / cover no-repeat; }
   .page-header-content { max-width: 640px; margin-inline: auto; text-align: center; }
   .page-title { font-family: var(--font-display); font-size: clamp(3.2rem,6vw,7.5rem); font-weight: 800; line-height: 1.02; color: var(--white); letter-spacing: -0.01em; margin-bottom: clamp(1.9rem,3vw,2.4rem); white-space: nowrap; }
   .page-title em { font-style: italic; color: var(--terra-pale); }
   .page-intro { font-size: clamp(0.9rem,1.8vw,1.05rem); line-height: 1.75; color: var(--white); max-width: 70vw; margin-inline: auto; text-shadow: 0 1px 18px rgba(20,14,10,0.38); }
-  .page-cta-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: clamp(1.8rem,3vw,2.4rem); }
-  .page-header .btn-outline-dark { border-color: var(--white); color: var(--white); }
-  .page-header .btn-outline-dark:hover { background: var(--white); color: var(--charcoal); }
 
   /* SHARED */
   .section-label { font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.9rem; }
   .section-title { font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); font-weight: 500; line-height: 1.18; color: var(--charcoal); margin-bottom: 1.2rem; }
   .section-title em { font-style: italic; color: var(--terracotta); }
-  .section-body { font-size: 0.95rem; line-height: 1.88; color: var(--brown); margin-bottom: 1.4rem; max-width: 46ch; }
   .divider { width: 40px; height: 1px; background: var(--sand); margin: 1.4rem 0; }
-
   .btn-primary { display: inline-block; padding: 0.9rem 2.4rem; background: var(--terracotta); color: var(--white); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-body); transition: background 0.3s, transform 0.2s; }
   .btn-primary:hover { background: var(--terra-light); transform: translateY(-2px); }
-  .btn-outline-dark { display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--charcoal); color: var(--charcoal); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-body); transition: background 0.3s, color 0.3s; }
-  .btn-outline-dark:hover { background: var(--charcoal); color: var(--white); }
   .btn-ghost-dark { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--brown); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: var(--font-body); transition: color 0.2s; }
   .btn-ghost-dark::after { content: ''; display: block; width: 28px; height: 1px; background: currentColor; transition: width 0.3s; }
   .btn-ghost-dark:hover { color: var(--terracotta); }
   .btn-ghost-dark:hover::after { width: 44px; }
 
-  /* INTRO SECTION */
-  .section-online-intro {
-    padding: 80px var(--gutter) var(--pad);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(3rem,6vw,7rem);
-    align-items: top;
+  /* ORARIO SECTION */
+  .section-orario {
+    padding: 40px var(--gutter) var(--pad);
     background: var(--white);
   }
 
-  .online-visual { aspect-ratio: 4/5; overflow: hidden; background: var(--cream-mid); }
-  .online-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 0.6s ease; }
-  .online-visual:hover img { transform: scale(1.04); }
+  .orario-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: clamp(2.5rem,5vw,4rem);
+  }
 
-  /* FEATURES GRID */
-  .section-features {
+  .orario-board {
+    width: min(100%, 900px);
+    background: var(--white);
+    margin: 0 auto 1.5rem;
+  }
+
+  .orario-board-head {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    font-size: 1.64rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--terracotta);
+  }
+
+
+  .orario-day {
+    display: grid;
+    grid-template-columns: clamp(8rem, 16vw, 12rem) 1fr;
+    min-height: 4.25rem;
+    margin: 4px;
+  }
+
+  .orario-day:last-child { border-bottom: 0; }
+
+  .orario-day:nth-child(odd) { background: var(--cream); }
+
+  .orario-day-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.7rem clamp(0.75rem, 1.5vw, 1.25rem);
+    border-right: 1px solid var(--cream-mid);
+  }
+
+  .orario-day-name span {
+    margin-bottom: 0.2rem;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--terracotta);
+  }
+
+  .orario-day-name h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.2vw, 2rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--brown);
+  }
+
+  .orario-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    list-style: none;
+  }
+
+  .orario-slot {
+    display: grid;
+    grid-template-columns: minmax(3.5rem, auto) 1fr auto;
+    align-items: center;
+    gap: clamp(0.45rem, 1vw, 0.75rem);
+    padding: 0.75rem clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .orario-slot + .orario-slot { border-left: 1px solid var(--cream-mid); }
+
+  .orario-time {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    color: var(--terracotta);
+  }
+
+  .orario-course {
+    font-family: var(--font-display);
+    font-size: clamp(0.78rem, 1vw, 0.92rem);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--brown);
+  }
+
+  .orario-teacher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--sand);
+    font-size: 0.54rem;
+    font-weight: 700;
+    color: var(--brown);
+  }
+
+  .orario-note {
+    width: min(100%, 900px);
+    margin-inline: auto;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--brown-light);
+  }
+
+  .orario-note a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  /* PREZZI GRID */
+  .section-prezzi {
     padding: var(--pad) var(--gutter);
     background: var(--cream);
   }
 
-  .features-header {
-    max-width: 52ch;
-    margin-inline: auto;
-    margin-bottom: clamp(2.5rem,5vw,4rem);
-    text-align: center;
-  }
+  .prezzi-header { margin-bottom: clamp(2.5rem,5vw,4rem); }
 
-  .features-grid {
+  .prezzi-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .feature-item {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .feature-num { font-family: var(--font-display); font-size: 2.6rem; font-style: italic; color: var(--cream-mid); line-height: 1; transition: color 0.3s; }
-  .feature-item:hover .feature-num { color: var(--terra-pale); }
-
-  .feature-label { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracotta); }
-  .feature-desc { font-size: 0.9rem; line-height: 1.78; color: var(--brown); max-width: 30ch; }
-
-  /* CONTENT TYPES */
-  .section-contenuti {
-    padding: var(--pad) var(--gutter);
-    background: var(--white);
-  }
-
-  .contenuti-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: clamp(2.5rem,5vw,4rem);
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .contenuti-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: 1.5px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 6px;
     background: var(--cream-mid);
+    margin-bottom: 3rem;
   }
 
-  .contenuto-item {
+  .prezzo-card {
     background: var(--white);
-    padding: clamp(1.8rem,3vw,2.4rem);
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.8rem;
     transition: background 0.3s;
+    position: relative;
   }
 
-  .contenuto-item:hover { background: var(--cream); }
+  .prezzo-card:hover { background: var(--cream); }
 
-  .contenuto-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.4rem;
+  .prezzo-card.featured {
+    background: var(--terra-light);
   }
 
-  .contenuto-title {
+  .prezzo-card.featured:hover { background: var(--terracotta); }
+
+  .prezzo-tipo {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  .prezzo-card.featured .prezzo-tipo { color: rgba(255,255,255,0.82); }
+
+  .prezzo-nome {
     font-family: var(--font-display);
-    font-size: clamp(1.1rem,2vw,1.4rem);
+    font-size: clamp(1.3rem,2.5vw,1.7rem);
     font-weight: 600;
     color: var(--charcoal);
     line-height: 1.2;
   }
 
-  .contenuto-desc {
-    font-size: 0.875rem;
+  .prezzo-card.featured .prezzo-nome { color: var(--white); }
+
+  .prezzo-importo {
+    font-family: var(--font-display);
+    font-size: clamp(2rem,4vw,2.8rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1;
+    margin-top: 0.5rem;
+  }
+
+  .prezzo-card.featured .prezzo-importo { color: var(--white); }
+
+  .prezzo-periodo {
+    font-size: 0.72rem;
+    color: var(--brown-light);
+    letter-spacing: 0.1em;
+  }
+
+  .prezzo-card.featured .prezzo-periodo { color: rgba(255,255,255,0.72); }
+
+  .prezzo-divider { height: 1px; background: var(--cream-mid); margin: 0.5rem 0; }
+  .prezzo-card.featured .prezzo-divider { background: rgba(255,255,255,0.24); }
+
+  .prezzo-dettagli {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .prezzo-dettagli li {
+    font-size: 0.86rem;
+    color: var(--brown);
+    line-height: 1.55;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .prezzo-dettagli li::before {
+    content: '—';
+    color: var(--sand-dark);
+    flex-shrink: 0;
+  }
+
+  .prezzo-card.featured .prezzo-dettagli li { color: rgba(255,255,255,0.88); }
+  .prezzo-card.featured .prezzo-dettagli li::before { color: rgba(255,255,255,0.72); }
+
+  @media (min-width: 1024px) {
+    .prezzi-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .prezzo-card {
+      flex: 0 0 calc((100% - 18px) / 4);
+    }
+  }
+
+  /* REGOLAMENTO */
+  .section-regolamento {
+    padding: clamp(8rem, 14vw, 10rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem,6vw,7rem);
+    align-items: start;
+  }
+
+  .regola-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--cream-mid);
+  }
+
+  .regola-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-mid);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+
+  .regola-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--cream-mid);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .regola-text {
+    font-size: 0.9rem;
     line-height: 1.75;
     color: var(--brown);
   }
 
-  .contenuto-note {
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--terra-light);
-    margin-top: 0.2rem;
-  }
-
-  /* SUPPORT SECTION */
-  .section-support {
-    padding: var(--pad) var(--gutter);
-    background: var(--terra-light);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(3rem,6vw,7rem);
-    align-items: center;
-  }
-
-  .support-text .section-label { color: rgba(255,255,255,0.82); }
-  .support-text .section-title { color: var(--white); }
-  .support-text .section-body { color: rgba(255,255,255,0.88); }
-  .support-text .divider { background: rgba(255,255,255,0.48); }
-
-  .support-visual {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.24);
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .support-quote {
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem,2.5vw,1.7rem);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.5;
-  }
-
-  .support-quote::before { content: '"'; color: rgba(255,255,255,0.72); }
-  .support-quote::after  { content: '"'; color: rgba(255,255,255,0.72); }
-
-  .support-attr {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.72);
-  }
+  .regola-text strong { color: var(--terracotta); font-weight: 700; }
 
   /* CTA */
   .section-cta { padding: clamp(4rem,8vw,6.5rem) var(--gutter); background: var(--cream-mid); display: grid; grid-template-columns: auto auto; justify-content: center; gap: 16rem; align-items: center; border-top: 1px solid rgba(181,113,74,0.12); }
@@ -254,6 +368,7 @@
   .cta-side { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
   .cta-phone { font-family: var(--font-display); font-size: clamp(1.2rem,2.5vw,1.7rem); color: var(--charcoal); text-decoration: none; transition: color 0.2s; }
   .cta-phone:hover { color: var(--terracotta); }
+   .page-cta-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: clamp(1.8rem,3vw,2.4rem); }
 
   /* FOOTER */
   .footer { background: var(--black); color: var(--white); padding: clamp(3.5rem, 7vw, 5.5rem) var(--gutter) 2rem; }
@@ -290,8 +405,7 @@
   @media (max-width: 768px) {
     .nav-links, .nav-cta-btn { display: none; }
     .nav-toggle { display: flex; }
-    .section-online-intro { grid-template-columns: 1fr; }
-    .section-support { grid-template-columns: 1fr; }
+    .section-regolamento { grid-template-columns: 1fr; }
     .section-cta { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
     .cta-side { align-items: flex-start; }
     .footer__brand { order: 1; }
@@ -299,21 +413,40 @@
     .footer__studio-nav { order: 3; }
     .footer__online { order: 4; }
     .footer__legal { order: 5; }
-    .features-grid { grid-template-columns: 1fr; }
-    .feature-item { align-items: center; text-align: center; }
-    .feature-desc { margin-inline: auto; }
-    .online-visual { aspect-ratio: 3/2; }
-    .contenuti-header { flex-direction: column; align-items: flex-start; }
+    .orario-header { flex-direction: column; align-items: flex-start; }
+    .orario-board-head { align-items: flex-start; }
+    .orario-day { grid-template-columns: 7rem 1fr; }
+    .orario-slots { grid-template-columns: 1fr; }
+    .orario-slot { padding-left: clamp(4rem, 4vw, 1.5rem); }
+    .orario-slot + .orario-slot { border-top: 1px solid var(--cream-mid); border-left: 0; }
+  }
+
+  @media (max-width: 520px) {
+    .orario-board-head { flex-direction: column; gap: 0.25rem; }
+    .orario-board-head p:last-child { text-align: left; }
+    .orario-day { grid-template-columns: 1fr; }
+    .orario-day-name {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      padding-block: 0.65rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--cream-mid);
+    }
+    .orario-day-name span { margin-bottom: 0; }
+    .orario-day-name h3 { font-size: 1.3rem; }
+    .orario-slot { grid-template-columns: 3.4rem 1fr auto; padding-block: 0.8rem; }
+    .orario-time { font-size: 0.95rem; }
+    .orario-course { font-size: 0.8rem; }
   }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   .page-title       { animation: fadeUp 0.9s ease 0.2s both; }
   .page-intro       { animation: fadeUp 0.9s ease 0.4s both; }
 </style>
-<link rel="stylesheet" href="/assets/css/online-collections-carousel.css?v=20260623-2">
-<script src="/assets/js/online-collections-carousel.js?v=20260623-1" defer></script>
 </head>
-<body>
+<body data-cms-page="schedule">
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -321,9 +454,9 @@
   <ul class="nav-links">
     <li><a href="/studio/">Studio</a></li>
     <li><a href="/corsi/">Corsi</a></li>
-    <li><a href="/online/" class="active">Online</a></li>
+    <li><a href="/online/">Online</a></li>
     <li><a href="/orari/">Orari &amp; Prezzi</a></li>
-    <li><a href="/regolamento/">Regolamento</a></li>
+    <li><a href="/regolamento/" class="active">Regolamento</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
@@ -338,165 +471,45 @@
   <a href="/regolamento/" class="mobile-link">Regolamento</a>
 </div>
 
-<!-- PAGE HEADER -->
-<section class="page-header">
-  <div class="page-header-content">
-    <h1 class="page-title">Yogis <em style="font-weight: 800;">Online</em></h1>
-    <p class="page-intro">L'area clienti riservata alle allieve dello studio: videolezioni e percorsi per continuare a praticare anche quando non sei in sala.</p>
-    <div class="page-cta-row">
-      <a href="https://online.studioyogis.it" class="btn-primary" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
-      <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20vorrei%20informazioni%20sull%27accesso%20a%20Yogis%20Online." class="btn-outline-dark" target="_blank" rel="noopener noreferrer">Richiedi accesso</a>
-    </div>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="section-online-intro">
+<!-- REGOLAMENTO -->
+<section class="section-regolamento" id="regolamento">
   <div>
-    <p class="section-label">Area clienti</p>
-    <h2 class="section-title">La continuità dello studio,<br><em>anche da casa.</em></h2>
+    <p class="section-label">Informazioni utili</p>
+    <h2 class="section-title">Regolamento</h2>
     <div class="divider"></div>
-    <p class="section-body">Yogis Online nasce per accompagnare chi pratica già con noi in studio: uno spazio riservato dove ritrovare sequenze, lezioni guidate e contenuti utili tra un incontro in presenza e l'altro.</p>
-    <p class="section-body">Non sostituisce la pratica in sala: la completa. Ti aiuta a mantenere continuità, recuperare quando salti una lezione e prenderti cura del corpo nei giorni in cui resti a casa.</p>
-    <a href="https://online.studioyogis.it" class="btn-outline-dark" target="_blank" rel="noopener noreferrer">Accedi a Yogis Online</a>
+    <p style="font-size:0.95rem;line-height:1.88;color:var(--brown);max-width:42ch">Tutto quello che devi sapere prima di iniziare. Vi chiediamo di rispettare le regole per rendere l'esperienza il più piacevole possibile.</p>
+    <br>
+    <a href="https://wa.me/3452233737" class="btn-ghost-dark">Hai domande? Scrivici</a>
   </div>
-  <div class="online-visual">
-    <img src="/assets/images/videolezioni image.png" alt="Videolezioni yoga online Yogis">
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section-features">
-  <div class="features-header">
-    <p class="section-label">A cosa serve</p>
-    <h2 class="section-title">Un supporto online <em>per la pratica in studio</em></h2>
-  </div>
-  <div class="features-grid">
-    <div class="feature-item">
-      <div class="feature-num">01</div>
-      <p class="feature-label">Riservato alle allieve</p>
-      <p class="feature-desc">L'accesso è pensato per chi frequenta o ha un percorso con Yogis Studio, così la pratica online resta collegata al lavoro fatto insieme.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-num">02</div>
-      <p class="feature-label">Continuità</p>
-      <p class="feature-desc">Puoi mantenere il ritmo anche quando non riesci a venire in studio, scegliendo lezioni coerenti con il tuo livello e le tue esigenze.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-num">03</div>
-      <p class="feature-label">Recupero lezioni</p>
-      <p class="feature-desc">Quando salti una lezione in presenza, puoi recuperare movimento e respirazione con contenuti guidati e facili da seguire.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-num">04</div>
-      <p class="feature-label">Guida reale</p>
-      <p class="feature-desc">Se hai dubbi su cosa praticare o su come adattare una lezione, puoi scriverci: il supporto resta quello dello studio.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-num">05</div>
-      <p class="feature-label">Integrazione perfetta</p>
-      <p class="feature-desc">I contenuti online sono pensati per dialogare con le lezioni in sala, non per creare un percorso separato o impersonale.</p>
-    </div>
-    <div class="feature-item">
-      <div class="feature-num">06</div>
-      <p class="feature-label">Più autonomia</p>
-      <p class="feature-desc">Puoi praticare nei tuoi tempi, con sequenze brevi o complete, senza perdere il riferimento del metodo Yogis.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTENUTI -->
-<section
-  class="section-contenuti"
-  data-online-collections
-  data-collections-endpoint="https://pikwqvucmvlxmjxllqmu.supabase.co/functions/v1/public-collections"
->
-  <div class="contenuti-header">
-    <div>
-      <p class="section-label">Cosa trovi</p>
-      <h2 class="section-title">Contenuti <em>per accompagnarti</em></h2>
-    </div>
-    <a href="https://online.studioyogis.it" class="btn-ghost-dark" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
-  </div>
-
-  <div class="contenuti-list" data-collections-fallback>
-    <div class="contenuto-item">
-      <div class="contenuto-icon">🌊</div>
-      <p class="contenuto-title">Vinyasa &amp; Power Yoga</p>
-      <p class="contenuto-desc">Lezioni in linea con lo stile praticato in sala: flusso, forza ed energia per mantenere continuità tra gli incontri.</p>
-      <p class="contenuto-note">Livelli variabili</p>
-    </div>
-    <div class="contenuto-item">
-      <div class="contenuto-icon">🌿</div>
-      <p class="contenuto-title">Hatha Yoga Soft</p>
-      <p class="contenuto-desc">Pratiche più lente e dolci, utili nei giorni in cui vuoi alleggerire il corpo e restare in ascolto.</p>
-      <p class="contenuto-note">Tutti i livelli</p>
-    </div>
-    <div class="contenuto-item">
-      <div class="contenuto-icon">💪</div>
-      <p class="contenuto-title">Flessibilità &amp; Tonificazione</p>
-      <p class="contenuto-desc">Sequenze mirate per approfondire il lavoro fatto in studio, con attenzione a mobilità, forza e controllo.</p>
-      <p class="contenuto-note">Livelli variabili</p>
-    </div>
-    <div class="contenuto-item">
-      <div class="contenuto-icon">☀️</div>
-      <p class="contenuto-title">Pratiche brevi</p>
-      <p class="contenuto-desc">Contenuti rapidi per inserire la pratica nella giornata, anche quando hai poco tempo ma vuoi restare costante.</p>
-      <p class="contenuto-note">10–20 minuti</p>
-    </div>
-  </div>
-
-  <div class="online-collections-carousel" data-collections-carousel hidden>
-    <button
-      class="online-collections-nav online-collections-prev"
-      data-collections-prev
-      type="button"
-      aria-label="Collezioni precedenti"
-      hidden
-    >&lsaquo;</button>
-    <div
-      class="online-collections-track"
-      data-collections-track
-      role="region"
-      aria-label="Collezioni disponibili su Yogis Online"
-      tabindex="-1"
-    ></div>
-    <button
-      class="online-collections-nav online-collections-next"
-      data-collections-next
-      type="button"
-      aria-label="Collezioni successive"
-      hidden
-    >&rsaquo;</button>
-  </div>
-  <p class="online-collections-status" data-collections-status role="status" aria-live="polite"></p>
-</section>
-
-<!-- SUPPORT SECTION -->
-<section class="section-support">
-  <div class="support-text">
-    <p class="section-label">Supporto Yogis</p>
-    <h2 class="section-title">La piattaforma è online,<br><em style="color: var(--terra-dark)">il supporto è reale.</em></h2>
-    <div class="divider"></div>
-    <p class="section-body" style="color: rgba(253,250,245,0.72)">Yogis Online resta collegata allo studio fisico: se non sai quale lezione scegliere o vuoi un consiglio, puoi parlarne con noi come faresti dopo una classe.</p>
-    <p class="section-body" style="color: rgba(253,250,245,0.72)">Per attivare o recuperare l'accesso, scrivici su WhatsApp: ti guideremo in base al tuo abbonamento e al tuo percorso.</p>
-    <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20vorrei%20informazioni%20sull%27accesso%20a%20Yogis%20Online." class="btn-primary" target="_blank" rel="noopener noreferrer">Richiedi accesso</a>
-  </div>
-  <div class="support-visual">
-    <p class="support-quote">L'online è il completamento delle lezioni in presenza: recuperi, approfondisci e mantieni continuità nel tuo percorso.</p>
-    <p class="support-attr">— Studio Yogis</p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section-cta">
   <div>
-    <h2 class="cta-title">Hai già accesso?<br><em>Entra in Yogis Online.</em></h2>
-    <p class="cta-sub">Area riservata alle allieve e agli abbonamenti attivi dello studio</p>
-  </div>
-  <div class="cta-side">
-    <a href="https://online.studioyogis.it" class="btn-primary" target="_blank" rel="noopener noreferrer">Accedi alla piattaforma</a>
-    <a href="https://wa.me/393452233737?text=Ciao%20Yogis%2C%20ho%20bisogno%20di%20assistenza%20per%20accedere%20a%20Yogis%20Online." class="btn-ghost-dark" style="color: var(--brown)" target="_blank" rel="noopener noreferrer">Assistenza accesso</a>
+    <div class="regola-list">
+      <div class="regola-item">
+        <span class="regola-num">01</span>
+        <p class="regola-text">Le lezioni <strong>iniziano puntuali</strong> e durano 50/55 minuti. <strong>Si prega di arrivare 10 minuti prima per non interrompere.</strong></p>
+      </div>
+      <div class="regola-item">
+        <span class="regola-num">02</span>
+        <p class="regola-text">In ogni gruppo è previsto un <strong>massimo di 8–9 partecipanti</strong> per garantire attenzione personalizzata.</p>
+      </div>
+      <div class="regola-item">
+        <span class="regola-num">03</span>
+        <p class="regola-text">Il mensile deve essere saldato <strong>entro la prima settimana del mese</strong>, anche a mezzo bonifico.</p>
+      </div>
+      <div class="regola-item">
+        <span class="regola-num">04</span>
+        <p class="regola-text">Le <strong>lezioni perse non possono essere recuperate</strong>. Consigliamo il pacchetto Studio + Online per mantenere la continuità.</p>
+      </div>
+      <div class="regola-item">
+        <span class="regola-num">05</span>
+        <p class="regola-text">Il mensile va dall'1 al 31 del mese. Se si inizia nel corso del mese, <strong>il prezzo viene riproporzionato</strong> in base alle lezioni restanti.</p>  
+      </div>
+      <div class="regola-item">
+        <span class="regola-num">06</span>
+        <p class="regola-text">Le attività proposte da Yogis Studio hanno finalità di benessere, movimento e consapevolezza corporea.<br>
+            Le informazioni presenti sul sito <strong>non costituiscono indicazione medica, fisioterapica, psicologica o terapeutica.</strong><br>
+            In presenza di gravidanza, patologie, dolore, infortuni, limitazioni fisiche o dubbi sulla propria condizione, <strong>è necessario consultare un professionista sanitario prima di iniziare la pratica e informare l’insegnante.</strong></p>  
+      </div>
+    </div>
   </div>
 </section>
 

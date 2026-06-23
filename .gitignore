@@ -1,0 +1,6 @@
+.env
+.env.*
+supabase/.temp/
+supabase/.env*
+!supabase/.env.example
+

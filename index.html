@@ -1169,6 +1169,9 @@
   .hero-title { animation: fadeUp 0.9s ease 0.4s both; }
   .hero-bottom{ animation: fadeUp 0.9s ease 0.6s both; }
 </style>
+<link rel="stylesheet" href="/assets/css/google-reviews.css?v=20260622-1">
+<link rel="stylesheet" href="/assets/css/course-carousel.css?v=20260623-1">
+<script src="/assets/js/google-reviews-carousel.js?v=20260622-1" defer></script>
 </head>
 <body data-cms-page="home">
 
@@ -1180,7 +1183,7 @@
     <li><a href="/corsi/">Corsi</a></li>
     <li><a href="/online/">Online</a></li>
     <li><a href="/orari/">Orari &amp; Prezzi</a></li>
-    <li><a href="/#contatti">Contatti</a></li>
+    <li><a href="/regolamento/">Regolamento</a></li>
   </ul>
   <a href="https://wa.me/3452233737" class="nav-cta-btn">Prenota</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1195,7 +1198,7 @@
   <a href="/corsi/" class="mobile-link">Corsi</a>
   <a href="/online/" class="mobile-link">Online</a>
   <a href="/orari/" class="mobile-link">Orari &amp; Prezzi</a>
-  <a href="/#contatti" class="mobile-link">Contatti</a>
+  <a href="/regolamento/" class="mobile-link">Regolamento</a>
 </div>
 
 <!-- HERO -->
@@ -1272,7 +1275,9 @@
     <a href="/orari/" class="btn-ghost-dark btn-orari">Orari e prezzi</a>
   </div>
 
-  <div class="corsi-grid">
+  <div class="corsi-carousel" data-courses-carousel>
+    <button class="corsi-carousel-nav corsi-carousel-prev" data-courses-prev type="button" aria-label="Corsi precedenti" hidden>&lsaquo;</button>
+    <div class="corsi-grid" aria-label="Carosello dei corsi">
     <a class="corso-card corso-card-vinyasa" href="/corsi/#vinyasa">
       <video class="corso-media" muted playsinline preload="auto" aria-hidden="true">
         <source src="/assets/videos/cane a testa in giù animation.mp4" type="video/mp4">
@@ -1309,6 +1314,8 @@
       <p class="corso-desc">Per chi vuole approfondire la propria pratica con asana più complesse, pranayama e tecniche di meditazione avanzata.</p>
       <span class="corso-arrow">↗</span>
     </a>
+    </div>
+    <button class="corsi-carousel-nav corsi-carousel-next" data-courses-next type="button" aria-label="Corsi successivi" hidden>&rsaquo;</button>
   </div>
 </section>
 
@@ -1362,6 +1369,62 @@
       <p class="valore-title">Armonia</p>
       <p class="valore-desc">Un ambiente accogliente e riservato dove mente e corpo trovano il loro equilibrio naturale.</p>
     </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS: resta nascosto finche' data-reviews-endpoint non contiene l'URL della Edge Function verificata. -->
+<section
+  class="yogis-google-reviews"
+  id="recensioni-google"
+  data-google-reviews
+  data-reviews-endpoint=""
+  aria-labelledby="google-reviews-title"
+  aria-busy="false"
+  hidden
+>
+  <div class="reviews-shell">
+    <header class="reviews-header">
+      <p class="reviews-kicker">Recensioni dello studio Yogis</p>
+      <h2 class="reviews-title" id="google-reviews-title">La cura di Yogis, raccontata da chi pratica con noi</h2>
+      <p class="reviews-intro">Le parole di chi pratica con noi raccontano l'attenzione, la presenza e il metodo che rendono speciale l'esperienza Yogis.</p>
+
+      <div class="reviews-summary" data-google-reviews-summary hidden>
+        <span class="reviews-summary-stars" data-google-summary-stars></span>
+        <span data-google-average-rating></span>
+        <span class="reviews-summary-separator" aria-hidden="true"></span>
+        <span data-google-total-reviews></span>
+      </div>
+    </header>
+
+    <p class="reviews-loading" data-google-reviews-loading role="status">Caricamento delle recensioni Google Maps</p>
+
+    <div class="reviews-carousel" data-google-reviews-carousel hidden>
+      <button class="reviews-nav reviews-nav-prev" data-google-reviews-prev type="button" aria-label="Recensione precedente">&lsaquo;</button>
+      <div
+        class="reviews-track"
+        data-google-reviews-track
+        tabindex="0"
+        role="region"
+        aria-label="Carosello recensioni Google Maps"
+      ></div>
+      <button class="reviews-nav reviews-nav-next" data-google-reviews-next type="button" aria-label="Recensione successiva">&rsaquo;</button>
+    </div>
+
+    <div class="reviews-fallback" data-google-reviews-fallback role="status" hidden>
+      <p>Le recensioni Google non sono momentaneamente disponibili. Puoi leggerle direttamente sulla scheda dello studio.</p>
+    </div>
+
+    <footer class="reviews-footer" data-google-reviews-footer hidden>
+      <span class="reviews-attribution" translate="no">Recensioni provenienti da Google Maps</span>
+      <a
+        class="reviews-google-link"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Studio%20Yogis%20L%27Aquila"
+        data-google-business-profile-link
+        target="_blank"
+        rel="noopener noreferrer"
+      >Leggi tutte le recensioni su Google</a>
+      <span class="reviews-stale-note" data-google-reviews-stale hidden>I dati mostrati potrebbero non includere gli aggiornamenti pi&ugrave; recenti.</span>
+    </footer>
   </div>
 </section>
 
@@ -1426,10 +1489,12 @@
     <div class="footer__legal">
       <!-- TODO: inserire CF, sede legale se diversa dalla sede operativa, PEC e REA se applicabile. Non mostrare placeholder visibili finche' i dati reali non sono disponibili. -->
       <p>Studio Yogis di Michela Ettorre - P.IVA 02143220669 - Viale Aldo Moro, 67100 L'Aquila (AQ) - <a href="mailto:info@studioyogis.it">info@studioyogis.it</a></p>
-      <!-- TODO: collegare Privacy Policy, Cookie Policy, Preferenze cookie, Termini e condizioni e Note legali quando le pagine e il pannello cookie saranno presenti. -->
-      <nav class="footer__nav" aria-label="Link studio">
+      <nav class="footer__nav" aria-label="Informazioni legali">
         <ul class="footer__legal-links">
-          <li><a href="/orari/#regolamento">Regolamento studio</a></li>
+          <li><a href="/note-legali/">Note legali</a></li>
+          <li><a href="/privacy-policy/">Privacy policy</a></li>
+          <li><a href="/cookie-policy/">Cookie policy</a></li>
+          <li><a href="/regolamento/">Regolamento studio</a></li>
           <li><a href="/studio/#dove">Dove siamo</a></li>
         </ul>
       </nav>
@@ -1575,5 +1640,6 @@
 </script>
 <script src="/assets/js/content-model.js"></script>
 <script src="/assets/js/content-cms.js"></script>
+<script src="/assets/js/course-carousel.js?v=20260623-1"></script>
 </body>
 </html>

@@ -1,0 +1,112 @@
+.corsi-carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.corsi-carousel-nav {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .corsi-carousel .corsi-grid {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 40px) / 3);
+    gap: 20px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 0.2rem 0 0.8rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .corsi-carousel .corsi-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .corsi-carousel .corso-card {
+    width: auto;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .corsi-carousel .corsi-grid:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 5px;
+  }
+
+  .corsi-carousel-nav {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(107, 83, 68, 0.16);
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--charcoal);
+    box-shadow: 0 0.7rem 1.8rem rgba(42, 37, 32, 0.14);
+    font: inherit;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color 0.2s, border-color 0.2s, opacity 0.2s, transform 0.2s;
+  }
+
+  .corsi-carousel-nav[hidden] {
+    display: none;
+  }
+
+  .corsi-carousel-nav:hover:not(:disabled) {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .corsi-carousel-nav:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+
+  .corsi-carousel-nav:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .corsi-carousel-prev {
+    left: -1.35rem;
+  }
+
+  .corsi-carousel-next {
+    right: -1.35rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 799px) {
+  .corsi-carousel .corsi-grid {
+    grid-auto-columns: calc((100% - 20px) / 2);
+  }
+}
+
+@media (min-width: 1070px) {
+  .corsi-carousel .corsi-grid {
+    grid-auto-columns: calc((100% - 60px) / 4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corsi-carousel .corsi-grid {
+    scroll-behavior: auto;
+  }
+
+  .corsi-carousel-nav {
+    transition: none;
+  }
+}
+

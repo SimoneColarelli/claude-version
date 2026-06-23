@@ -4,7 +4,7 @@
     {
       "id": "vinyasa",
       "nome": "Yogis Vinyasa",
-      "destinatari": "Tutti i livelli",
+      "destinatari": "Praticanti intermedi",
       "descrizioneBreve": "Flusso dinamico sincronizzato con il respiro. Forza, flessibilità e liberazione della mente.",
       "descrizioneLunga": [
         "Un flusso dinamico in cui il movimento è sincronizzato con il respiro. Ogni sequenza fluisce dall'una all'altra in modo armonico, riscaldando il corpo progressivamente e liberando la mente dai pensieri quotidiani.",
@@ -22,7 +22,7 @@
     },
     {
       "id": "pregnancy",
-      "nome": "Yogis Pregnancy",
+      "nome": "Yogis in Gravidanza",
       "destinatari": "Gestanti",
       "descrizioneBreve": "Un percorso dolce e consapevole per accompagnare corpo e mente durante la gravidanza.",
       "descrizioneLunga": [
@@ -74,6 +74,60 @@
       },
       "videoAnteprima": {
         "src": "assets/videos/advanced video.mp4",
+        "type": "video/mp4"
+      }
+    },
+    {
+      "id": "posturale",
+      "nome": "Yogis Posturale",
+      "destinatari": "Praticanti neofiti",
+      "descrizioneBreve": "Descrizione breve Yogis Posturale.",
+      "descrizioneLunga": [
+        "Descrizione lunga Yogis Posturale."
+      ],
+      "tags": ["Neofiti", "Postura", "Allineamenti"],
+      "immagine": {
+        "src": "",
+        "alt": "Pratica di yoga posturale"
+      },
+      "videoAnteprima": {
+        "src": "assets/videos/advanced video.mp4",
+        "type": "video/mp4"
+      }
+    },
+    {
+      "id": "bambini",
+      "nome": "Yogis per Bambini",
+      "destinatari": "Praticanti neofiti",
+      "descrizioneBreve": "Descrizione breve Yogis per Bambini.",
+      "descrizioneLunga": [
+        "Descrizione lunga Yogis per Bambini."
+      ],
+      "tags": ["Bambini", "Giochi", "Movimento"],
+      "immagine": {
+        "src": "",
+        "alt": "Pratica di yoga per bambini"
+      },
+      "videoAnteprima": {
+        "src": "assets/videos/children video.mp4",
+        "type": "video/mp4"
+      }
+    },
+    {
+      "id": "fitflow",
+      "nome": "Yogis FitFlow",
+      "destinatari": "Praticanti avanzati",
+      "descrizioneBreve": "Descrizione breve Yogis FitFlow.",
+      "descrizioneLunga": [
+        "Descrizione lunga Yogis FitFlow."
+      ],
+      "tags": ["Avanzati", "Fit", "Flow"],
+      "immagine": {
+        "src": "",
+        "alt": "Pratica di yoga FitFlow"
+      },
+      "videoAnteprima": {
+        "src": "assets/videos/fitflow video.mp4",
         "type": "video/mp4"
       }
     }
