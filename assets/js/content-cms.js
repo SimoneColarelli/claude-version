@@ -130,6 +130,38 @@
     heading.append(element('em', '', name.slice(separator + 1)));
   }
 
+  function appendInlineStrong(parent, value) {
+    const text = String(value);
+    let cursor = 0;
+
+    while (cursor < text.length) {
+      const opening = text.indexOf('**', cursor);
+      if (opening === -1) {
+        parent.append(document.createTextNode(text.slice(cursor)));
+        break;
+      }
+
+      const closing = text.indexOf('**', opening + 2);
+      if (closing === -1) {
+        parent.append(document.createTextNode(text.slice(cursor)));
+        break;
+      }
+
+      if (opening > cursor) {
+        parent.append(document.createTextNode(text.slice(cursor, opening)));
+      }
+
+      parent.append(element('strong', '', text.slice(opening + 2, closing)));
+      cursor = closing + 2;
+    }
+  }
+
+  function createCourseParagraph(value) {
+    const paragraph = element('p', 'section-body');
+    appendInlineStrong(paragraph, value);
+    return paragraph;
+  }
+
   function createCourseDetail(course, index) {
     const section = element('section', 'section-corso-detail');
     section.id = course.id;
@@ -154,7 +186,7 @@
     const heading = element('h2', 'section-title');
     appendStyledCourseName(heading, course.nome);
     text.append(heading, element('div', 'divider'));
-    course.descrizioneLunga.forEach(paragraph => text.append(element('p', 'section-body', paragraph)));
+    course.descrizioneLunga.forEach(paragraph => text.append(createCourseParagraph(paragraph)));
 
     const tags = element('div', 'corso-tags');
     course.tags.forEach(tag => tags.append(element('span', 'corso-tag', tag)));
@@ -313,19 +345,54 @@
       (left, right) => model.DAY_ORDER.indexOf(left.giorno) - model.DAY_ORDER.indexOf(right.giorno)
     );
     const fragment = document.createDocumentFragment();
+    const sharedTimes = orderedDays.length
+      ? [...orderedDays[0].lezioni].sort((left, right) => left.ora.localeCompare(right.ora)).map(lesson => lesson.ora)
+      : [];
+
+    if (sharedTimes.length) {
+      const timeHeader = element('div', 'orario-board-times');
+      timeHeader.setAttribute('aria-hidden', 'true');
+      timeHeader.append(element('span', 'orario-board-times-label', 'Orari'));
+
+      const timeColumns = element('div', 'orario-board-times-columns');
+      sharedTimes.forEach(timeValue => timeColumns.append(element('span', 'orario-board-time', timeValue)));
+      timeHeader.append(timeColumns);
+      fragment.append(timeHeader);
+    }
 
     orderedDays.forEach(day => {
       const article = element('article', 'orario-day');
       const dayName = element('div', 'orario-day-name');
-      dayName.append(element('h3', '', model.DAY_LABELS[day.giorno]));
+      const dayHeading = element('h3', '', model.DAY_SHORT_LABELS[day.giorno] || model.DAY_LABELS[day.giorno]);
+      dayHeading.setAttribute('aria-label', model.DAY_LABELS[day.giorno]);
+      dayName.append(dayHeading);
       const slots = element('ul', 'orario-slots');
 
-      [...day.lezioni].sort((left, right) => left.ora.localeCompare(right.ora)).forEach(lesson => {
-        const course = courseById.get(lesson.corsoId);
-        const teacher = teacherById.get(lesson.insegnanteId);
+      [...day.lezioni].sort((left, right) => left.ora.localeCompare(right.ora)).forEach((lesson, lessonIndex) => {
         const item = element('li', 'orario-slot');
         const time = element('time', 'orario-time', lesson.ora);
         time.dateTime = lesson.ora;
+        if (sharedTimes[lessonIndex] && sharedTimes[lessonIndex] !== lesson.ora) {
+          item.classList.add('orario-slot--time-exception');
+        }
+        const isEmptySlot = !lesson.corsoId && !lesson.insegnanteId;
+
+        if (isEmptySlot) {
+          item.classList.add('orario-slot--empty');
+          item.setAttribute('aria-label', `${lesson.ora}: nessuna lezione programmata`);
+
+          const emptyCourse = element('span', 'orario-course', 'Nessuna lezione');
+          const emptyTeacher = element('span', 'orario-teacher', '–');
+          emptyCourse.setAttribute('aria-hidden', 'true');
+          emptyTeacher.setAttribute('aria-hidden', 'true');
+          item.append(time, emptyCourse, emptyTeacher);
+          slots.append(item);
+          return;
+        }
+
+        const course = courseById.get(lesson.corsoId);
+        const teacher = teacherById.get(lesson.insegnanteId);
+        item.setAttribute('aria-label', `${lesson.ora}: ${course.nome}, insegnante ${teacher.nome}`);
         const courseName = element('span', 'orario-course', course.nome);
         const teacherLabel = element('span', 'orario-teacher', teacher.sigla);
         teacherLabel.setAttribute('aria-label', `Insegnante ${teacher.nome}`);
@@ -343,21 +410,52 @@
   function renderSchedule(data, coursesData) {
     const board = document.querySelector('.orario-board');
     if (!board) throw new Error('contenitore orario non trovato');
+    board.classList.add('orario-board--shared-times');
     board.replaceChildren(createSchedule(data, coursesData));
   }
 
+  function formatPrice(value) {
+    const price = String(value).trim();
+    if (price === '—' || price === '-') return '—';
+
+    const suffixIndex = price.indexOf('/');
+    if (suffixIndex === -1) return `${price}€`;
+    return `${price.slice(0, suffixIndex)}€${price.slice(suffixIndex)}`;
+  }
+
   function createPlanCard(plan) {
-    const card = element('div', plan.inEvidenza ? 'prezzo-card featured' : 'prezzo-card');
+    const card = element('article', 'prezzo-card');
     card.dataset.planId = plan.id;
     card.append(element('p', 'prezzo-tipo', plan.tipo));
-    card.append(element('p', 'prezzo-nome', plan.nome));
-    const priceBlock = document.createElement('div');
-    priceBlock.append(element('p', 'prezzo-importo', plan.prezzo));
-    priceBlock.append(element('p', 'prezzo-periodo', `${plan.periodo} · ${plan.frequenza}`));
-    card.append(priceBlock, element('div', 'prezzo-divider'));
-    const details = element('ul', 'prezzo-dettagli');
-    plan.descrizione.forEach(item => details.append(element('li', '', item)));
-    card.append(details);
+    card.append(element('h3', 'prezzo-nome', plan.nome));
+
+    const packageHeader = element('div', 'prezzo-pacchetti-header');
+    if (plan.id !== 'solo-online') {
+      packageHeader.setAttribute('aria-hidden', 'true');
+      packageHeader.append(element('span', 'prezzo-speciale-label', 'Yogis in gravidanza / Yogis Mum & Baby'));
+    }
+
+    const packages = element('ul', 'prezzo-pacchetti');
+    plan.pacchetti.forEach(packageItem => {
+      const packageRow = element('li', 'prezzo-pacchetto');
+      const price = formatPrice(packageItem.prezzo);
+      const specialPriceValue = formatPrice(packageItem.prezzoSpeciale);
+      packageRow.append(element('span', 'prezzo-pacchetto-nome', packageItem.nome));
+      packageRow.append(element('span', 'prezzo-pacchetto-importo', price));
+      if (plan.id !== 'solo-online') {
+        packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
+        const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
+        const specialPriceLabel = specialPriceValue === '—'
+          ? 'Prezzo Yogis in gravidanza e Yogis Mum & Baby: non disponibile'
+          : `Prezzo Yogis in gravidanza e Yogis Mum & Baby: ${specialPriceValue}`;
+        specialPrice.setAttribute('aria-label', specialPriceLabel);
+        packageRow.append(specialPrice);
+      }
+ 
+      packages.append(packageRow);
+    });
+
+    card.append(packageHeader, packages);
     return card;
   }
 

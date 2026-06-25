@@ -62,7 +62,17 @@ I giorni ammessi sono `lunedi`, `martedi`, `mercoledi`, `giovedi`, `venerdi`, `s
 
 ## Abbonamenti
 
-`prezzo`, `periodo` e `frequenza` sono testi liberi: sono quindi validi sia `€ 55` e `al mese`, sia `Su richiesta` e `accesso illimitato`. `descrizione` è l'elenco dei vantaggi. Impostare `inEvidenza` a `true` per usare la card terracotta, altrimenti `false`.
+Ogni abbonamento contiene `id`, `tipo`, `nome` e un array non vuoto `pacchetti`. Ogni pacchetto contiene:
+
+```json
+{
+  "nome": "1 lezione/settimana",
+  "prezzo": "40€",
+  "prezzoSpeciale": "35€"
+}
+```
+
+`prezzo` e `prezzoSpeciale` sono testi liberi. Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile.
 
 ## Pubblicazione via FTP
 

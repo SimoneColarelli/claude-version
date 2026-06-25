@@ -2,13 +2,36 @@
   "schemaVersion": 1,
   "corsi": [
     {
+      "id": "posturale",
+      "nome": "Yogis Posturale e Basi",
+      "destinatari": "Praticanti neofiti",
+      "descrizioneBreve": "Yoga posturale ideale per i principianti: la pratica perfetta per muovere i primi passi.",
+      "descrizioneLunga": [
+        "Un corso dedicato al benessere del corpo attraverso lo yoga, pensato per chi desidera migliorare la propria postura, alleviare tensioni e dolori ricorrenti e costruire una pratica solida e consapevole. **È adatto a tutti, sia a chi si avvicina allo yoga per la prima volta sia a chi pratica già e desidera lavorare in modo più approfondito sugli aspetti posturali e funzionali del movimento**.",
+        "Durante le lezioni studiamo le basi della pratica e la propedeutica delle principali posizioni, imparando gli allineamenti corretti e i principi fondamentali che permettono di eseguire gli asana in modo sicuro, efficace e rispettoso delle caratteristiche di ogni persona.",
+        "Il corso integra inoltre un lavoro specifico di **YOGA POSTURALE**, orientato alla prevenzione e al miglioramento delle problematiche più comuni legate alla postura e alle tensioni muscolari, come cifosi, mal di schiena, mal di testa o rigidità articolari. ",
+        "Attraverso esercizi mirati, mobilizzazioni, rinforzo muscolare e tecniche di respirazione, il corpo viene accompagnato verso un maggiore equilibrio, favorendo una migliore funzionalità, una postura più armoniosa e una sensazione generale di benessere."
+      ],
+      "tags": ["Neofiti", "Postura", "Allineamenti"],
+      "immagine": {
+        "src": "assets/images/yogis-posturale-image.png",
+        "alt": "Pratica di yoga posturale"
+      },
+      "videoAnteprima": {
+        "src": "",
+        "type": ""
+      }
+    },
+    {
       "id": "vinyasa",
       "nome": "Yogis Vinyasa",
       "destinatari": "Praticanti intermedi",
       "descrizioneBreve": "Flusso dinamico sincronizzato con il respiro. Forza, flessibilità e liberazione della mente.",
       "descrizioneLunga": [
-        "Un flusso dinamico in cui il movimento è sincronizzato con il respiro. Ogni sequenza fluisce dall'una all'altra in modo armonico, riscaldando il corpo progressivamente e liberando la mente dai pensieri quotidiani.",
-        "Il Vinyasa sviluppa forza e flessibilità in modo equilibrato, adattandosi al livello di ogni partecipante grazie alle indicazioni personalizzate dell'insegnante."
+        "Il Vinyasa Yoga è una pratica dinamica e fluida in cui il movimento si sincronizza con il respiro, creando sequenze continue che rendono la lezione intensa, allenante e profondamente coinvolgente.",
+        "Durante la pratica si sviluppano forza, mobilità e flessibilità. Allo stesso tempo, il ritmo della lezione aiuta a entrare in uno stato di concentrazione che permette di staccare dalla mente e ridurre lo stress.",
+        "Ogni lezione è guidata con attenzione: tutti i partecipanti vengono seguiti e corretti, nessuno viene lasciato indietro o abbandonato durante la pratica. Le varianti vengono adattate ai diversi livelli, così che ciascuno possa lavorare in sicurezza, rispettando il proprio corpo e progredendo nel tempo.",
+        "Il Vinyasa Yoga diventa così un allenamento completo, che unisce lavoro fisico e presenza mentale, energia e ascolto, intensità e consapevolezza. **Per chi è neofita nella pratica, consigliamo di abbinare il corso a lezioni di POSTURALE E BASI, per capire a fondo la tecnica di ogni movimento in una lezione più lenta e dedicata alle specifiche asana**."
       ],
       "tags": ["Tutti i livelli", "Forza", "Flessibilità", "Respiro"],
       "immagine": {
@@ -21,13 +44,37 @@
       }
     },
     {
+      "id": "fitflow",
+      "nome": "Yogis FitFlow",
+      "destinatari": "Praticanti avanzati",
+      "descrizioneBreve": "Corso di tonificazione dinamica che unisce yoga, pesetti ed elastici per forza, resistenza e postura.",
+      "descrizioneLunga": [
+        "Fit Flow è un corso di tonificazione muscolare che unisce la fluidità dello yoga a esercizi di forza eseguiti con pesetti e bande elastiche.",
+        "Le lezioni alternano sequenze dinamiche e lavoro muscolare mirato, generando uno stimolo metabolico che contribuisce ad aumentare il dispendio energetico e a migliorare la capacità dell’organismo di sostenere lo sforzo fisico nel tempo. L’allenamento costante favorisce l’incremento della resistenza muscolare, il miglioramento della forza funzionale, della stabilità articolare e della coordinazione motoria.",
+        "Il lavoro con sovraccarichi leggeri e resistenze elastiche aiuta inoltre a migliorare la densità muscolare, la postura e il controllo del movimento, aspetti fondamentali anche per una pratica yoga più solida e consapevole. Un corpo più forte e stabile permette infatti di affrontare le posizioni con maggiore sicurezza, precisione e resistenza.",
+        "Yoga Fit Flow è pensato per chi vuole completare la pratica yoga con un allenamento capace di sviluppare tono muscolare, mobilità e benessere generale in un’unica lezione dinamica e coinvolgente."
+      ],
+      "tags": ["Avanzati", "Fit", "Flow"],
+      "immagine": {
+        "src": "",
+        "alt": "Pratica di yoga FitFlow"
+      },
+      "videoAnteprima": {
+        "src": "assets/videos/fitflow video.mp4",
+        "type": "video/mp4"
+      }
+    },
+    {
       "id": "pregnancy",
       "nome": "Yogis in Gravidanza",
       "destinatari": "Gestanti",
       "descrizioneBreve": "Un percorso dolce e consapevole per accompagnare corpo e mente durante la gravidanza.",
       "descrizioneLunga": [
-        "Un percorso dolce e consapevole pensato per accompagnare il corpo e la mente durante tutta la gravidanza. Le posizioni vengono adattate settimana dopo settimana, in sicurezza e armonia con i cambiamenti del corpo.",
-        "Tecniche di respirazione, posture di alleggerimento e momenti di rilassamento profondo per vivere la gravidanza con serenità e connessione con il bambino."
+        "Lo yoga in gravidanza è un percorso pensato per accompagnare la donna durante i mesi dell’attesa, aiutandola a mantenere forza, mobilità e benessere, in un momento di grandi cambiamenti fisici ed emotivi.",
+        "La pratica è dolce e adattata a ogni esigenza, con esercizi mirati a migliorare la postura, alleviare le tensioni più comuni (schiena, bacino, zona lombare) e sostenere il corpo nel modo più funzionale possibile mentre si trasforma. Il lavoro sul respiro e sulla consapevolezza corporea aiuta a migliorare la capacità di rilassarsi, ridurre lo stress e prepararsi in modo più sereno al parto.",
+        "Accanto ai benefici fisici, lo yoga in gravidanza favorisce anche una connessione più profonda con il proprio bambino, creando uno spazio di ascolto e presenza che accompagna la futura mamma nella costruzione di fiducia verso il proprio corpo e le sue capacità.",
+        "Le lezioni si svolgono in un ambiente sicuro e accogliente, dove ogni donna può muoversi senza pressioni, rispettando i propri tempi e le proprie sensazioni. È anche un’occasione preziosa per incontrare altre future mamme, creare legami e costruire una piccola comunità di sostegno e confronto in un momento della vita intenso e trasformativo.",
+        "Un percorso che sostiene la gravidanza non solo sul piano fisico, ma anche emotivo e relazionale, per viverla con più equilibrio, energia e consapevolezza."
       ],
       "tags": ["Gestanti", "Dolce", "Sicuro", "Rilassamento"],
       "immagine": {
@@ -45,8 +92,12 @@
       "destinatari": "Neomamme",
       "descrizioneBreve": "Lezioni per neomamme e bambini. Connessione, benessere e momenti speciali da condividere.",
       "descrizioneLunga": [
-        "Lezioni speciali per neomamme e bambini, uno spazio dove ritrovare il proprio corpo dopo il parto e vivere un momento di connessione profonda con il proprio piccolo.",
-        "Un ambiente accogliente e non giudicante dove ogni momento è rispettato. La pratica si adatta ai ritmi del bambino, rendendo ogni lezione un'esperienza autentica di benessere condiviso."
+        "Yoga Mum & Baby è un percorso dedicato al post parto, pensato per accompagnare la mamma nel recupero fisico ed emotivo e rafforzare allo stesso tempo la relazione con il proprio bambino.",
+        "Si può partecipare insieme al proprio neonato fino a quando non inizia a camminare, vivendo la lezione come uno spazio condiviso in cui movimento e presenza si incontrano senza fretta e senza aspettative.",
+        "La pratica è strutturata con sequenze dolci di mobilità, tonificazione profonda e riequilibrio del corpo dopo la gravidanza. Il lavoro è graduale e rispettoso, utile per ritrovare forza, stabilità e una migliore percezione del proprio corpo.",
+        "In studio troverai tutto il necessario per la gestione del neonato — fasciatoio, giochi e uno spazio pensato per accoglierlo al meglio — così la mamma può vivere la lezione in totale serenità, senza la preoccupazione di doversi fermare per allattare o cambiare il piccolo.",
+        "Oltre ai benefici fisici della pratica, questo corso sostiene anche lo sviluppo motorio e sensoriale del neonato, grazie alla vicinanza, al contatto e agli stimoli dolci dell’ambiente. È inoltre un’occasione preziosa di condivisione tra mamme: uno spazio in cui incontrarsi, confrontarsi e sostenersi in una fase della vita intensa e delicata, ma anche profondamente trasformativa.",
+        "Yoga Mum & Baby è uno spazio in cui la mamma può tornare a prendersi cura di sé senza separarsi dal proprio bambino, riscoprendo energia, equilibrio e presenza in una delle fasi più importanti della vita."
       ],
       "tags": ["Neomamme", "Con bambini", "Post-parto", "Benessere"],
       "immagine": {
@@ -59,49 +110,17 @@
       }
     },
     {
-      "id": "advanced",
-      "nome": "Yogis Advanced",
-      "destinatari": "Praticanti avanzati",
-      "descrizioneBreve": "Asana complesse, pranayama e meditazione avanzata per chi vuole approfondire la propria pratica.",
-      "descrizioneLunga": [
-        "Per chi vuole approfondire la propria pratica con asana più complesse, pranayama e tecniche di meditazione avanzata. Un percorso di crescita personale che sfida i limiti del corpo e della mente.",
-        "Richiesta esperienza pregressa con lo yoga. Le classi lavorano su equilibrio, inversioni, backbend profondi e pratiche di controllo del respiro."
-      ],
-      "tags": ["Avanzato", "Inversioni", "Pranayama", "Meditazione"],
-      "immagine": {
-        "src": "",
-        "alt": "Pratica yoga avanzata"
-      },
-      "videoAnteprima": {
-        "src": "assets/videos/advanced video.mp4",
-        "type": "video/mp4"
-      }
-    },
-    {
-      "id": "posturale",
-      "nome": "Yogis Posturale",
-      "destinatari": "Praticanti neofiti",
-      "descrizioneBreve": "Descrizione breve Yogis Posturale.",
-      "descrizioneLunga": [
-        "Descrizione lunga Yogis Posturale."
-      ],
-      "tags": ["Neofiti", "Postura", "Allineamenti"],
-      "immagine": {
-        "src": "",
-        "alt": "Pratica di yoga posturale"
-      },
-      "videoAnteprima": {
-        "src": "assets/videos/advanced video.mp4",
-        "type": "video/mp4"
-      }
-    },
-    {
       "id": "bambini",
       "nome": "Yogis per Bambini",
       "destinatari": "Praticanti neofiti",
-      "descrizioneBreve": "Descrizione breve Yogis per Bambini.",
+      "descrizioneBreve": "Un percorso di yoga giocoso per bambini, che unisce crescita fisica, concentrazione e consapevolezza emotiva.",
       "descrizioneLunga": [
-        "Descrizione lunga Yogis per Bambini."
+        "Forse ti starai chiedendo: perché proporre lo yoga a un bambino? Non deve meditare né “staccare la mente” come un adulto.",
+        "Ne sei proprio sicuro?",
+        "La capacità di ascoltarsi, riconoscere ciò che si prova e imparare a gestire le proprie emozioni non è qualcosa che arriva da grandi: è una competenza che si costruisce molto prima, proprio durante l’infanzia. Abilità come l’autoregolazione, l’attenzione e la consapevolezza di sé sono oggi considerate fondamentali per lo sviluppo sano del bambino, tanto che in diversi paesi vengono introdotte già in ambito scolastico pratiche di mindfulness e respirazione guidata, con l’obiettivo di sostenere il benessere mentale e la capacità di concentrazione.",
+        "Lo yoga per bambini nasce proprio qui: non come meditazione “adulta”, ma come esperienza fatta di gioco, movimento e ascolto del corpo. Attraverso posture semplici, attività motorie e momenti di rilassamento, i bambini sviluppano forza, coordinazione, equilibrio e controllo del movimento, migliorando anche le abilità fisiche di base.",
+        "Allo stesso tempo imparano a rallentare, riconoscere le emozioni e trovare strategie semplici per gestire agitazione, stanchezza o sovraccarico, soprattutto dopo la scuola, quando hanno bisogno di scaricare e ritrovare ordine interno.",
+        "Un’attività che unisce crescita fisica ed emotiva, aiutando i bambini a costruire basi solide di benessere."
       ],
       "tags": ["Bambini", "Giochi", "Movimento"],
       "immagine": {
@@ -110,24 +129,6 @@
       },
       "videoAnteprima": {
         "src": "assets/videos/children video.mp4",
-        "type": "video/mp4"
-      }
-    },
-    {
-      "id": "fitflow",
-      "nome": "Yogis FitFlow",
-      "destinatari": "Praticanti avanzati",
-      "descrizioneBreve": "Descrizione breve Yogis FitFlow.",
-      "descrizioneLunga": [
-        "Descrizione lunga Yogis FitFlow."
-      ],
-      "tags": ["Avanzati", "Fit", "Flow"],
-      "immagine": {
-        "src": "",
-        "alt": "Pratica di yoga FitFlow"
-      },
-      "videoAnteprima": {
-        "src": "assets/videos/fitflow video.mp4",
         "type": "video/mp4"
       }
     }

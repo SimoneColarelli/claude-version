@@ -30,6 +30,15 @@
     sabato: 'SABATO',
     domenica: 'DOMENICA'
   };
+  const DAY_SHORT_LABELS = {
+    lunedi: 'LUN.',
+    martedi: 'MAR.',
+    mercoledi: 'MER.',
+    giovedi: 'GIO.',
+    venerdi: 'VEN.',
+    sabato: 'SAB.',
+    domenica: 'DOM.'
+  };
 
   class ContentValidationError extends Error {
     constructor(file, issues) {
@@ -230,14 +239,26 @@
           if (requireString(lesson.ora, `${lessonPath}.ora`, issues) && !TIME_PATTERN.test(lesson.ora)) {
             addIssue(issues, `${lessonPath}.ora`, 'usa il formato 24 ore HH:MM');
           }
-          if (requireString(lesson.corsoId, `${lessonPath}.corsoId`, issues) && !courseIds.has(lesson.corsoId)) {
-            addIssue(issues, `${lessonPath}.corsoId`, `corso inesistente: ${lesson.corsoId}`);
-          }
-          if (requireString(lesson.insegnanteId, `${lessonPath}.insegnanteId`, issues) && !teacherIds.has(lesson.insegnanteId)) {
-            addIssue(issues, `${lessonPath}.insegnanteId`, `insegnante inesistente: ${lesson.insegnanteId}`);
+          const courseId = typeof lesson.corsoId === 'string' ? lesson.corsoId.trim() : '';
+          const teacherId = typeof lesson.insegnanteId === 'string' ? lesson.insegnanteId.trim() : '';
+          const isEmptySlot = !courseId && !teacherId;
+
+          if (!isEmptySlot && (!courseId || !teacherId)) {
+            addIssue(
+              issues,
+              lessonPath,
+              'corsoId e insegnanteId devono essere entrambi valorizzati oppure entrambi vuoti'
+            );
           }
 
-          const lessonKey = `${day.giorno}|${lesson.ora}|${lesson.corsoId}|${lesson.insegnanteId}`;
+          if (courseId && !courseIds.has(courseId)) {
+            addIssue(issues, `${lessonPath}.corsoId`, `corso inesistente: ${courseId}`);
+          }
+          if (teacherId && !teacherIds.has(teacherId)) {
+            addIssue(issues, `${lessonPath}.insegnanteId`, `insegnante inesistente: ${teacherId}`);
+          }
+
+          const lessonKey = `${day.giorno}|${lesson.ora}`;
           if (seenLessons.has(lessonKey)) {
             addIssue(issues, lessonPath, 'lezione duplicata');
           }
@@ -269,13 +290,18 @@
       }
       requireString(plan.tipo, `${path}.tipo`, issues);
       requireString(plan.nome, `${path}.nome`, issues);
-      requireString(plan.prezzo, `${path}.prezzo`, issues);
-      requireString(plan.periodo, `${path}.periodo`, issues);
-      requireString(plan.frequenza, `${path}.frequenza`, issues);
-      requireStringArray(plan.descrizione, `${path}.descrizione`, issues);
-      if (typeof plan.inEvidenza !== 'boolean') {
-        addIssue(issues, `${path}.inEvidenza`, 'deve essere true oppure false');
+      if (!Array.isArray(plan.pacchetti) || plan.pacchetti.length === 0) {
+        addIssue(issues, `${path}.pacchetti`, 'deve essere un array non vuoto');
+        return;
       }
+
+      plan.pacchetti.forEach((packageItem, packageIndex) => {
+        const packagePath = `${path}.pacchetti[${packageIndex}]`;
+        if (!requireObject(packageItem, packagePath, issues)) return;
+        requireString(packageItem.nome, `${packagePath}.nome`, issues);
+        requireString(packageItem.prezzo, `${packagePath}.prezzo`, issues);
+        requireString(packageItem.prezzoSpeciale, `${packagePath}.prezzoSpeciale`, issues);
+      });
     });
 
     return finishValidation(file, data, issues);
@@ -284,6 +310,7 @@
   return {
     ContentValidationError,
     DAY_LABELS,
+    DAY_SHORT_LABELS,
     DAY_ORDER,
     SCHEMA_VERSION,
     validateCourses,
