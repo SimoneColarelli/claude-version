@@ -193,7 +193,7 @@
     text.append(tags);
 
     const booking = element('a', 'btn-primary', 'Prenota una lezione');
-    booking.href = 'https://wa.me/3452233737';
+    booking.href = 'https://wa.me/393452233737';
     text.append(booking);
     section.append(visual, text);
     return section;

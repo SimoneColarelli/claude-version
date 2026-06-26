@@ -14,7 +14,7 @@
       ],
       "tags": ["Neofiti", "Postura", "Allineamenti"],
       "immagine": {
-        "src": "assets/images/yogis-posturale-image.png",
+        "src": "assets/images/yogis-posturale-image.webp",
         "alt": "Pratica di yoga posturale"
       },
       "videoAnteprima": {
@@ -35,7 +35,7 @@
       ],
       "tags": ["Tutti i livelli", "Forza", "Flessibilità", "Respiro"],
       "immagine": {
-        "src": "assets/images/yogis-vinyasa-image.png",
+        "src": "assets/images/yogis-vinyasa-image.webp",
         "alt": "Pratica di Vinyasa yoga"
       },
       "videoAnteprima": {
@@ -56,7 +56,7 @@
       ],
       "tags": ["Avanzati", "Fit", "Flow"],
       "immagine": {
-        "src": "assets/images/yogis-fitflow-image.png",
+        "src": "assets/images/yogis-fitflow-image.webp",
         "alt": "Pratica di yoga FitFlow"
       },
       "videoAnteprima": {
@@ -78,7 +78,7 @@
       ],
       "tags": ["Gestanti", "Dolce", "Sicuro", "Rilassamento"],
       "immagine": {
-        "src": "assets/images/yogis-pregnancy-image.png",
+        "src": "assets/images/yogis-pregnancy-image.webp",
         "alt": "Donna incinta pratica yoga dolce in studio"
       },
       "videoAnteprima": {
@@ -101,7 +101,7 @@
       ],
       "tags": ["Neomamme", "Con bambini", "Post-parto", "Benessere"],
       "immagine": {
-        "src": "assets/images/yogis-mum&baby-image.png",
+        "src": "assets/images/yogis-mum&baby-image.webp",
         "alt": "immagine di yoga per neomamme e bambini"
       },
       "videoAnteprima": {
@@ -124,7 +124,7 @@
       ],
       "tags": ["Bambini", "Giochi", "Movimento"],
       "immagine": {
-        "src": "assets/images/yogis-per-bambini-image.png",
+        "src": "assets/images/yogis-per-bambini-image.webp",
         "alt": "Pratica di yoga per bambini"
       },
       "videoAnteprima": {
