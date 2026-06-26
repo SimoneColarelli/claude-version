@@ -18,8 +18,8 @@
         "alt": "Pratica di yoga posturale"
       },
       "videoAnteprima": {
-        "src": "",
-        "type": ""
+        "src": "assets/videos/video-yogis-posturale.mp4",
+        "type": "video/mp4"
       }
     },
     {
@@ -35,7 +35,7 @@
       ],
       "tags": ["Tutti i livelli", "Forza", "Flessibilità", "Respiro"],
       "immagine": {
-        "src": "",
+        "src": "assets/images/yogis-vinyasa-image.png",
         "alt": "Pratica di Vinyasa yoga"
       },
       "videoAnteprima": {
@@ -56,12 +56,12 @@
       ],
       "tags": ["Avanzati", "Fit", "Flow"],
       "immagine": {
-        "src": "",
+        "src": "assets/images/yogis-fitflow-image.png",
         "alt": "Pratica di yoga FitFlow"
       },
       "videoAnteprima": {
-        "src": "assets/videos/fitflow video.mp4",
-        "type": "video/mp4"
+        "src": "",
+        "type": ""
       }
     },
     {
@@ -78,8 +78,8 @@
       ],
       "tags": ["Gestanti", "Dolce", "Sicuro", "Rilassamento"],
       "immagine": {
-        "src": "",
-        "alt": "Pratica yoga dolce in studio"
+        "src": "assets/images/yogis-pregnancy-image.png",
+        "alt": "Donna incinta pratica yoga dolce in studio"
       },
       "videoAnteprima": {
         "src": "assets/videos/donna incinta video.mp4",
@@ -101,8 +101,8 @@
       ],
       "tags": ["Neomamme", "Con bambini", "Post-parto", "Benessere"],
       "immagine": {
-        "src": "",
-        "alt": "Sala luminosa dello studio Yogis"
+        "src": "assets/images/yogis-mum&baby-image.png",
+        "alt": "immagine di yoga per neomamme e bambini"
       },
       "videoAnteprima": {
         "src": "assets/videos/mum&baby video.mp4",
@@ -124,12 +124,12 @@
       ],
       "tags": ["Bambini", "Giochi", "Movimento"],
       "immagine": {
-        "src": "",
+        "src": "assets/images/yogis-per-bambini-image.png",
         "alt": "Pratica di yoga per bambini"
       },
       "videoAnteprima": {
-        "src": "assets/videos/children video.mp4",
-        "type": "video/mp4"
+        "src": "",
+        "type": ""
       }
     }
   ]

@@ -442,7 +442,7 @@
       const specialPriceValue = formatPrice(packageItem.prezzoSpeciale);
       packageRow.append(element('span', 'prezzo-pacchetto-nome', packageItem.nome));
       packageRow.append(element('span', 'prezzo-pacchetto-importo', price));
-      if (plan.id !== 'solo-online') {
+      if (plan.id !== 'solo-online' && packageItem.nome !== "lezione privata") {
         packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
         const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
         const specialPriceLabel = specialPriceValue === '—'
