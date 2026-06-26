@@ -147,7 +147,7 @@ La fascia legale deve stare sotto le colonne, con testo piccolo ma leggibile.
 Seconda riga:
 
 ```text
-Privacy Policy · Cookie Policy · Preferenze cookie · Termini e condizioni · Regolamento studio · Note legali
+Privacy Policy · Cookie Policy · Preferenze cookie · Regolamento studio · Note legali
 ```
 
 Terza riga:
@@ -160,7 +160,7 @@ Indicazioni:
 - Se REA non è presente, omettere la voce invece di mostrare un placeholder.
 - Se la PEC non deve essere esposta nel footer, verificare con consulente legale/commercialista. In generale è consigliabile mostrarla tra i dati societari o nelle note legali.
 - La P.IVA deve essere presente in modo visibile sul sito.
-- Il link `Preferenze cookie` deve riaprire il pannello di gestione consenso cookie, non puntare solo alla Cookie Policy.
+- Il pulsante `Preferenze cookie` deve riaprire il pannello di gestione consenso cookie, non puntare solo alla Cookie Policy.
 
 ---
 
@@ -297,7 +297,7 @@ Adattare i percorsi reali del progetto.
         <ul class="footer__legal-links">
           <li><a href="/privacy-policy.html">Privacy Policy</a></li>
           <li><a href="/cookie-policy.html">Cookie Policy</a></li>
-          <li><button type="button" class="footer__link-button" data-cookie-preferences>Preferenze cookie</button></li>
+          <li><button type="button" class="footer__link-button" data-open-cookie-preferences>Preferenze cookie</button></li>
           <li><a href="/termini-condizioni.html">Termini e condizioni</a></li>
           <li><a href="/regolamento-studio.html">Regolamento studio</a></li>
           <li><a href="/note-legali.html">Note legali</a></li>
@@ -394,7 +394,7 @@ Controlli:
 - Verificare che P.IVA, denominazione, sede legale ed email siano corretti.
 - Verificare se mostrare anche REA, capitale sociale, forma giuridica, PEC o altri dati in base alla forma dell'attività.
 - Verificare che Privacy Policy e Cookie Policy siano aggiornate.
-- Verificare che il link `Preferenze cookie` riapra davvero il pannello consensi.
+- Verificare che il pulsante `Preferenze cookie` riapra davvero il pannello consensi.
 - Verificare che non ci siano link morti.
 - Verificare che il sito online e il sito vetrina abbiano documenti coerenti ma non confusi.
 

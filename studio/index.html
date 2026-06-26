@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Lo studio Yogis a L'Aquila">
 <meta name="twitter:description" content="Scopri lo studio Yogis a L'Aquila: uno spazio accogliente per praticare yoga, ascoltare il corpo e ritrovare equilibrio.">
 <meta name="twitter:image" content="https://www.studioyogis.it/assets/images/yoga%20hero%20image.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260626-1">
+<link rel="stylesheet" href="/vendor/silktide/silktide-consent-manager.css?v=20260626-1">
+<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20260626-1">
 <link rel="stylesheet" href="/assets/css/mobile-whatsapp-fab.css?v=20260624-1">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -505,6 +505,13 @@
     filter: grayscale(0.25) contrast(0.95);
   }
 
+  .location-map .btn-primary,
+  .location-map .btn-ghost-dark {
+    min-height: 2.75rem;
+    padding: 0.85rem 1.15rem;
+    font-size: 0.68rem;
+  }
+
   .location-info {
     padding-top: 0.5rem;
   }
@@ -899,13 +906,22 @@
 
 <!-- LOCATION -->
 <section class="section-location" id="dove">
-  <div class="location-map">
-    <iframe
-      src="https://www.google.com/maps?q=Via%20Monte%20Matese%2C%2067100%20L%27Aquila%20AQ&amp;output=embed"
-      title="Mappa Studio Yogis"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+  <div class="location-map" aria-label="Mappa Studio Yogis">
+    <div
+      class="google-map-consent"
+      data-google-map
+      data-map-title="Mappa Studio Yogis"
+      data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d737.0569010683839!2d13.391152260848326!3d42.35898844399659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132fd2e462259c23%3A0x4ef2006a0fab5c1!2sViale%20Aldo%20Moro%2C%2067100%20L%27Aquila%20AQ!5e0!3m2!1sit!2sit!4v1765470984455!5m2!1sit!2sit">
+      <div class="google-map-consent__message" data-google-map-placeholder>
+        <p class="google-map-consent__eyebrow">Google Maps</p>
+        <h3 class="google-map-consent__title">Visualizza la posizione dello studio</h3>
+        <p class="google-map-consent__text">La mappa interattiva viene caricata solo dopo il consenso alla categoria “Mappe e contenuti esterni”.</p>
+        <div class="google-map-consent__actions">
+          <button type="button" class="btn-primary" data-open-cookie-preferences>Preferenze cookie</button>
+          <a class="btn-ghost-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Via%20Monte%20Matese%2C%2067100%20L%27Aquila%20AQ" target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="location-info">
     <p class="section-label">Dove siamo</p>
@@ -1032,6 +1048,9 @@
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => setMobileMenu(false));
   });
+
 </script>
+<script src="/vendor/silktide/silktide-consent-manager.js?v=20260626-1"></script>
+<script src="/assets/js/cookie-consent.js?v=20260626-1"></script>
 </body>
 </html>

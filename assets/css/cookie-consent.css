@@ -1,0 +1,104 @@
+#stcm-wrapper {
+  --fontFamily: var(--font-body, "Montserrat", Arial, sans-serif);
+  --primaryColor: var(--terracotta, #b5714a);
+  --backgroundColor: var(--white, #ffffff);
+  --textColor: var(--charcoal, #2a2520);
+  --boxShadow: 0 22px 70px rgba(42, 37, 32, 0.18);
+  --backdropBackgroundColor: rgba(42, 37, 32, 0.18);
+  --backdropBackgroundBlur: 2px;
+  --iconColor: var(--white, #ffffff);
+  --iconBackgroundColor: var(--terracotta, #b5714a);
+}
+
+.footer__link-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.footer__legal .footer__link-button {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.74rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__legal .footer__link-button:hover {
+  color: var(--white, #ffffff);
+}
+
+.google-map-consent {
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(240, 224, 212, 0.58)),
+    var(--cream-mid, #ede5d5);
+  color: var(--charcoal, #2a2520);
+}
+
+.google-map-consent.is-loaded {
+  display: block;
+  padding: 0;
+}
+
+.google-map-consent__message {
+  max-width: 30rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.google-map-consent__message[hidden] {
+  display: none !important;
+}
+
+.google-map-consent__eyebrow {
+  color: var(--terracotta, #b5714a);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.google-map-consent__title {
+  color: var(--charcoal, #2a2520);
+  font-family: var(--font-display, "Poppins", Arial, sans-serif);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.google-map-consent__text {
+  color: var(--brown, #6b5344);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.google-map-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.google-map-consent iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 560px) {
+  .google-map-consent__actions > * {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

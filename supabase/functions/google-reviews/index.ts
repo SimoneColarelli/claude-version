@@ -18,7 +18,6 @@ const RATING_MAP: Record<string, number> = {
 export interface PublicReview {
   id: string;
   authorName: string;
-  profilePhotoUrl: string;
   rating: number;
   comment: string;
   createTime: string;
@@ -122,7 +121,6 @@ export function normalizeGoogleReviews(
     reviews.push({
       id,
       authorName: asString(reviewer.displayName),
-      profilePhotoUrl: asHttpsUrl(reviewer.profilePhotoUrl),
       rating,
       comment,
       createTime: asTimestamp(candidate.createTime),

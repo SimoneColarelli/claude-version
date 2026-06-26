@@ -73,19 +73,8 @@
     const author = document.createElement('footer');
     author.className = 'review-author';
 
-    const photoUrl = safeHttpsUrl(review.profilePhotoUrl);
-    if (photoUrl) {
-      const photo = document.createElement('img');
-      photo.className = 'review-author-photo';
-      photo.src = photoUrl;
-      photo.alt = '';
-      photo.loading = 'lazy';
-      photo.decoding = 'async';
-      author.appendChild(photo);
-    } else {
-      const placeholder = appendTextElement(author, 'span', 'review-author-placeholder', 'Y');
-      placeholder.setAttribute('aria-hidden', 'true');
-    }
+    const placeholder = appendTextElement(author, 'span', 'review-author-placeholder', 'Y');
+    placeholder.setAttribute('aria-hidden', 'true');
 
     const meta = document.createElement('div');
     meta.className = 'review-author-meta';

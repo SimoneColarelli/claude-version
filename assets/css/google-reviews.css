@@ -152,16 +152,11 @@
   border-top: 1px solid rgba(107, 83, 68, 0.1);
 }
 
-.review-author-photo,
 .review-author-placeholder {
   flex: 0 0 42px;
   width: 42px;
   height: 42px;
   border-radius: 50%;
-}
-
-.review-author-photo {
-  object-fit: cover;
 }
 
 .review-author-placeholder {

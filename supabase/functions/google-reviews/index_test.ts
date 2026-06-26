@@ -57,7 +57,6 @@ function payload(overrides: Partial<ReviewsPayload> = {}): ReviewsPayload {
     reviews: [{
       id: "review-1",
       authorName: "Cliente 1",
-      profilePhotoUrl: "https://example.com/avatar.jpg",
       rating: 5,
       comment: "Bellissimo studio",
       createTime: "2026-06-01T08:00:00.000Z",
