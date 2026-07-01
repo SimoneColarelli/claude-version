@@ -7,12 +7,12 @@
       "nome": "Lezione singola",
       "pacchetti": [
         {
-          "nome": "1 ingresso singolo",
+          "nome": "Ingresso singolo",
           "prezzo": "15",
           "prezzoSpeciale": "20"
         },
         {
-          "nome": "lezione privata",
+          "nome": "Lezione privata",
           "prezzo": "40",
           "prezzoSpeciale": "40"
         }
@@ -55,7 +55,7 @@
     {
       "id": "studio-online",
       "tipo": "Studio + Online",
-      "nome": "Combo",
+      "nome": "Mensile Combo",
       "pacchetti": [
         {
           "nome": "1 lezione/settimana + online",

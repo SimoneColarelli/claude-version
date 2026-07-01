@@ -12,7 +12,7 @@ Il titolare del trattamento è:
 P.IVA: **02143220669**
 Sede legale: **Via Monte Matese, 67100 L'Aquila**
 Sede operativa: **Via Monte Matese, 67100 L'Aquila**
-Email: **info@studioyogis.it**
+Email: **studioyogis@gmail.com**
 
 ## Tipologie di dati trattati
 
@@ -118,7 +118,7 @@ L'interessato può esercitare, nei casi previsti dalla normativa, i diritti di a
 
 Le richieste possono essere inviate a:
 
-**info@studioyogis.it**
+**studioyogis@gmail.com**
 
 L'interessato ha inoltre il diritto di proporre reclamo all'autorità di controllo competente.
 

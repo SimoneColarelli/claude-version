@@ -12,7 +12,7 @@ Il sito non consente registrazione utenti, non permette acquisti online, non ges
 P.IVA: **02143220669**
 Sede legale: **Via Monte Matese, 67100 L'Aquila**
 Sede operativa: **Via Monte Matese, 67100 L'Aquila**
-Email: **info@studioyogis.it**
+Email: **studioyogis@gmail.com**
 
 ## Contatti
 

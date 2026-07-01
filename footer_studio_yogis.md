@@ -178,7 +178,7 @@ Codex deve cercare questi placeholder e sostituirli con valori reali:
 [L'Aquila]
 [AQ]
 [3452233737]
-[info@studioyogis.it]
+[studioyogis@gmail.com]
 [google.com/maps?cid=355538108428236225&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=it&gl=IT&source=embed]
 [https://wa.me/393452233737]
 [online.studioyogis.it]
