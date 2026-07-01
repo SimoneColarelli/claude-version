@@ -364,17 +364,24 @@
     overflow: hidden;
     border-top: 1px solid rgba(181,113,74,0.15);
     border-bottom: 1px solid rgba(181,113,74,0.15);
+    contain: paint;
   }
 
   .intro-strip-track {
     display: flex;
     width: max-content;
     animation: introMarquee 38s linear infinite;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
   }
+
+  .intro-strip-track.is-resetting { animation: none; }
 
   .intro-strip-group {
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 auto;
     gap: clamp(1.5rem, 4vw, 3rem);
     padding-right: clamp(1.5rem, 4vw, 3rem);
   }
@@ -392,8 +399,8 @@
   .intro-strip p strong { color: var(--white); font-weight: inherit; }
 
   @keyframes introMarquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1269,18 +1276,8 @@
       <p><strong>Yogis Mum &amp; Baby</strong></p>
       <p>Yogis Advanced</p>
       <p><strong>Online</strong></p>
-      <p><strong>Yogis Vinyasa</strong></p>
-      <p>Yogis Pregnancy</p>
-      <p><strong>Yogis Mum &amp; Baby</strong></p>
-      <p>Yogis Advanced</p>
-      <p><strong>Online</strong></p>
     </div>
     <div class="intro-strip-group" aria-hidden="true">
-      <p><strong>Yogis Vinyasa</strong></p>
-      <p>Yogis Pregnancy</p>
-      <p><strong>Yogis Mum &amp; Baby</strong></p>
-      <p>Yogis Advanced</p>
-      <p><strong>Online</strong></p>
       <p><strong>Yogis Vinyasa</strong></p>
       <p>Yogis Pregnancy</p>
       <p><strong>Yogis Mum &amp; Baby</strong></p>
@@ -1673,7 +1670,7 @@
   }
 </script>
 <script src="/assets/js/content-model.js?v=20260623-4"></script>
-<script src="/assets/js/content-cms.js?v=20260623-4"></script>
+<script src="/assets/js/content-cms.js?v=20260701-1"></script>
 <script src="/assets/js/course-carousel.js?v=20260623-1"></script>
 <script src="/vendor/silktide/silktide-consent-manager.js?v=20260626-1"></script>
 <script src="/assets/js/cookie-consent.js?v=20260626-1"></script>

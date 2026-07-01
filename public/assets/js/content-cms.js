@@ -230,11 +230,52 @@
   function createTickerGroup(courses, hidden) {
     const group = element('div', 'intro-strip-group');
     if (hidden) group.setAttribute('aria-hidden', 'true');
-    for (let cycle = 0; cycle < 2; cycle += 1) {
-      courses.forEach((course, index) => group.append(tickerItem(course.nome, index % 2 === 0)));
-      group.append(tickerItem('Online', true));
-    }
+    courses.forEach((course, index) => group.append(tickerItem(course.nome, index % 2 === 0)));
+    group.append(tickerItem('Online', true));
     return group;
+  }
+
+  function cloneTickerItems(group) {
+    return Array.from(group.children).map(item => item.cloneNode(true));
+  }
+
+  function prepareIntroTicker(ticker) {
+    const groups = Array.from(ticker.querySelectorAll('.intro-strip-group'));
+    if (groups.length !== 2) return;
+
+    const firstGroup = groups[0];
+    const secondGroup = groups[1];
+    const baseItems = cloneTickerItems(firstGroup);
+
+    const fillGroups = () => {
+      const minGroupWidth = window.innerWidth + 160;
+      let cycles = 0;
+
+      while (firstGroup.scrollWidth < minGroupWidth && cycles < 4) {
+        firstGroup.append(...baseItems.map(item => item.cloneNode(true)));
+        cycles += 1;
+      }
+
+      secondGroup.replaceChildren(...cloneTickerItems(firstGroup));
+      secondGroup.setAttribute('aria-hidden', 'true');
+    };
+
+    fillGroups();
+
+    const restartAnimation = () => {
+      fillGroups();
+      ticker.classList.add('is-resetting');
+      ticker.style.transform = 'translate3d(0, 0, 0)';
+      void ticker.offsetWidth;
+      ticker.classList.remove('is-resetting');
+      ticker.style.transform = '';
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => window.requestAnimationFrame(restartAnimation));
+    } else {
+      window.requestAnimationFrame(restartAnimation);
+    }
   }
 
   function playCardVideo(card) {
@@ -311,6 +352,7 @@
 
     grid.replaceChildren(courseCards.fragment);
     ticker.replaceChildren(tickerGroups);
+    prepareIntroTicker(ticker);
     installCourseInteractions(courseCards.cards);
   }
 
