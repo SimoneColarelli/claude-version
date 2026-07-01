@@ -1,6 +1,6 @@
 # Gestione dei contenuti Yogis
 
-Il sito legge i contenuti pubblici da tre file JSON nella cartella `content`:
+Il sito legge i contenuti pubblici da tre file JSON nella cartella `public/content`, pubblicata online come `/content`:
 
 - `corsi.json`: corsi mostrati nella homepage e nella pagina Corsi;
 - `orari.json`: insegnanti, giorni e lezioni della pagina Orari;
@@ -21,14 +21,14 @@ Il comando controlla sintassi, campi obbligatori, ID duplicati, riferimenti tra 
 Per vedere il sito in locale, non aprire direttamente gli HTML con un doppio clic: `fetch` richiede un server HTTP. Avviare invece:
 
 ```powershell
-python -m http.server 8000
+python -m http.server 8000 --directory public
 ```
 
 Poi visitare `http://localhost:8000/` e interrompere il server con `Ctrl+C`.
 
 ## Corsi
 
-Ogni elemento di `content/corsi.json` usa questi campi:
+Ogni elemento di `public/content/corsi.json` usa questi campi:
 
 - `id`: identificatore permanente in minuscolo, ad esempio `vinyasa-flow`; non cambiarlo dopo aver condiviso il relativo link;
 - `nome` e `destinatari`: titolo e pubblico/livello mostrato sulla card;
@@ -38,7 +38,7 @@ Ogni elemento di `content/corsi.json` usa questi campi:
 - `immagine.src`: percorso relativo al file; `immagine.alt`: descrizione accessibile. L'immagine viene usata nella sezione di dettaglio del corso. È facoltativa se esiste `videoAnteprima`: si può omettere il blocco, usare `null` oppure lasciare `src` vuoto;
 - `videoAnteprima`: viene sempre usato come anteprima nelle card di homepage e pagina Corsi. Se manca l'immagine, il suo primo fotogramma viene usato anche nella sezione di dettaglio.
 
-L'ordine dei corsi nel file è lo stesso usato nel sito. Per aggiungerne uno, copiare un oggetto completo, assegnare un nuovo `id` e modificare tutti i campi. Salvare immagini e video rispettivamente in `assets/images/` e `assets/videos/`, usando nomi semplici come `yoga-pregnancy.jpg`.
+L'ordine dei corsi nel file è lo stesso usato nel sito. Per aggiungerne uno, copiare un oggetto completo, assegnare un nuovo `id` e modificare tutti i campi. Salvare immagini e video rispettivamente in `public/assets/images/` e `public/assets/videos/`, usando nomi semplici come `yoga-pregnancy.jpg`.
 
 ## Orario
 
@@ -77,9 +77,9 @@ Ogni abbonamento contiene `id`, `tipo`, `nome` e un array non vuoto `pacchetti`.
 ## Pubblicazione via FTP
 
 1. Eseguire la validazione locale.
-2. Caricare le directory `studio`, `corsi`, `online` e `orari`, ciascuna con il proprio `index.html`.
-3. Caricare anche il file nascosto `.htaccess` nella root del dominio: gestisce la home e i redirect 301 dai vecchi URL `.html`.
-4. Caricare le eventuali nuove immagini o i nuovi video mantenendo gli stessi percorsi indicati nel JSON.
+2. Caricare tutto il contenuto della cartella `public/` nella root pubblica del dominio, ad esempio `public_html`.
+3. Verificare che venga caricato anche il file nascosto `public/.htaccess`: gestisce la home e i redirect 301 dai vecchi URL `.html`.
+4. Per aggiornamenti parziali, mantenere sempre gli stessi percorsi presenti dentro `public/`, ad esempio `public/assets/images/`, `public/assets/videos/` e `public/content/`.
 5. Caricare per ultimi i file JSON modificati nella cartella `content` del sito online.
 6. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
 

@@ -116,7 +116,7 @@ Eseguire i test locali:
 
 ```powershell
 deno test --allow-env supabase/functions/google-reviews/index_test.ts
-node --check assets/js/google-reviews-carousel.js
+node --check public/assets/js/google-reviews-carousel.js
 node scripts/validate-content.js
 ```
 
@@ -140,7 +140,7 @@ Controllare i log della funzione senza aggiungere log dei payload Google o delle
 
 ## 7. Attivare e pubblicare il frontend
 
-Solo dopo lo smoke test riuscito, modificare nella home:
+Solo dopo lo smoke test riuscito, modificare nella home `public/index.html`:
 
 ```html
 data-reviews-endpoint="https://chheawiryvwcrtmggmiw.functions.supabase.co/google-reviews"
@@ -148,9 +148,9 @@ data-reviews-endpoint="https://chheawiryvwcrtmggmiw.functions.supabase.co/google
 
 Caricare via FTP:
 
-- `index.html`;
-- `assets/css/google-reviews.css`;
-- `assets/js/google-reviews-carousel.js`.
+- `public/index.html`;
+- `public/assets/css/google-reviews.css`;
+- `public/assets/js/google-reviews-carousel.js`.
 
 Verificare la home a 375, 768 e 1440 pixel, navigazione da tastiera, swipe, pulsanti, link Google e fallback con endpoint temporaneamente irraggiungibile.
 

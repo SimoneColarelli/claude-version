@@ -2,9 +2,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const model = require('../assets/js/content-model.js');
+const publicRoot = path.resolve(__dirname, '..', 'public');
+const model = require(path.join(publicRoot, 'assets/js/content-model.js'));
 
-const root = path.resolve(__dirname, '..');
+const root = publicRoot;
 let hasErrors = false;
 
 function reportError(label, error) {
