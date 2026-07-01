@@ -222,7 +222,7 @@
       const page = element.closest('[data-legal-page]');
       const title = page && page.querySelector('[data-markdown-title]');
       if (title) title.textContent = rendered.title;
-      document.title = `${rendered.title} — Yogis Studio Yoga`;
+      document.title = 'Yogis - Studio Yoga a L\'Aquila';
 
       element.replaceChildren(rendered.fragment);
       element.setAttribute('aria-busy', 'false');
