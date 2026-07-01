@@ -54,7 +54,7 @@
         "Il lavoro con sovraccarichi leggeri e resistenze elastiche aiuta inoltre a migliorare la densità muscolare, la postura e il controllo del movimento, aspetti fondamentali anche per una pratica yoga più solida e consapevole. Un corpo più forte e stabile permette infatti di affrontare le posizioni con maggiore sicurezza, precisione e resistenza.",
         "Yoga Fit Flow è pensato per chi vuole completare la pratica yoga con un allenamento capace di sviluppare tono muscolare, mobilità e benessere generale in un’unica lezione dinamica e coinvolgente."
       ],
-      "tags": ["Avanzati", "Fit", "Flow"],
+      "tags": ["Tutti i livelli", "Fit", "Tonificazione"],
       "immagine": {
         "src": "assets/images/yogis-fitflow-image.webp",
         "alt": "Pratica di yoga FitFlow"
@@ -88,7 +88,7 @@
     },
     {
       "id": "mum-baby",
-      "nome": "Yogis Mum & Baby",
+      "nome": "Yogis Mum&Baby",
       "destinatari": "Neomamme",
       "descrizioneBreve": "Lezioni per neomamme e bambini. Connessione, benessere e momenti speciali da condividere.",
       "descrizioneLunga": [

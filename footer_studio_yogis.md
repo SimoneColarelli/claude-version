@@ -128,7 +128,7 @@ Assistenza accesso
 ```
 
 Indicazioni:
-- `Accedi a Yogis Online` deve puntare a `https://online.studioyogis.it` oppure alla pagina di login.
+- `Accedi a Yogis Online` deve puntare a `/maintenance/` finche' la piattaforma esterna non e' pronta, poi alla pagina di login.
 - `Cos'è Yogis Online` può puntare a una sezione del sito vetrina che spiega la piattaforma complementare.
 - `Assistenza accesso` può puntare a WhatsApp, email o pagina FAQ.
 
@@ -181,7 +181,7 @@ Codex deve cercare questi placeholder e sostituirli con valori reali:
 [studioyogis@gmail.com]
 [google.com/maps?cid=355538108428236225&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=it&gl=IT&source=embed]
 [https://wa.me/393452233737]
-[online.studioyogis.it]
+[/maintenance/]
 ```
 
 Se alcuni dati non sono disponibili:
@@ -249,16 +249,17 @@ Adattare i percorsi reali del progetto.
     </section>
 
     <nav class="footer__column" aria-label="Navigazione studio">
-      <h3 class="footer__title">Studio</h3>
+      <h3 class="footer__title">Studio Yogis</h3>
       <ul class="footer__links">
-        <li><a class="footer__link" href="/studio.html">Lo studio</a></li>
-        <li><a class="footer__link" href="/corsi.html">Corsi in presenza</a></li>
-        <li><a class="footer__link" href="/yoga-posturale.html">Yoga posturale</a></li>
-        <li><a class="footer__link" href="/yoga-gravidanza.html">Yoga in gravidanza</a></li>
-        <li><a class="footer__link" href="/vinyasa-yoga.html">Vinyasa yoga</a></li>
-        <li><a class="footer__link" href="/fit-yoga.html">Fit yoga</a></li>
-        <li><a class="footer__link" href="/prezzi.html">Prezzi e abbonamenti</a></li>
-        <li><a class="footer__link" href="/faq.html">FAQ</a></li>
+        <li><a class="footer__link" href="/studio/">Lo studio</a></li>
+        <li><a class="footer__link" href="/corsi/">Corsi in presenza</a></li>
+        <li><a class="footer__link" href="/corsi/#posturale">Yogis Posturale e Basi</a></li>
+        <li><a class="footer__link" href="/corsi/#vinyasa">Yogis Vinyasa</a></li>
+        <li><a class="footer__link" href="/corsi/#fitflow">Yogis FitFlow</a></li>
+        <li><a class="footer__link" href="/corsi/#pregnancy">Yogis in Gravidanza</a></li>
+        <li><a class="footer__link" href="/corsi/#mum-baby">Yogis Mum &amp; Baby</a></li>
+        <li><a class="footer__link" href="/corsi/#bambini">Yogis per Bambini</a></li>
+        <li><a class="footer__link" href="/orari/">Prezzi e abbonamenti</a></li>
       </ul>
     </nav>
 

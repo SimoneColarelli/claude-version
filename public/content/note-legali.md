@@ -4,7 +4,7 @@ Il sito **studioyogis.it** è il sito vetrina ufficiale di **Yogis Studio**.
 
 Il sito ha finalità informative e promozionali relative alle attività, ai corsi, agli orari, ai prezzi, ai percorsi e alle iniziative dello studio.
 
-Il sito non consente registrazione utenti, non permette acquisti online, non gestisce pagamenti e non contiene aree riservate. L'eventuale piattaforma online collegata allo studio è gestita separatamente sul dominio dedicato **online.studioyogis.it**.
+Il sito non consente registrazione utenti, non permette acquisti online, non gestisce pagamenti e non contiene aree riservate. L'eventuale piattaforma online collegata allo studio è temporaneamente raggiungibile dalla pagina provvisoria **/maintenance/**.
 
 ## Titolare dell'attività
 
