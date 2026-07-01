@@ -44,12 +44,13 @@
 
   function appendEmphasizedTitle(heading, title) {
     const words = title.split(/\s+/).filter(Boolean);
-    const lastWord = words.pop();
+    const firstWord = words.shift();
+    /*const lastWord = words.pop();*/
 
-    if (words.length) heading.append(document.createTextNode(`${words.join(' ')} `));
+    if (words.length) heading.append(document.createTextNode(firstWord + ' '));
 
     const emphasis = document.createElement('em');
-    emphasis.textContent = lastWord || '';
+    emphasis.textContent = `${words.join(' ')} ` || '';
     heading.append(emphasis);
   }
 

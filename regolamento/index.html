@@ -345,16 +345,20 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-top: 1px solid var(--cream-mid);
+    /*border-top: 1px solid var(--cream-mid);*/
   }
 
   .regola-item {
     padding: 1.5rem 0;
-    border-bottom: 1px solid var(--cream-mid);
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.2rem;
     align-items: start;
+  }
+
+  /* show bottom border for all items except the last one */
+  .regola-item:not(:last-child) {
+    border-bottom: 1px solid var(--cream-mid);
   }
 
   .regola-num {
