@@ -3,15 +3,18 @@
   "abbonamenti": [
     {
       "id": "abbonamento-lezione-singola",
+      "status": "active",
       "tipo": "Solo studio",
       "nome": "Lezione singola",
       "pacchetti": [
         {
+          "status": "active",
           "nome": "Ingresso singolo",
           "prezzo": "15",
           "prezzoSpeciale": "20"
         },
         {
+          "status": "active",
           "nome": "Lezione privata",
           "prezzo": "40",
           "prezzoSpeciale": "40"
@@ -20,20 +23,24 @@
     },
     {
       "id": "solo-studio",
+      "status": "active",
       "tipo": "Solo Studio",
       "nome": "Mensile Studio",
       "pacchetti": [
         {
+          "status": "active",
           "nome": "1 lezione/settimana",
           "prezzo": "40",
           "prezzoSpeciale": "60"
         },
         {
+          "status": "active",
           "nome": "2 lezioni/settimana",
           "prezzo": "75",
           "prezzoSpeciale": "95"
         },
         {
+          "status": "active",
           "nome": "3 lezioni/settimana (con piattaforma online in regalo!)",
           "prezzo": "100",
           "prezzoSpeciale": "—"
@@ -42,10 +49,12 @@
     },
     {
       "id": "solo-online",
+      "status": "inactive",
       "tipo": "Solo online",
       "nome": "Mensile Online",
       "pacchetti": [
         {
+          "status": "active",
           "nome": "Accesso a tutti i contenuti",
           "prezzo": "25",
           "prezzoSpeciale": "—"
@@ -54,15 +63,18 @@
     },
     {
       "id": "studio-online",
+      "status": "inactive",
       "tipo": "Studio + Online",
       "nome": "Mensile Combo",
       "pacchetti": [
         {
+          "status": "active",
           "nome": "1 lezione/settimana + online",
           "prezzo": "55",
           "prezzoSpeciale": "70"
         },
         {
+          "status": "active",
           "nome": "2 lezioni/settimana + online",
           "prezzo": "85",
           "prezzoSpeciale": "100"

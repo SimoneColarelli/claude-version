@@ -43,6 +43,8 @@ L'ordine dei corsi nel file è lo stesso usato nel sito. Per aggiungerne uno, co
 
 Per togliere temporaneamente un corso dal sito, non eliminare il relativo oggetto: impostare `"status": "inactive"`. Per pubblicarlo di nuovo, riportare il valore a `"active"`. Se un corso inattivo è ancora referenziato in `orari.json`, quello slot viene mostrato come privo di lezioni.
 
+I link ai singoli corsi presenti nei footer di tutte le pagine vengono generati dallo stesso file: nome, destinazione e visibilità non vanno duplicati negli HTML.
+
 ## Orario
 
 Gli insegnanti sono definiti una volta in `insegnanti`:
@@ -65,15 +67,18 @@ I giorni ammessi sono `lunedi`, `martedi`, `mercoledi`, `giovedi`, `venerdi`, `s
 
 ## Abbonamenti
 
-Ogni abbonamento contiene `id`, `tipo`, `nome` e un array non vuoto `pacchetti`. Ogni pacchetto contiene:
+Ogni abbonamento contiene `id`, `tipo`, `nome`, `status` e un array non vuoto `pacchetti`. Anche ogni pacchetto ha il proprio `status`:
 
 ```json
 {
+  "status": "active",
   "nome": "1 lezione/settimana",
   "prezzo": "40€",
   "prezzoSpeciale": "35€"
 }
 ```
+
+Per `status` sono ammessi solo `active` e `inactive`. Gli abbonamenti e i pacchetti inattivi restano visibili nel listino e mostrano accanto al nome il tag `Temporaneamente non attivo`.
 
 `prezzo` e `prezzoSpeciale` sono testi liberi. Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile.
 
@@ -88,4 +93,4 @@ Ogni abbonamento contiene `id`, `tipo`, `nome` e un array non vuoto `pacchetti`.
 
 Gli URL pubblici del sito sono `/`, `/studio/`, `/corsi/`, `/online/` e `/orari/`. Non caricare nuovamente i vecchi file `studio.html`, `corsi.html`, `online.html` e `orari.html` nella root.
 
-Se un JSON è irraggiungibile o non valido, il sito conserva il contenuto HTML precedente come fallback e registra il motivo nella console del browser. Gli altri archivi validi continuano a funzionare in modo indipendente.
+Se un JSON è irraggiungibile o non valido, il sito non mostra dati potenzialmente obsoleti per quella sezione e registra il motivo nella console del browser. Gli altri archivi validi continuano a funzionare in modo indipendente.

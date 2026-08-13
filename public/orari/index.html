@@ -335,6 +335,27 @@
     color: var(--charcoal);
     line-height: 1.2;
     margin-bottom: clamp(1rem, 2vw, 1.35rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.75rem;
+  }
+
+  .stato-inattivo {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.28rem 0.5rem;
+    border: 1px solid rgba(166, 83, 55, 0.45);
+    border-radius: 999px;
+    background: rgba(166, 83, 55, 0.08);
+    color: var(--terracotta);
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .prezzo-pacchetti-header,
@@ -384,9 +405,18 @@
     color: var(--sand-dark);
   }
 
-  .prezzo-pacchetto-nome { 
+  .prezzo-pacchetto-nome {
     grid-column: 2;
     letter-spacing: 0.1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.5rem;
+  }
+
+  .prezzo-pacchetto-nome .stato-inattivo {
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
   }
 
   .prezzo-pacchetto-importo,
@@ -432,6 +462,10 @@
     .prezzo-pacchetto-importo,
     .prezzo-pacchetto-speciale {
       font-size: 0.9rem;
+    }
+
+    .stato-inattivo {
+      font-size: 0.5rem;
     }
   }
 
@@ -639,7 +673,7 @@
     </div>
     <a href="https://wa.me/393452233737" class="btn-ghost-dark">Prenota il posto</a>
   </div>
-  <div class="orario-board" aria-label="Orario settimanale delle lezioni in studio">
+  <div class="orario-board" aria-label="Orario settimanale delle lezioni in studio" hidden>
 
     <article class="orario-day">
       <div class="orario-day-name">
@@ -736,35 +770,35 @@
     <div class="divider" style="background:var(--sand)"></div>
   </div>
 
-  <div class="prezzi-grid">
+  <div class="prezzi-grid" hidden>
     <article class="prezzo-card" data-plan-id="solo-studio">
       <p class="prezzo-tipo">Solo Studio</p>
       <h3 class="prezzo-nome">Mensile Studio</h3>
       <div class="prezzo-pacchetti-header" aria-hidden="true">
-        <span class="prezzo-speciale-label">Yogis in gravidanza • Yogis Mum &amp; Baby</span>
+        <span class="prezzo-speciale-label">Tariffa speciale</span>
       </div>
       <ul class="prezzo-pacchetti">
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">1 lezione/settimana</span><span class="prezzo-pacchetto-importo">40€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">2 lezioni/settimana</span><span class="prezzo-pacchetto-importo">75€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">Ingresso singolo</span><span class="prezzo-pacchetto-importo">15€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">1 lezione/settimana</span><span class="prezzo-pacchetto-importo">40€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">2 lezioni/settimana</span><span class="prezzo-pacchetto-importo">75€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">Ingresso singolo</span><span class="prezzo-pacchetto-importo">15€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
       </ul>
     </article>
     <article class="prezzo-card" data-plan-id="solo-online">
       <p class="prezzo-tipo">Solo Online</p>
       <h3 class="prezzo-nome">Mensile Online</h3>
       <ul class="prezzo-pacchetti">
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">Accesso a tutti i contenuti</span><span class="prezzo-pacchetto-importo">25€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">Accesso a tutti i contenuti</span><span class="prezzo-pacchetto-importo">25€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
       </ul>
     </article>
     <article class="prezzo-card" data-plan-id="studio-online">
       <p class="prezzo-tipo">Studio + Online</p>
       <h3 class="prezzo-nome">Mensile Studio + Online</h3>
       <div class="prezzo-pacchetti-header" aria-hidden="true">
-        <span class="prezzo-speciale-label">Yogis in gravidanza • Yogis Mum &amp; Baby</span>
+        <span class="prezzo-speciale-label">Tariffa speciale</span>
       </div>
       <ul class="prezzo-pacchetti">
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">1 lezione/settimana + online</span><span class="prezzo-pacchetto-importo">50€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
-        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">2 lezioni/settimana + online</span><span class="prezzo-pacchetto-importo">80€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Prezzo Yogis in gravidanza e Yogis Mum &amp; Baby: non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">1 lezione/settimana + online</span><span class="prezzo-pacchetto-importo">50€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
+        <li class="prezzo-pacchetto"><span class="prezzo-pacchetto-nome">2 lezioni/settimana + online</span><span class="prezzo-pacchetto-importo">80€</span><span class="prezzo-pacchetto-separatore">|</span><span class="prezzo-pacchetto-speciale" aria-label="Tariffa speciale non disponibile">—</span></li>
       </ul>
     </article>
   </div>
@@ -802,7 +836,7 @@
 
     <nav class="footer__column footer__studio-nav footer__nav" aria-label="Navigazione studio">
       <h3 class="footer__title">Studio Yogis</h3>
-      <ul class="footer__links"><li><a class="footer__link" href="/studio/">Lo studio</a></li><li><a class="footer__link" href="/corsi/">Corsi in presenza</a></li><li><a class="footer__link" href="/corsi/#posturale">Yogis Posturale e Basi</a></li><li><a class="footer__link" href="/corsi/#vinyasa">Yogis Vinyasa</a></li><li><a class="footer__link" href="/corsi/#fitflow">Yogis FitFlow</a></li><li><a class="footer__link" href="/corsi/#pregnancy">Yogis in Gravidanza</a></li><li><a class="footer__link" href="/corsi/#mum-baby">Yogis Mum &amp; Baby</a></li><li><a class="footer__link" href="/corsi/#bambini">Yogis per Bambini</a></li><li><a class="footer__link" href="/orari/">Prezzi e abbonamenti</a></li></ul>
+      <ul class="footer__links"><li><a class="footer__link" href="/studio/">Lo studio</a></li><li><a class="footer__link" href="/corsi/">Corsi in presenza</a></li><li><a class="footer__link" href="/orari/">Prezzi e abbonamenti</a></li></ul>
     </nav>
 
     <section class="footer__column footer__contact" aria-labelledby="footer-contatti-title">
@@ -862,8 +896,8 @@
   });
   document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
 </script>
-<script src="/assets/js/content-model.js?v=20260624-1"></script>
-<script src="/assets/js/content-cms.js?v=20260624-1"></script>
+<script src="/assets/js/content-model.js?v=20260813-2"></script>
+<script src="/assets/js/content-cms.js?v=20260813-2"></script>
 <script src="/vendor/silktide/silktide-consent-manager.js?v=20260626-1"></script>
 <script src="/assets/js/cookie-consent.js?v=20260626-1"></script>
 </body>

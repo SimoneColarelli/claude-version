@@ -11,6 +11,7 @@
 
   const SCHEMA_VERSION = 1;
   const COURSE_STATUSES = ['active', 'inactive'];
+  const PLAN_STATUSES = ['active', 'inactive'];
   const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const TIME_PATTERN = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
   const DAY_ORDER = [
@@ -296,6 +297,9 @@
       if (requireSlug(plan.id, `${path}.id`, issues)) {
         checkDuplicate(plan.id, `${path}.id`, seenIds, issues);
       }
+      if (!PLAN_STATUSES.includes(plan.status)) {
+        addIssue(issues, `${path}.status`, 'deve essere "active" oppure "inactive"');
+      }
       requireString(plan.tipo, `${path}.tipo`, issues);
       requireString(plan.nome, `${path}.nome`, issues);
       if (!Array.isArray(plan.pacchetti) || plan.pacchetti.length === 0) {
@@ -306,6 +310,9 @@
       plan.pacchetti.forEach((packageItem, packageIndex) => {
         const packagePath = `${path}.pacchetti[${packageIndex}]`;
         if (!requireObject(packageItem, packagePath, issues)) return;
+        if (!PLAN_STATUSES.includes(packageItem.status)) {
+          addIssue(issues, `${packagePath}.status`, 'deve essere "active" oppure "inactive"');
+        }
         requireString(packageItem.nome, `${packagePath}.nome`, issues);
         requireString(packageItem.prezzo, `${packagePath}.prezzo`, issues);
         requireString(packageItem.prezzoSpeciale, `${packagePath}.prezzoSpeciale`, issues);
@@ -321,6 +328,7 @@
     DAY_LABELS,
     DAY_SHORT_LABELS,
     DAY_ORDER,
+    PLAN_STATUSES,
     SCHEMA_VERSION,
     getActiveCourses,
     validateCourses,

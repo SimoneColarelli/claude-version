@@ -361,7 +361,7 @@
     const grid = document.querySelector('.section-corsi .corsi-grid');
     const callToAction = document.querySelector('.section-cta');
     const oldDetails = Array.from(document.querySelectorAll('.section-corso-detail'));
-    if (!grid || !callToAction || oldDetails.length === 0) {
+    if (!grid || !callToAction) {
       throw new Error('contenitori della pagina corsi non trovati');
     }
 
@@ -369,6 +369,7 @@
     const courseCards = createCourseCards(courses, '', true);
     const detailSections = courses.map(createCourseDetail);
 
+    grid.hidden = false;
     grid.replaceChildren(courseCards.fragment);
     oldDetails.forEach(section => section.remove());
     detailSections.forEach(section => callToAction.before(section));
@@ -380,6 +381,29 @@
         if (target) target.scrollIntoView();
       });
     }
+  }
+
+  function renderFooterCourses(data) {
+    const list = document.querySelector('.footer__studio-nav .footer__links');
+    if (!list) return;
+
+    const createFooterLink = (label, href) => {
+      const item = document.createElement('li');
+      const link = element('a', 'footer__link', label);
+      link.href = href;
+      item.append(link);
+      return item;
+    };
+
+    const links = [
+      createFooterLink('Lo studio', '/studio/'),
+      createFooterLink('Corsi in presenza', '/corsi/')
+    ];
+    model.getActiveCourses(data).forEach(course => {
+      links.push(createFooterLink(course.nome, `/corsi/#${course.id}`));
+    });
+    links.push(createFooterLink('Prezzi e abbonamenti', '/orari/'));
+    list.replaceChildren(...links);
   }
 
   function createSchedule(data, coursesData) {
@@ -455,6 +479,7 @@
   function renderSchedule(data, coursesData) {
     const board = document.querySelector('.orario-board');
     if (!board) throw new Error('contenitore orario non trovato');
+    board.hidden = false;
     board.classList.add('orario-board--shared-times');
     board.replaceChildren(createSchedule(data, coursesData));
   }
@@ -468,31 +493,44 @@
     return `${price.slice(0, suffixIndex)}€${price.slice(suffixIndex)}`;
   }
 
+  function appendAvailabilityLabel(parent, status) {
+    if (status !== 'inactive') return;
+    parent.append(element('span', 'stato-inattivo', 'Temporaneamente non attivo'));
+  }
+
   function createPlanCard(plan) {
     const card = element('article', 'prezzo-card');
     card.dataset.planId = plan.id;
+    card.dataset.status = plan.status;
     card.append(element('p', 'prezzo-tipo', plan.tipo));
-    card.append(element('h3', 'prezzo-nome', plan.nome));
+    const planName = element('h3', 'prezzo-nome');
+    planName.append(element('span', '', plan.nome));
+    appendAvailabilityLabel(planName, plan.status);
+    card.append(planName);
 
     const packageHeader = element('div', 'prezzo-pacchetti-header');
     if (plan.id !== 'solo-online') {
       packageHeader.setAttribute('aria-hidden', 'true');
-      packageHeader.append(element('span', 'prezzo-speciale-label', 'Yogis in gravidanza / Yogis Mum & Baby'));
+      packageHeader.append(element('span', 'prezzo-speciale-label', 'Tariffa speciale'));
     }
 
     const packages = element('ul', 'prezzo-pacchetti');
     plan.pacchetti.forEach(packageItem => {
       const packageRow = element('li', 'prezzo-pacchetto');
+      packageRow.dataset.status = packageItem.status;
       const price = formatPrice(packageItem.prezzo);
       const specialPriceValue = formatPrice(packageItem.prezzoSpeciale);
-      packageRow.append(element('span', 'prezzo-pacchetto-nome', packageItem.nome));
+      const packageName = element('span', 'prezzo-pacchetto-nome');
+      packageName.append(element('span', '', packageItem.nome));
+      appendAvailabilityLabel(packageName, packageItem.status);
+      packageRow.append(packageName);
       packageRow.append(element('span', 'prezzo-pacchetto-importo', price));
       if (plan.id !== 'solo-online' && packageItem.nome !== "lezione privata") {
         packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
         const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
         const specialPriceLabel = specialPriceValue === '—'
-          ? 'Prezzo Yogis in gravidanza e Yogis Mum & Baby: non disponibile'
-          : `Prezzo Yogis in gravidanza e Yogis Mum & Baby: ${specialPriceValue}`;
+          ? 'Tariffa speciale non disponibile'
+          : `Tariffa speciale: ${specialPriceValue}`;
         specialPrice.setAttribute('aria-label', specialPriceLabel);
         packageRow.append(specialPrice);
       }
@@ -509,18 +547,20 @@
     if (!grid) throw new Error('contenitore abbonamenti non trovato');
     const fragment = document.createDocumentFragment();
     data.abbonamenti.forEach(plan => fragment.append(createPlanCard(plan)));
+    grid.hidden = false;
     grid.replaceChildren(fragment);
   }
 
   async function init() {
     const page = document.body.dataset.cmsPage;
+    const footerTarget = document.querySelector('.footer__studio-nav .footer__links');
     const courseTargets = [
       document.querySelector('.section-corsi .corsi-grid'),
       document.querySelector('.intro-strip-track')
     ];
     const scheduleTarget = document.querySelector('.orario-board');
     const plansTarget = document.querySelector('.prezzi-grid');
-    const needsCourses = page === 'home' || page === 'courses' || page === 'schedule';
+    const needsCourses = page === 'home' || page === 'courses' || page === 'schedule' || Boolean(footerTarget);
 
     setBusy(courseTargets, needsCourses);
     setBusy([scheduleTarget], page === 'schedule');
@@ -540,6 +580,7 @@
       try {
         if (coursesResult.status === 'rejected') throw coursesResult.reason;
         coursesData = model.validateCourses(coursesResult.value);
+        renderFooterCourses(coursesData);
         if (page === 'home') renderHomeCourses(coursesData);
         if (page === 'courses') renderCoursePage(coursesData);
       } catch (error) {
