@@ -336,26 +336,32 @@
     line-height: 1.2;
     margin-bottom: clamp(1rem, 2vw, 1.35rem);
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.55rem 0.75rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .prezzo-nome > span:first-child,
+  .prezzo-pacchetto-nome > span:first-child {
+    min-width: 0;
   }
 
   .stato-inattivo {
     display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    padding: 0.28rem 0.5rem;
-    border: 1px solid rgba(166, 83, 55, 0.45);
-    border-radius: 999px;
-    background: rgba(166, 83, 55, 0.08);
-    color: var(--terracotta);
+    align-self: flex-start;
+    flex: 0 0 auto;
+    gap: 0.35em;
+    padding: 0.38rem 0.85rem;
+    border: 1px solid var(--terra-light);
+    background: var(--cream);
+    color: var(--terra-light);
     font-family: var(--font-body);
     font-size: 0.58rem;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.2;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .prezzo-pacchetti-header,
@@ -409,9 +415,9 @@
     grid-column: 2;
     letter-spacing: 0.1em;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.3rem 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   .prezzo-pacchetto-nome .stato-inattivo {
@@ -465,7 +471,25 @@
     }
 
     .stato-inattivo {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.32rem 0.55rem;
       font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      white-space: normal;
+    }
+
+    .prezzo-nome {
+      gap: clamp(0.55rem, 3vw, 0.9rem);
+    }
+
+    .prezzo-pacchetto-nome {
+      gap: clamp(0.35rem, 2vw, 0.65rem);
+    }
+
+    .prezzo-pacchetto-nome .stato-inattivo {
+      font-size: 0.5rem;
+      letter-spacing: 0.05em;
     }
   }
 
@@ -897,7 +921,7 @@
   document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
 </script>
 <script src="/assets/js/content-model.js?v=20260813-2"></script>
-<script src="/assets/js/content-cms.js?v=20260813-2"></script>
+<script src="/assets/js/content-cms.js?v=20260813-3"></script>
 <script src="/vendor/silktide/silktide-consent-manager.js?v=20260626-1"></script>
 <script src="/assets/js/cookie-consent.js?v=20260626-1"></script>
 </body>

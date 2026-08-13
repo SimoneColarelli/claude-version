@@ -495,7 +495,13 @@
 
   function appendAvailabilityLabel(parent, status) {
     if (status !== 'inactive') return;
-    parent.append(element('span', 'stato-inattivo', 'Temporaneamente non attivo'));
+    const label = element('span', 'stato-inattivo');
+    label.setAttribute('aria-label', 'Temporanemente non attivo');
+    label.append(
+      element('span', '', 'Temporanemente'),
+      element('span', '', 'non attivo')
+    );
+    parent.append(label);
   }
 
   function createPlanCard(plan) {
