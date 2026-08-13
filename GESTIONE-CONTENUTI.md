@@ -31,6 +31,7 @@ Poi visitare `http://localhost:8000/` e interrompere il server con `Ctrl+C`.
 Ogni elemento di `public/content/corsi.json` usa questi campi:
 
 - `id`: identificatore permanente in minuscolo, ad esempio `vinyasa-flow`; non cambiarlo dopo aver condiviso il relativo link;
+- `status`: usare `active` per mostrare il corso sul sito oppure `inactive` per conservarlo nel file senza renderizzarlo nella homepage, nella pagina Corsi e nell'orario;
 - `nome` e `destinatari`: titolo e pubblico/livello mostrato sulla card;
 - `descrizioneBreve`: testo della card;
 - `descrizioneLunga`: uno o più paragrafi, ciascuno come voce dell'array;
@@ -39,6 +40,8 @@ Ogni elemento di `public/content/corsi.json` usa questi campi:
 - `videoAnteprima`: viene sempre usato come anteprima nelle card di homepage e pagina Corsi. Se manca l'immagine, il suo primo fotogramma viene usato anche nella sezione di dettaglio.
 
 L'ordine dei corsi nel file è lo stesso usato nel sito. Per aggiungerne uno, copiare un oggetto completo, assegnare un nuovo `id` e modificare tutti i campi. Salvare immagini e video rispettivamente in `public/assets/images/` e `public/assets/videos/`, usando nomi semplici come `yoga-pregnancy.jpg`.
+
+Per togliere temporaneamente un corso dal sito, non eliminare il relativo oggetto: impostare `"status": "inactive"`. Per pubblicarlo di nuovo, riportare il valore a `"active"`. Se un corso inattivo è ancora referenziato in `orari.json`, quello slot viene mostrato come privo di lezioni.
 
 ## Orario
 

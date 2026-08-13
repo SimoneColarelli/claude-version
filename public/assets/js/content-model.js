@@ -10,6 +10,7 @@
   'use strict';
 
   const SCHEMA_VERSION = 1;
+  const COURSE_STATUSES = ['active', 'inactive'];
   const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const TIME_PATTERN = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
   const DAY_ORDER = [
@@ -132,6 +133,10 @@
     return data;
   }
 
+  function getActiveCourses(data) {
+    return data.corsi.filter(course => course.status === 'active');
+  }
+
   function validateCourses(data) {
     const file = 'content/corsi.json';
     const issues = [];
@@ -149,6 +154,9 @@
 
       if (requireSlug(course.id, `${path}.id`, issues)) {
         checkDuplicate(course.id, `${path}.id`, seenIds, issues);
+      }
+      if (!COURSE_STATUSES.includes(course.status)) {
+        addIssue(issues, `${path}.status`, 'deve essere "active" oppure "inactive"');
       }
       requireString(course.nome, `${path}.nome`, issues);
       requireString(course.destinatari, `${path}.destinatari`, issues);
@@ -308,11 +316,13 @@
   }
 
   return {
+    COURSE_STATUSES,
     ContentValidationError,
     DAY_LABELS,
     DAY_SHORT_LABELS,
     DAY_ORDER,
     SCHEMA_VERSION,
+    getActiveCourses,
     validateCourses,
     validatePlans,
     validateSchedule

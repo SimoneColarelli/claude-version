@@ -346,9 +346,10 @@
     const ticker = document.querySelector('.intro-strip-track');
     if (!grid || !ticker) throw new Error('contenitori corsi della homepage non trovati');
 
-    const courseCards = createCourseCards(data.corsi, '/corsi/', false);
+    const courses = model.getActiveCourses(data);
+    const courseCards = createCourseCards(courses, '/corsi/', false);
     const tickerGroups = document.createDocumentFragment();
-    tickerGroups.append(createTickerGroup(data.corsi, false), createTickerGroup(data.corsi, true));
+    tickerGroups.append(createTickerGroup(courses, false), createTickerGroup(courses, true));
 
     grid.replaceChildren(courseCards.fragment);
     ticker.replaceChildren(tickerGroups);
@@ -364,8 +365,9 @@
       throw new Error('contenitori della pagina corsi non trovati');
     }
 
-    const courseCards = createCourseCards(data.corsi, '', true);
-    const detailSections = data.corsi.map(createCourseDetail);
+    const courses = model.getActiveCourses(data);
+    const courseCards = createCourseCards(courses, '', true);
+    const detailSections = courses.map(createCourseDetail);
 
     grid.replaceChildren(courseCards.fragment);
     oldDetails.forEach(section => section.remove());
@@ -381,7 +383,7 @@
   }
 
   function createSchedule(data, coursesData) {
-    const courseById = new Map(coursesData.corsi.map(course => [course.id, course]));
+    const courseById = new Map(model.getActiveCourses(coursesData).map(course => [course.id, course]));
     const teacherById = new Map(data.insegnanti.map(teacher => [teacher.id, teacher]));
     const orderedDays = [...data.giorni].sort(
       (left, right) => model.DAY_ORDER.indexOf(left.giorno) - model.DAY_ORDER.indexOf(right.giorno)
@@ -417,7 +419,8 @@
         if (sharedTimes[lessonIndex] && sharedTimes[lessonIndex] !== lesson.ora) {
           item.classList.add('orario-slot--time-exception');
         }
-        const isEmptySlot = !lesson.corsoId && !lesson.insegnanteId;
+        const isEmptySlot = (!lesson.corsoId && !lesson.insegnanteId)
+          || !courseById.has(lesson.corsoId);
 
         if (isEmptySlot) {
           item.classList.add('orario-slot--empty');

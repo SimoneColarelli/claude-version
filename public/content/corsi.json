@@ -3,6 +3,7 @@
   "corsi": [
     {
       "id": "posturale",
+      "status": "active",
       "nome": "Yogis Posturale e Basi",
       "destinatari": "Praticanti neofiti",
       "descrizioneBreve": "Yoga posturale ideale per i principianti: la pratica perfetta per muovere i primi passi.",
@@ -24,6 +25,7 @@
     },
     {
       "id": "vinyasa",
+      "status": "active",
       "nome": "Yogis Vinyasa",
       "destinatari": "Praticanti intermedi",
       "descrizioneBreve": "Flusso dinamico sincronizzato con il respiro. Forza, flessibilità ed equilibrio",
@@ -45,6 +47,7 @@
     },
     {
       "id": "fitflow",
+      "status": "active",
       "nome": "Yogis FitFlow",
       "destinatari": "Praticanti avanzati",
       "descrizioneBreve": "Corso di tonificazione dinamica che unisce yoga, pesetti ed attivazione metabolica.",
@@ -66,6 +69,7 @@
     },
     {
       "id": "pregnancy",
+      "status": "active",
       "nome": "Yogis in Gravidanza",
       "destinatari": "Gestanti",
       "descrizioneBreve": "Un percorso dolce e consapevole per accompagnare corpo e mente durante la gravidanza.",
@@ -88,6 +92,7 @@
     },
     {
       "id": "mum-baby",
+      "status": "active",
       "nome": "Yogis Mum&Baby",
       "destinatari": "Neomamme",
       "descrizioneBreve": "Lezioni per neomamme e bambini. Connessione, benessere e momenti speciali da condividere.",
@@ -111,6 +116,7 @@
     },
     {
       "id": "bambini",
+      "status": "active",
       "nome": "Yogis per Bambini",
       "destinatari": "Praticanti neofiti",
       "descrizioneBreve": "Un percorso di yoga giocoso per bambini, che unisce crescita fisica, concentrazione e consapevolezza emotiva.",
