@@ -517,7 +517,7 @@
     const packageHeader = element('div', 'prezzo-pacchetti-header');
     if (plan.id !== 'solo-online') {
       packageHeader.setAttribute('aria-hidden', 'true');
-      packageHeader.append(element('span', 'prezzo-speciale-label', 'Tariffa speciale'));
+      packageHeader.append(element('span', 'prezzo-speciale-label', 'Yogis in Gravidanza/Mum&Baby'));
     }
 
     const packages = element('ul', 'prezzo-pacchetti');
@@ -535,8 +535,8 @@
         packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
         const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
         const specialPriceLabel = specialPriceValue === '—'
-          ? 'Tariffa speciale non disponibile'
-          : `Tariffa speciale: ${specialPriceValue}`;
+          ? 'Prezzo Yogis in Gravidanza/Mum&Baby non disponibile'
+          : `Prezzo Yogis in Gravidanza/Mum&Baby: ${specialPriceValue}`;
         specialPrice.setAttribute('aria-label', specialPriceLabel);
         packageRow.append(specialPrice);
       }

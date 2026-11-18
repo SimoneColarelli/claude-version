@@ -10,8 +10,8 @@
       "lezioni": [
         { "ora": "14:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
         { "ora": "16:30", "corsoId": "posturale", "insegnanteId": "insegnante-m"},
-        { "ora": "18:00", "corsoId": "posturale", "insegnanteId": "insegnante-m" },
-        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" }
+        { "ora": "18:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
+        { "ora": "19:30", "corsoId": "posturale", "insegnanteId": "insegnante-m" }
       ]
     },
     {
