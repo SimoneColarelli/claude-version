@@ -146,7 +146,7 @@ Solo dopo lo smoke test riuscito, modificare nella home `public/index.html`:
 data-reviews-endpoint="https://chheawiryvwcrtmggmiw.functions.supabase.co/google-reviews"
 ```
 
-Caricare via FTP:
+Pubblicare su Cloudflare Pages (vedi `GESTIONE-CONTENUTI.md`) la versione aggiornata di:
 
 - `public/index.html`;
 - `public/assets/css/google-reviews.css`;

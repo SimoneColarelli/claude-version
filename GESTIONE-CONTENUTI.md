@@ -73,24 +73,36 @@ Ogni abbonamento contiene `id`, `tipo`, `nome`, `status` e un array non vuoto `p
 {
   "status": "active",
   "nome": "1 lezione/settimana",
-  "prezzo": "40€",
-  "prezzoSpeciale": "35€"
+  "prezzo": "40",
+  "prezzoSpeciale": "35"
 }
 ```
 
 Per `status` sono ammessi solo `active` e `inactive`. Gli abbonamenti e i pacchetti inattivi restano visibili nel listino e mostrano accanto al nome il tag `Temporaneamente non attivo`.
 
-`prezzo` e `prezzoSpeciale` sono testi liberi. Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile.
+`prezzo` e `prezzoSpeciale` sono testi liberi da scrivere senza il simbolo dell'euro: il sito aggiunge `€` automaticamente (`40` diventa `40€`, `40/mese` diventa `40€/mese`). Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile. Per il pacchetto `Lezione privata` e per l'abbonamento `solo-online` il prezzo speciale non viene mostrato.
 
-## Pubblicazione via FTP
+## Pubblicazione su Cloudflare Pages
+
+Il sito è ospitato su Cloudflare Pages, nell'account dello studio. Non c'è alcuna compilazione: Cloudflare pubblica così com'è il contenuto della cartella `public/`.
+
+Impostazioni del progetto Pages:
+
+- comando di build: nessuno;
+- directory di output: `public`.
+
+Per pubblicare un aggiornamento:
 
 1. Eseguire la validazione locale.
-2. Caricare tutto il contenuto della cartella `public/` nella root pubblica del dominio, ad esempio `public_html`.
-3. Verificare che venga caricato anche il file nascosto `public/.htaccess`: gestisce la home e i redirect 301 dai vecchi URL `.html`.
-4. Per aggiornamenti parziali, mantenere sempre gli stessi percorsi presenti dentro `public/`, ad esempio `public/assets/images/`, `public/assets/videos/` e `public/content/`.
-5. Caricare per ultimi i file JSON modificati nella cartella `content` del sito online.
-6. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
+2. Pubblicare la cartella `public/`: se il progetto Pages è collegato al repository Git, basta il push sul branch di produzione; se usa il caricamento diretto, creare un nuovo deployment dalla dashboard caricando l'intera cartella `public/`.
+3. Mantenere sempre gli stessi percorsi presenti dentro `public/`, ad esempio `public/assets/images/`, `public/assets/videos/` e `public/content/`.
+4. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
 
-Gli URL pubblici del sito sono `/`, `/studio/`, `/corsi/`, `/online/` e `/orari/`. Non caricare nuovamente i vecchi file `studio.html`, `corsi.html`, `online.html` e `orari.html` nella root.
+Due file di configurazione dentro `public/` vengono letti da Cloudflare e non sono pagine del sito:
+
+- `_redirects`: redirect 301 dai vecchi URL del sito precedente e dalle vecchie pagine `.html`;
+- `_headers`: durata della cache del browser per immagini, font, CSS e JavaScript. Dopo ogni modifica a CSS o JavaScript aggiornare il parametro `?v=` nei tag che li richiamano.
+
+Gli URL pubblici del sito sono `/`, `/studio/`, `/corsi/`, `/online/` e `/orari/`. Il dominio principale è `https://www.studioyogis.it`, lo stesso usato nei tag canonical e nella sitemap. Non ripristinare i vecchi file `studio.html`, `corsi.html`, `online.html` e `orari.html`.
 
 Se un JSON è irraggiungibile o non valido, il sito non mostra dati potenzialmente obsoleti per quella sezione e registra il motivo nella console del browser. Gli altri archivi validi continuano a funzionare in modo indipendente.
