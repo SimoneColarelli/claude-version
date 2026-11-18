@@ -80,7 +80,7 @@ Ogni abbonamento contiene `id`, `tipo`, `nome`, `status` e un array non vuoto `p
 
 Per `status` sono ammessi solo `active` e `inactive`. Gli abbonamenti e i pacchetti inattivi restano visibili nel listino e mostrano accanto al nome il tag `Temporaneamente non attivo`.
 
-`prezzo` e `prezzoSpeciale` sono testi liberi da scrivere senza il simbolo dell'euro: il sito aggiunge `€` automaticamente (`40` diventa `40€`, `40/mese` diventa `40€/mese`). Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile. Per il pacchetto `Lezione privata` e per l'abbonamento `solo-online` il prezzo speciale non viene mostrato.
+`prezzo` e `prezzoSpeciale` sono testi liberi da scrivere senza il simbolo dell'euro: il sito aggiunge `€` automaticamente (`40` diventa `40€`, `40/mese` diventa `40€/mese`). Usare `—` quando il prezzo speciale per Yogis in gravidanza e Yogis Mum & Baby non è previsto o non è ancora disponibile. Per l'abbonamento `solo-online` il prezzo speciale non viene mostrato.
 
 ## Pubblicazione su Cloudflare Pages
 

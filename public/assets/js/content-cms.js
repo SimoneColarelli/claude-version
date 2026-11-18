@@ -531,8 +531,7 @@
       appendAvailabilityLabel(packageName, packageItem.status);
       packageRow.append(packageName);
       packageRow.append(element('span', 'prezzo-pacchetto-importo', price));
-      const isPrivateLesson = packageItem.nome.trim().toLowerCase() === 'lezione privata';
-      if (plan.id !== 'solo-online' && !isPrivateLesson) {
+      if (plan.id !== 'solo-online') {
         packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
         const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
         const specialPriceLabel = specialPriceValue === '—'
