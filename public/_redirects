@@ -1,8 +1,17 @@
-/yoga/ https://studioyogis.it/corsi/ 301
-/yoga https://studioyogis.it/corsi/ 301
+# Redirect per Cloudflare Pages. Le destinazioni relative valgono per qualsiasi dominio collegato al progetto.
 
-/our-studio/ https://studioyogis.it/studio/ 301
-/our-studio https://studioyogis.it/studio/ 301
+# URL del sito precedente ancora presenti nei sitelink di Google
+/yoga/ /corsi/ 301
+/yoga /corsi/ 301
 
-/contact/ https://studioyogis.it/studio/#dove 301
-/contact https://studioyogis.it/studio/#dove 301
+/our-studio/ /studio/ 301
+/our-studio /studio/ 301
+
+/contact/ /studio/#dove 301
+/contact /studio/#dove 301
+
+# Vecchi URL .html della prima versione del sito
+/studio.html /studio/ 301
+/corsi.html /corsi/ 301
+/online.html /online/ 301
+/orari.html /orari/ 301

@@ -1,0 +1,18 @@
+# Header HTTP per Cloudflare Pages.
+# CSS e JS sono richiamati con il parametro ?v=AAAAMMGG-n: aggiornarlo a ogni modifica.
+# I JSON in /content/ non hanno cache lunga: il sito li richiede sempre aggiornati.
+
+/assets/images/*
+  Cache-Control: public, max-age=31536000
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000
+
+/assets/css/*
+  Cache-Control: public, max-age=2592000
+
+/assets/js/*
+  Cache-Control: public, max-age=2592000
+
+/vendor/*
+  Cache-Control: public, max-age=2592000
