@@ -496,9 +496,9 @@
   function appendAvailabilityLabel(parent, status) {
     if (status !== 'inactive') return;
     const label = element('span', 'stato-inattivo');
-    label.setAttribute('aria-label', 'Temporanemente non attivo');
+    label.setAttribute('aria-label', 'Temporaneamente non attivo');
     label.append(
-      element('span', '', 'Temporanemente'),
+      element('span', '', 'Temporaneamente'),
       element('span', '', 'non attivo')
     );
     parent.append(label);
@@ -531,7 +531,8 @@
       appendAvailabilityLabel(packageName, packageItem.status);
       packageRow.append(packageName);
       packageRow.append(element('span', 'prezzo-pacchetto-importo', price));
-      if (plan.id !== 'solo-online' && packageItem.nome !== "lezione privata") {
+      const isPrivateLesson = packageItem.nome.trim().toLowerCase() === 'lezione privata';
+      if (plan.id !== 'solo-online' && !isPrivateLesson) {
         packageRow.append(element('span', 'prezzo-pacchetto-separatore', '|'));
         const specialPrice = element('span', 'prezzo-pacchetto-speciale', specialPriceValue);
         const specialPriceLabel = specialPriceValue === '—'
