@@ -84,19 +84,16 @@ Per `status` sono ammessi solo `active` e `inactive`. Gli abbonamenti e i pacche
 
 ## Pubblicazione su Cloudflare Pages
 
-Il sito è ospitato su Cloudflare Pages, nell'account dello studio. Non c'è alcuna compilazione: Cloudflare pubblica così com'è il contenuto della cartella `public/`.
-
-Impostazioni del progetto Pages:
-
-- comando di build: nessuno;
-- directory di output: `public`.
+Il sito è ospitato su Cloudflare Pages, nell'account dello studio. Il progetto Pages non è collegato al repository GitHub: i deploy si fanno a mano, con il caricamento diretto dalla dashboard. Non c'è alcuna compilazione: Cloudflare pubblica così com'è il contenuto della cartella `public/`.
 
 Per pubblicare un aggiornamento:
 
 1. Eseguire la validazione locale.
-2. Pubblicare la cartella `public/`: se il progetto Pages è collegato al repository Git, basta il push sul branch di produzione; se usa il caricamento diretto, creare un nuovo deployment dalla dashboard caricando l'intera cartella `public/`.
+2. Nella dashboard di Cloudflare, aprire il progetto Pages e creare un nuovo deployment caricando l'intera cartella `public/`. Ogni deployment sostituisce completamente il precedente: caricare solo i file modificati farebbe sparire tutti gli altri dal sito.
 3. Mantenere sempre gli stessi percorsi presenti dentro `public/`, ad esempio `public/assets/images/`, `public/assets/videos/` e `public/content/`.
 4. Ricaricare la pagina: il browser richiede sempre una copia aggiornata dei JSON.
+
+Il push su GitHub serve solo a conservare la storia del codice e non pubblica nulla sul sito.
 
 Due file di configurazione dentro `public/` vengono letti da Cloudflare e non sono pagine del sito:
 
