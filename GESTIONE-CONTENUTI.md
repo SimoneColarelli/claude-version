@@ -3,7 +3,7 @@
 Il sito legge i contenuti pubblici da tre file JSON nella cartella `public/content`, pubblicata online come `/content`:
 
 - `corsi.json`: corsi mostrati nella homepage e nella pagina Corsi;
-- `orari.json`: insegnanti, giorni e lezioni della pagina Orari;
+- `orari.json`: giorni e lezioni della pagina Orari;
 - `abbonamenti.json`: card dei piani e dei prezzi.
 
 Non servono database, pannelli di amministrazione o compilazioni. I file devono restare in formato UTF-8 e non possono contenere commenti, virgole dopo l'ultimo elemento o HTML.
@@ -47,23 +47,19 @@ I link ai singoli corsi presenti nei footer di tutte le pagine vengono generati 
 
 ## Orario
 
-Gli insegnanti sono definiti una volta in `insegnanti`:
+Ogni lezione indica l'orario e l'ID del corso. L'orario non mostra l'insegnante.
 
 ```json
-{ "id": "maria", "nome": "Maria Rossi", "sigla": "MR" }
+{ "ora": "18:00", "corsoId": "vinyasa" }
 ```
 
-Le lezioni referenziano gli ID del corso e dell'insegnante:
+Per uno slot senza lezione usare `"corsoId": ""`. L'orario va scritto nel formato 24 ore `HH:MM`, con lo zero iniziale (`09:30`).
 
-```json
-{
-  "ora": "18:00",
-  "corsoId": "vinyasa",
-  "insegnanteId": "maria"
-}
-```
+Le colonne della tabella sono gli orari del primo giorno in elenco (oggi il lunedì). Perché la tabella resti allineata, ogni giorno deve avere lo stesso numero di slot, nello stesso ordine: per gli orari senza lezione si usano slot vuoti. Se in un giorno una lezione ha un orario diverso da quello della colonna (ad esempio `19:00` invece di `19:30`), l'orario viene mostrato accanto al nome del corso.
 
 I giorni ammessi sono `lunedi`, `martedi`, `mercoledi`, `giovedi`, `venerdi`, `sabato` e `domenica`. Il sito ordina automaticamente giorni e lezioni; un giorno senza lezioni va rimosso dal file.
+
+La nota sotto la tabella (programmazione di Yogis per bambini e Yogis Mum&baby) è scritta direttamente in `public/orari/index.html`.
 
 ## Abbonamenti
 

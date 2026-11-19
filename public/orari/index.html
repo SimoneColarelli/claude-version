@@ -176,7 +176,7 @@
 
   .orario-slot {
     display: grid;
-    grid-template-columns: minmax(2.8rem, auto) minmax(0, 1fr) 1.45rem;
+    grid-template-columns: minmax(2.8rem, auto) minmax(0, 1fr);
     align-items: center;
     gap: clamp(0.3rem, 0.6vw, 0.5rem);
     min-width: 0;
@@ -190,8 +190,7 @@
     opacity: 0.58;
   }
 
-  .orario-slot--empty .orario-course,
-  .orario-slot--empty .orario-teacher {
+  .orario-slot--empty .orario-course {
     visibility: hidden;
   }
 
@@ -230,7 +229,7 @@
     }
 
     .orario-board--shared-times .orario-slot {
-      grid-template-columns: minmax(0, 1fr) 1.45rem;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .orario-board--shared-times .orario-slot .orario-time {
@@ -238,7 +237,7 @@
     }
 
     .orario-board--shared-times .orario-slot--time-exception {
-      grid-template-columns: minmax(2.8rem, auto) minmax(0, 1fr) 1.45rem;
+      grid-template-columns: minmax(2.8rem, auto) minmax(0, 1fr);
     }
 
     .orario-board--shared-times .orario-slot--time-exception .orario-time {
@@ -260,18 +259,6 @@
     font-size: clamp(0.72rem, 0.85vw, 0.82rem);
     font-weight: 500;
     line-height: 1.25;
-    color: var(--brown);
-  }
-
-  .orario-teacher {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.45rem;
-    aspect-ratio: 1;
-    border: 1px solid var(--sand);
-    font-size: 0.54rem;
-    font-weight: 700;
     color: var(--brown);
   }
 
@@ -644,13 +631,12 @@
     .orario-day-name h3 { font-size: 1.05rem; }
     .orario-slot {
       min-height: 3.25rem;
-      grid-template-columns: 3.4rem minmax(0, 1fr) 1.45rem;
+      grid-template-columns: 3.4rem minmax(0, 1fr);
       padding: 0.7rem 0.9rem;
     }
     .orario-slot + .orario-slot { border-top: 1px solid var(--cream-mid); border-left: 0; }
     .orario-time { font-size: 0.95rem; }
     .orario-course { font-size: 0.78rem; }
-    .orario-teacher { width: 1.45rem; }
   }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
@@ -702,13 +688,14 @@
     <a href="https://wa.me/393452233737" class="btn-ghost-dark">Prenota il posto</a>
   </div>
   <div class="orario-board" aria-label="Orario settimanale delle lezioni in studio" hidden>
-    <div class="orario-board-times" aria-hidden="true"><span class="orario-board-times-label">Orari</span><div class="orario-board-times-columns"><span class="orario-board-time">14:00</span><span class="orario-board-time">16:30</span><span class="orario-board-time">18:00</span><span class="orario-board-time">19:30</span></div></div>
-    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="LUNEDI'">LUN.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="14:00: Yogis Vinyasa, insegnante M"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="16:30: Yogis Posturale e Basi, insegnante M"><time class="orario-time" datetime="16:30">16:30</time><span class="orario-course">Yogis Posturale e Basi</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="18:00: Yogis Vinyasa, insegnante M"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="19:30: Yogis Posturale e Basi, insegnante M"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Posturale e Basi</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li></ul></article>
-    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="MARTEDÌ">MAR.</h3></div><ul class="orario-slots"><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot orario-slot--empty" aria-label="16:30: nessuna lezione programmata"><time class="orario-time" datetime="16:30">16:30</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot" aria-label="18:00: Yogis in Gravidanza, insegnante M"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis in Gravidanza</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="19:30: Yogis Posturale e Basi, insegnante M"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Posturale e Basi</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li></ul></article>
-    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="MERCOLEDÌ">MER.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="14:00: Yogis Posturale e Basi, insegnante M"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course">Yogis Posturale e Basi</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="16:30: Yogis per Bambini, insegnante M"><time class="orario-time" datetime="16:30">16:30</time><span class="orario-course">Yogis per Bambini</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot orario-slot--empty" aria-label="18:00: nessuna lezione programmata"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot" aria-label="19:30: Yogis Vinyasa, insegnante M"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li></ul></article>
-    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="GIOVEDÌ">GIO.</h3></div><ul class="orario-slots"><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot orario-slot--empty" aria-label="16:30: nessuna lezione programmata"><time class="orario-time" datetime="16:30">16:30</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot" aria-label="18:00: Yogis Posturale e Basi, insegnante M"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis Posturale e Basi</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="19:30: Yogis Vinyasa, insegnante M"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li></ul></article>
-    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="VENERDÌ">VEN.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="14:00: Yogis Vinyasa, insegnante M"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot" aria-label="16:30: Yogis Mum&amp;Baby, insegnante M"><time class="orario-time" datetime="16:30">16:30</time><span class="orario-course">Yogis Mum&amp;Baby</span><span class="orario-teacher" aria-label="Insegnante M" title="Insegnante: M">M</span></li><li class="orario-slot orario-slot--empty" aria-label="18:00: nessuna lezione programmata"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span><span class="orario-teacher" aria-hidden="true">–</span></li><li class="orario-slot orario-slot--time-exception" aria-label="19:00: Yogis Vinyasa, insegnante D"><time class="orario-time" datetime="19:00">19:00</time><span class="orario-course">Yogis Vinyasa</span><span class="orario-teacher" aria-label="Insegnante D" title="Insegnante: D">D</span></li></ul></article>
+    <div class="orario-board-times" aria-hidden="true"><span class="orario-board-times-label">Orari</span><div class="orario-board-times-columns"><span class="orario-board-time">09:30</span><span class="orario-board-time">14:00</span><span class="orario-board-time">18:00</span><span class="orario-board-time">19:30</span></div></div>
+    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="LUNEDÌ">LUN.</h3></div><ul class="orario-slots"><li class="orario-slot orario-slot--empty" aria-label="09:30: nessuna lezione programmata"><time class="orario-time" datetime="09:30">09:30</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot" aria-label="18:00: Yogis Vinyasa"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis Vinyasa</span></li><li class="orario-slot" aria-label="19:30: Yogis Posturale e Basi"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Posturale e Basi</span></li></ul></article>
+    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="MARTEDÌ">MAR.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="09:30: Yogis Posturale e Basi"><time class="orario-time" datetime="09:30">09:30</time><span class="orario-course">Yogis Posturale e Basi</span></li><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot" aria-label="18:00: Yogis in Gravidanza"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis in Gravidanza</span></li><li class="orario-slot" aria-label="19:30: Yogis Posturale e Basi"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Posturale e Basi</span></li></ul></article>
+    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="MERCOLEDÌ">MER.</h3></div><ul class="orario-slots"><li class="orario-slot orario-slot--empty" aria-label="09:30: nessuna lezione programmata"><time class="orario-time" datetime="09:30">09:30</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot orario-slot--empty" aria-label="18:00: nessuna lezione programmata"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot" aria-label="19:30: Yogis Vinyasa"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Vinyasa</span></li></ul></article>
+    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="GIOVEDÌ">GIO.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="09:30: Yogis Vinyasa"><time class="orario-time" datetime="09:30">09:30</time><span class="orario-course">Yogis Vinyasa</span></li><li class="orario-slot orario-slot--empty" aria-label="14:00: nessuna lezione programmata"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot" aria-label="18:00: Yogis Posturale e Basi"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course">Yogis Posturale e Basi</span></li><li class="orario-slot" aria-label="19:30: Yogis Vinyasa"><time class="orario-time" datetime="19:30">19:30</time><span class="orario-course">Yogis Vinyasa</span></li></ul></article>
+    <article class="orario-day"><div class="orario-day-name"><h3 aria-label="VENERDÌ">VEN.</h3></div><ul class="orario-slots"><li class="orario-slot" aria-label="09:30: Yogis in Gravidanza"><time class="orario-time" datetime="09:30">09:30</time><span class="orario-course">Yogis in Gravidanza</span></li><li class="orario-slot" aria-label="14:00: Yogis Vinyasa"><time class="orario-time" datetime="14:00">14:00</time><span class="orario-course">Yogis Vinyasa</span></li><li class="orario-slot orario-slot--empty" aria-label="18:00: nessuna lezione programmata"><time class="orario-time" datetime="18:00">18:00</time><span class="orario-course" aria-hidden="true">Nessuna lezione</span></li><li class="orario-slot orario-slot--time-exception" aria-label="19:00: Yogis Vinyasa"><time class="orario-time" datetime="19:00">19:00</time><span class="orario-course">Yogis Vinyasa</span></li></ul></article>
   </div>
+  <p class="orario-note">Yogis per bambini e Yogis Mum&amp;baby vengono programmate in base alle disponibilità dei gruppi che si formano</p>
 </section>
 
 <!-- PREZZI -->
@@ -819,8 +806,8 @@
   });
   document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
 </script>
-<script src="/assets/js/content-model.js?v=20260813-2"></script>
-<script src="/assets/js/content-cms.js?v=20261118-2"></script>
+<script src="/assets/js/content-model.js?v=20261119-1"></script>
+<script src="/assets/js/content-cms.js?v=20261119-1"></script>
 <script src="/vendor/silktide/silktide-consent-manager.js?v=20260626-1"></script>
 <script src="/assets/js/cookie-consent.js?v=20260626-1"></script>
 </body>

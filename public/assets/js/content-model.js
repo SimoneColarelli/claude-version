@@ -24,7 +24,7 @@
     'domenica'
   ];
   const DAY_LABELS = {
-    lunedi: 'LUNEDI\'',
+    lunedi: 'LUNEDÌ',
     martedi: 'MARTEDÌ',
     mercoledi: 'MERCOLEDÌ',
     giovedi: 'GIOVEDÌ',
@@ -204,21 +204,6 @@
       addIssue(issues, file, 'impossibile verificare corsoId senza un content/corsi.json valido');
     }
 
-    const teacherIds = new Set();
-    if (!Array.isArray(data.insegnanti) || data.insegnanti.length === 0) {
-      addIssue(issues, `${file}.insegnanti`, 'deve essere un array non vuoto');
-    } else {
-      data.insegnanti.forEach((teacher, index) => {
-        const path = `${file}.insegnanti[${index}]`;
-        if (!requireObject(teacher, path, issues)) return;
-        if (requireSlug(teacher.id, `${path}.id`, issues)) {
-          checkDuplicate(teacher.id, `${path}.id`, teacherIds, issues);
-        }
-        requireString(teacher.nome, `${path}.nome`, issues);
-        requireString(teacher.sigla, `${path}.sigla`, issues, { maxLength: 4 });
-      });
-    }
-
     const seenDays = new Set();
     const seenLessons = new Set();
     if (!Array.isArray(data.giorni) || data.giorni.length === 0) {
@@ -248,23 +233,12 @@
           if (requireString(lesson.ora, `${lessonPath}.ora`, issues) && !TIME_PATTERN.test(lesson.ora)) {
             addIssue(issues, `${lessonPath}.ora`, 'usa il formato 24 ore HH:MM');
           }
-          const courseId = typeof lesson.corsoId === 'string' ? lesson.corsoId.trim() : '';
-          const teacherId = typeof lesson.insegnanteId === 'string' ? lesson.insegnanteId.trim() : '';
-          const isEmptySlot = !courseId && !teacherId;
-
-          if (!isEmptySlot && (!courseId || !teacherId)) {
-            addIssue(
-              issues,
-              lessonPath,
-              'corsoId e insegnanteId devono essere entrambi valorizzati oppure entrambi vuoti'
-            );
+          if (lesson.corsoId !== undefined && typeof lesson.corsoId !== 'string') {
+            addIssue(issues, `${lessonPath}.corsoId`, 'deve essere una stringa (vuota per uno slot senza lezione)');
           }
-
+          const courseId = typeof lesson.corsoId === 'string' ? lesson.corsoId.trim() : '';
           if (courseId && !courseIds.has(courseId)) {
             addIssue(issues, `${lessonPath}.corsoId`, `corso inesistente: ${courseId}`);
-          }
-          if (teacherId && !teacherIds.has(teacherId)) {
-            addIssue(issues, `${lessonPath}.insegnanteId`, `insegnante inesistente: ${teacherId}`);
           }
 
           const lessonKey = `${day.giorno}|${lesson.ora}`;

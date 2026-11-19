@@ -408,7 +408,6 @@
 
   function createSchedule(data, coursesData) {
     const courseById = new Map(model.getActiveCourses(coursesData).map(course => [course.id, course]));
-    const teacherById = new Map(data.insegnanti.map(teacher => [teacher.id, teacher]));
     const orderedDays = [...data.giorni].sort(
       (left, right) => model.DAY_ORDER.indexOf(left.giorno) - model.DAY_ORDER.indexOf(right.giorno)
     );
@@ -443,30 +442,23 @@
         if (sharedTimes[lessonIndex] && sharedTimes[lessonIndex] !== lesson.ora) {
           item.classList.add('orario-slot--time-exception');
         }
-        const isEmptySlot = (!lesson.corsoId && !lesson.insegnanteId)
-          || !courseById.has(lesson.corsoId);
+        const isEmptySlot = !lesson.corsoId || !courseById.has(lesson.corsoId);
 
         if (isEmptySlot) {
           item.classList.add('orario-slot--empty');
           item.setAttribute('aria-label', `${lesson.ora}: nessuna lezione programmata`);
 
           const emptyCourse = element('span', 'orario-course', 'Nessuna lezione');
-          const emptyTeacher = element('span', 'orario-teacher', '–');
           emptyCourse.setAttribute('aria-hidden', 'true');
-          emptyTeacher.setAttribute('aria-hidden', 'true');
-          item.append(time, emptyCourse, emptyTeacher);
+          item.append(time, emptyCourse);
           slots.append(item);
           return;
         }
 
         const course = courseById.get(lesson.corsoId);
-        const teacher = teacherById.get(lesson.insegnanteId);
-        item.setAttribute('aria-label', `${lesson.ora}: ${course.nome}, insegnante ${teacher.nome}`);
+        item.setAttribute('aria-label', `${lesson.ora}: ${course.nome}`);
         const courseName = element('span', 'orario-course', course.nome);
-        const teacherLabel = element('span', 'orario-teacher', teacher.sigla);
-        teacherLabel.setAttribute('aria-label', `Insegnante ${teacher.nome}`);
-        teacherLabel.title = `Insegnante: ${teacher.nome}`;
-        item.append(time, courseName, teacherLabel);
+        item.append(time, courseName);
         slots.append(item);
       });
 

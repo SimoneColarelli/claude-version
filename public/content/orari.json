@@ -1,53 +1,49 @@
 {
   "schemaVersion": 1,
-  "insegnanti": [
-    { "id": "insegnante-m", "nome": "M", "sigla": "M" },
-    { "id": "insegnante-d", "nome": "D", "sigla": "D" }
-  ],
   "giorni": [
     {
       "giorno": "lunedi",
       "lezioni": [
-        { "ora": "14:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
-        { "ora": "16:30", "corsoId": "posturale", "insegnanteId": "insegnante-m"},
-        { "ora": "18:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
-        { "ora": "19:30", "corsoId": "posturale", "insegnanteId": "insegnante-m" }
+        { "ora": "09:30", "corsoId": "" },
+        { "ora": "14:00", "corsoId": "" },
+        { "ora": "18:00", "corsoId": "vinyasa" },
+        { "ora": "19:30", "corsoId": "posturale" }
       ]
     },
     {
       "giorno": "martedi",
       "lezioni": [
-        { "ora": "14:00", "corsoId": "", "insegnanteId": "" },
-        { "ora": "16:30", "corsoId": "", "insegnanteId": "" },
-        { "ora": "18:00", "corsoId": "pregnancy", "insegnanteId": "insegnante-m" },
-        { "ora": "19:30", "corsoId": "posturale", "insegnanteId": "insegnante-m" }
+        { "ora": "09:30", "corsoId": "posturale" },
+        { "ora": "14:00", "corsoId": "" },
+        { "ora": "18:00", "corsoId": "pregnancy" },
+        { "ora": "19:30", "corsoId": "posturale" }
       ]
     },
     {
       "giorno": "mercoledi",
       "lezioni": [
-        { "ora": "14:00", "corsoId": "posturale", "insegnanteId": "insegnante-m" },
-        { "ora": "16:30", "corsoId": "bambini", "insegnanteId": "insegnante-m" },
-        { "ora": "18:00", "corsoId": "", "insegnanteId": "" },
-        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" }
+        { "ora": "09:30", "corsoId": "" },
+        { "ora": "14:00", "corsoId": "" },
+        { "ora": "18:00", "corsoId": "" },
+        { "ora": "19:30", "corsoId": "vinyasa" }
       ]
     },
     {
       "giorno": "giovedi",
       "lezioni": [
-        { "ora": "14:00", "corsoId": "", "insegnanteId": "" },
-        { "ora": "16:30", "corsoId": "", "insegnanteId": "" },
-        { "ora": "18:00", "corsoId": "posturale", "insegnanteId": "insegnante-m" },
-        { "ora": "19:30", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" }
+        { "ora": "09:30", "corsoId": "vinyasa" },
+        { "ora": "14:00", "corsoId": "" },
+        { "ora": "18:00", "corsoId": "posturale" },
+        { "ora": "19:30", "corsoId": "vinyasa" }
       ]
     },
     {
       "giorno": "venerdi",
       "lezioni": [
-        { "ora": "14:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-m" },
-        { "ora": "16:30", "corsoId": "mum-baby", "insegnanteId": "insegnante-m" },
-        { "ora": "18:00", "corsoId": "", "insegnanteId": "" },
-        { "ora": "19:00", "corsoId": "vinyasa", "insegnanteId": "insegnante-d" }
+        { "ora": "09:30", "corsoId": "pregnancy" },
+        { "ora": "14:00", "corsoId": "vinyasa" },
+        { "ora": "18:00", "corsoId": "" },
+        { "ora": "19:00", "corsoId": "vinyasa" }
       ]
     }
   ]
