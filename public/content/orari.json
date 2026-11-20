@@ -5,6 +5,7 @@
       "giorno": "lunedi",
       "lezioni": [
         { "ora": "09:30", "corsoId": "" },
+        { "ora": "11:00", "corsoId": "" },
         { "ora": "14:00", "corsoId": "" },
         { "ora": "18:00", "corsoId": "vinyasa" },
         { "ora": "19:30", "corsoId": "posturale" }
@@ -14,6 +15,7 @@
       "giorno": "martedi",
       "lezioni": [
         { "ora": "09:30", "corsoId": "posturale" },
+        { "ora": "11:00", "corsoId": "posturale" },
         { "ora": "14:00", "corsoId": "" },
         { "ora": "18:00", "corsoId": "pregnancy" },
         { "ora": "19:30", "corsoId": "posturale" }
@@ -23,6 +25,7 @@
       "giorno": "mercoledi",
       "lezioni": [
         { "ora": "09:30", "corsoId": "" },
+        { "ora": "11:00", "corsoId": "" },
         { "ora": "14:00", "corsoId": "" },
         { "ora": "18:00", "corsoId": "" },
         { "ora": "19:30", "corsoId": "vinyasa" }
@@ -32,6 +35,7 @@
       "giorno": "giovedi",
       "lezioni": [
         { "ora": "09:30", "corsoId": "vinyasa" },
+        { "ora": "11:00", "corsoId": "posturale" },
         { "ora": "14:00", "corsoId": "" },
         { "ora": "18:00", "corsoId": "posturale" },
         { "ora": "19:30", "corsoId": "vinyasa" }
@@ -41,6 +45,7 @@
       "giorno": "venerdi",
       "lezioni": [
         { "ora": "09:30", "corsoId": "pregnancy" },
+        { "ora": "11:00", "corsoId": "" },
         { "ora": "14:00", "corsoId": "vinyasa" },
         { "ora": "18:00", "corsoId": "" },
         { "ora": "19:00", "corsoId": "vinyasa" }
